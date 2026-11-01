@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Chuẩn độ acid-base · Phòng thí nghiệm 3D</title>
+  <style>
+    :root{color-scheme:dark;--ink:#edf5ff;--muted:#a8bad1;--line:#28415c;--panel:rgba(8,20,36,.92);--cyan:#41d9e8;--blue:#73a7ff;--pink:#ff76b5;--amber:#ffc56b}
+    *{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#071322;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}body{position:relative}
+    canvas#gl{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;outline:none}
+    #top,#steps,#left,#foot{position:absolute;z-index:5}
+    #top{top:18px;left:20px;right:20px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:15px 18px;border:1px solid rgba(147,197,253,.2);border-radius:18px;background:rgba(5,16,30,.76);backdrop-filter:blur(18px);box-shadow:0 16px 45px rgba(0,0,0,.24)}
+    .eyebrow{margin:0 0 3px;color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.title{margin:0;font-size:clamp(18px,2.3vw,28px);letter-spacing:-.03em}.subtitle{margin:4px 0 0;color:var(--muted);font-size:13px}.top-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+    button,input{font:inherit}button{border:1px solid var(--line);border-radius:10px;background:#10243c;color:var(--ink);cursor:pointer;padding:9px 12px;transition:.2s ease}button:hover{border-color:var(--cyan);transform:translateY(-1px)}button:focus-visible,input:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}.primary{background:linear-gradient(135deg,#1c8eaa,#2d5fca);border-color:transparent;font-weight:800}.chip{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}.chip.on,.chip[aria-current="step"]{background:rgba(65,217,232,.18);border-color:var(--cyan);color:#fff}.chip-num{display:grid;place-items:center;width:23px;height:23px;border-radius:50%;background:#183551;color:var(--cyan);font-size:12px;font-weight:900}.chip.on .chip-num{background:var(--cyan);color:#06202a}
+    #steps{left:20px;right:20px;top:103px;display:flex;gap:8px;overflow:auto;padding:9px;border:1px solid rgba(147,197,253,.18);border-radius:15px;background:rgba(6,17,31,.7);backdrop-filter:blur(16px)}
+    #left{top:160px;left:20px;bottom:20px;width:min(345px,calc(100vw - 40px));overflow:auto;padding:18px;border:1px solid rgba(147,197,253,.2);border-radius:18px;background:var(--panel);backdrop-filter:blur(18px);box-shadow:0 18px 50px rgba(0,0,0,.3)}
+    .panel-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:13px}.panel-title h2{margin:0;font-size:17px}.status{display:inline-flex;align-items:center;gap:6px;color:#b9f8df;font-size:12px}.status i{width:8px;height:8px;border-radius:50%;background:#59e59e;box-shadow:0 0 12px #59e59e}.question{padding:12px;border:1px solid rgba(65,217,232,.22);border-radius:13px;background:rgba(15,45,67,.55);color:#d9e8f7;line-height:1.45;font-size:13px}.question strong{display:block;color:#fff;margin-bottom:4px}.reading-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:13px 0}.reading{padding:11px;border:1px solid var(--line);border-radius:12px;background:rgba(13,32,53,.8)}.reading small{display:block;color:var(--muted);font-size:11px}.reading b{display:block;margin-top:4px;font-size:22px;letter-spacing:-.04em}.reading b.pink{color:var(--pink)}.control{margin-top:15px;padding-top:14px;border-top:1px solid rgba(147,197,253,.14)}.control label{display:flex;justify-content:space-between;gap:10px;margin-bottom:8px;color:#dce8f4;font-size:13px}.control output{color:var(--cyan);font-weight:800}.range{width:100%;accent-color:var(--cyan)}.button-row{display:flex;gap:8px;margin-top:11px}.button-row button{flex:1}.hint{margin:14px 0 0;color:var(--muted);font-size:12px;line-height:1.5}.hint strong{color:#f5d58b}.steps-copy{margin:13px 0 0;color:#cfdeed;font-size:13px;line-height:1.5}.equation{margin-top:12px;padding:10px 12px;border-radius:11px;background:#0c1b2d;color:#b9d8ff;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px}.legend{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.legend span{padding:5px 8px;border-radius:999px;background:rgba(115,167,255,.13);color:#c8dafe;font-size:11px}
+    #foot{left:20px;right:20px;bottom:17px;display:flex;justify-content:space-between;gap:16px;align-items:center;color:#aac0d6;font-size:12px;pointer-events:none}.foot-pill{padding:8px 11px;border:1px solid rgba(147,197,253,.18);border-radius:999px;background:rgba(5,16,30,.65);backdrop-filter:blur(12px)}
+    @media(max-width:760px){#top{top:10px;left:10px;right:10px;padding:12px;align-items:flex-start}.top-actions{max-width:150px}.subtitle{display:none}#steps{top:94px;left:10px;right:10px}#left{top:auto;left:10px;right:10px;bottom:10px;width:auto;max-height:43vh;padding:14px}.question,.hint{display:none}#foot{left:10px;right:10px;bottom:calc(43vh + 17px);justify-content:flex-end}.foot-pill:first-child{display:none}}
+    @media(max-width:430px){#top{gap:8px}.eyebrow{font-size:9px}.title{font-size:16px}.top-actions button{padding:7px 8px;font-size:11px}.reading b{font-size:18px}}
+  </style>
+</head>
+<body>
+  <header id="top">
+    <div><p class="eyebrow">Hóa học 11 · Thực hành P0</p><h1 class="title">Chuẩn độ acid-base</h1><p class="subtitle">Xác định điểm tương đương bằng chỉ thị phenolphthalein</p></div>
+    <div class="top-actions"><button id="fullscreenBtn" type="button">Toàn màn hình</button><button id="resetBtn" type="button">Đặt lại</button></div>
+  </header>
+  <nav id="steps" aria-label="Các bước thí nghiệm">
+    <button class="chip on" data-step-index="0" aria-current="step"><span class="chip-num">1</span>Chuẩn bị</button>
+    <button class="chip" data-step-index="1"><span class="chip-num">2</span>Đọc burette</button>
+    <button class="chip" data-step-index="2"><span class="chip-num">3</span>Nhỏ từng giọt</button>
+    <button class="chip" data-step-index="3"><span class="chip-num">4</span>Gần tương đương</button>
+    <button class="chip" data-step-index="4"><span class="chip-num">5</span>Đổi màu</button>
+    <button class="chip" data-step-index="5"><span class="chip-num">6</span>Kết luận</button>
+  </nav>
+  <canvas id="gl" tabindex="0" aria-label="Mô hình 3D bộ chuẩn độ acid-base"></canvas>
+  <aside id="left" aria-label="Bảng điều khiển thí nghiệm">
+    <div class="panel-title"><h2>Trạm chuẩn độ</h2><span class="status"><i></i>Đang sẵn sàng</span></div>
+    <div class="question"><strong>Câu hỏi thực hành</strong>Vì sao một giọt cuối cùng có thể làm dung dịch đổi màu rõ rệt? Hãy tăng thể tích base và quan sát điểm tương đương.</div>
+    <div class="reading-grid"><div class="reading"><small>Thể tích base</small><b id="volumeRead">0.0 mL</b></div><div class="reading"><small>pH hiện tại</small><b id="phRead">1.30</b></div></div>
+    <div class="control"><label for="volumeSlider"><span>Điều chỉnh burette</span><output id="volumeOutput">0.0 mL</output></label><input class="range" id="volumeSlider" type="range" min="0" max="50" step="0.1" value="0"><div class="button-row"><button class="primary" id="dropBtn" type="button">Nhỏ 1 mL</button><button id="fineBtn" type="button">Nhỏ 0.1 mL</button></div></div>
+    <p class="steps-copy" id="stepCopy"><strong>Bước 1 · Chuẩn bị:</strong> Dung dịch acid 0.1 mol/L ở bình tam giác, thêm vài giọt phenolphthalein; base 0.1 mol/L ở burette.</p>
+    <div class="equation" id="equation">n(acid) = 0.1 × 25.0 = 2.50 mmol</div>
+    <div class="legend"><span>Acid: không màu</span><span>Chỉ thị: hồng nhạt</span><span>Veq ≈ 25.0 mL</span></div>
+    <p class="hint"><strong>Thao tác 3D:</strong> kéo trái để xoay, kéo phải để pan, cuộn để zoom. Khi ở trong shell, các nút điều khiển chung vẫn điều khiển được mô hình này.</p>
+  </aside>
+  <footer id="foot"><span class="foot-pill">Mục tiêu: tìm V<sub>eq</sub> và kiểm tra pH tại điểm tương đương</span><span class="foot-pill" id="modeRead">Xoay mô hình · Three.js procedural</span></footer>
+
+  <script type="module">
+    import {
+      AmbientLight, BoxGeometry, BufferGeometry, Color, CylinderGeometry, DirectionalLight,
+      Group, HemisphereLight, Line, LineBasicMaterial, Mesh, MeshBasicMaterial, MeshStandardMaterial,
+      PerspectiveCamera, PlaneGeometry, Scene, SphereGeometry, TorusGeometry, Vector3, WebGLRenderer
+    } from './phase2-three.module.js';
+
+    const canvas = document.querySelector('#gl');
+    const scene = new Scene();
+    scene.background = new Color('#071322');
+    const camera = new PerspectiveCamera(34, 1, 0.1, 100);
+    const renderer = new WebGLRenderer({ canvas, antialias: true, alpha: false });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = 2;
+    renderer.outputColorSpace = 'srgb';
+    const root = new Group();
+    scene.add(root);
+    scene.add(new HemisphereLight('#b9ecff', '#071322', 1.65));
+    const key = new DirectionalLight('#ffffff', 3.1); key.position.set(3, 5, 4); key.castShadow = true; scene.add(key);
+    scene.add(new AmbientLight('#5d8dff', 0.45));
+
+    const mat = (color, options = {}) => new MeshStandardMaterial({ color, roughness: 0.42, metalness: 0.05, ...options });
+    const glass = (color, opacity = 0.2) => mat(color, { transparent: true, opacity, roughness: 0.12, metalness: 0.02, depthWrite: false });
+    const bench = new Mesh(new BoxGeometry(4.8, 0.18, 2.55), mat('#24384b', { roughness: .7 })); bench.position.y = -0.35; bench.receiveShadow = true; root.add(bench);
+    const edge = new Mesh(new BoxGeometry(4.84, .06, 2.59), mat('#45d4dc', { emissive: new Color('#0d5361'), emissiveIntensity: .3 })); edge.position.y = -.24; root.add(edge);
+    const backsplash = new Mesh(new PlaneGeometry(4.8, 2.8), mat('#0b2034', { roughness: .8 })); backsplash.position.set(0, 1.05, -.72); backsplash.rotation.x = 0; root.add(backsplash);
+    const rail = new Mesh(new BoxGeometry(.08, 2.45, .08), mat('#c8d4de', { metalness: .8, roughness: .2 })); rail.position.set(.65, .85, 0); rail.castShadow = true; root.add(rail);
+    const clamp = new Mesh(new BoxGeometry(.58, .07, .07), mat('#c8d4de', { metalness: .7 })); clamp.position.set(.39, 1.72, 0); root.add(clamp);
+    const burette = new Mesh(new CylinderGeometry(.095, .095, 2.05, 28, 1, true), glass('#bfefff', .32)); burette.position.set(.18, 1.36, 0); root.add(burette);
+    const buretteLiquid = new Mesh(new CylinderGeometry(.073, .073, 1.86, 24), mat('#75b9ff', { transparent: true, opacity: .78, emissive: new Color('#1455a0'), emissiveIntensity: .18 })); buretteLiquid.position.set(.18, 1.33, 0.006); root.add(buretteLiquid);
+    const stopcock = new Mesh(new SphereGeometry(.11, 20, 12), mat('#d3e1ed', { metalness: .8, roughness: .22 })); stopcock.position.set(.18, .34, 0); root.add(stopcock);
+    const tip = new Mesh(new CylinderGeometry(.025, .045, .28, 18), mat('#d3e1ed', { metalness: .7 })); tip.position.set(.18, .17, 0); root.add(tip);
+    const flask = new Group(); flask.position.set(-.52, -.02, .02); root.add(flask);
+    const flaskBody = new Mesh(new SphereGeometry(.57, 36, 24), glass('#dff8ff', .26)); flaskBody.scale.set(1, .8, .85); flaskBody.castShadow = true; flask.add(flaskBody);
+    const flaskNeck = new Mesh(new CylinderGeometry(.17, .17, .56, 28, 1, true), glass('#dff8ff', .27)); flaskNeck.position.y = .55; flask.add(flaskNeck);
+    const liquidMat = mat('#eaf7ff', { transparent: true, opacity: .72, roughness: .15 });
+    const liquid = new Mesh(new CylinderGeometry(.41, .46, .24, 36), liquidMat); liquid.position.y = -.21; flask.add(liquid);
+    const stirBar = new Mesh(new BoxGeometry(.27, .035, .07), mat('#778ca4', { metalness: .7, roughness: .25 })); stirBar.position.set(0, -.42, .03); flask.add(stirBar);
+    const drop = new Mesh(new SphereGeometry(.055, 18, 12), mat('#75b9ff', { emissive: new Color('#174c9c'), emissiveIntensity: .35 })); drop.visible = false; root.add(drop);
+    const endpointRing = new Mesh(new TorusGeometry(.53, .012, 8, 64), new MeshBasicMaterial({ color: '#ff76b5', transparent: true, opacity: 0 })); endpointRing.rotation.x = Math.PI / 2; endpointRing.position.set(-.52, -.43, .02); root.add(endpointRing);
+    const tableLine = new Line(new BufferGeometry().setFromPoints([new Vector3(-2.2,-.24,.02),new Vector3(2.2,-.24,.02)]), new LineBasicMaterial({color:'#6de5e8',transparent:true,opacity:.35})); root.add(tableLine);
+
+    const state = { volume: 0, step: 0, dropT: 0, dropping: false };
+    const stepText = [
+      'Chuẩn bị: dung dịch acid 0.1 mol/L ở bình tam giác, thêm vài giọt phenolphthalein; base 0.1 mol/L ở burette.',
+      'Đọc vạch đầu burette và đặt thể tích ban đầu về 0.0 mL trước khi bắt đầu.',
+      'Nhỏ base từng phần, khuấy đều sau mỗi lần nhỏ; theo dõi pH và thể tích đã dùng.',
+      'Khi V gần 25.0 mL, chuyển sang giọt nhỏ 0.1 mL để tránh vượt điểm tương đương.',
+      'Màu hồng nhạt bền khoảng 30 giây là dấu hiệu điểm cuối của phép chuẩn độ.',
+      'Ghi V_eq ≈ 25.0 mL; với C acid = C base = 0.1 mol/L, kết quả phù hợp mô hình.'
+    ];
+    const volumeSlider = document.querySelector('#volumeSlider');
+    const volumeOutput = document.querySelector('#volumeOutput');
+    const volumeRead = document.querySelector('#volumeRead');
+    const phRead = document.querySelector('#phRead');
+    const equation = document.querySelector('#equation');
+    const stepCopy = document.querySelector('#stepCopy');
+    const modeRead = document.querySelector('#modeRead');
+    const chips = [...document.querySelectorAll('#steps .chip')];
+
+    function phFor(volume) {
+      const acidMmol = 2.5, baseMmol = volume * .1, totalMl = 25 + volume;
+      if (Math.abs(baseMmol - acidMmol) < .0001) return 7;
+      if (baseMmol < acidMmol) return -Math.log10((acidMmol - baseMmol) / totalMl * 1000);
+      return 14 + Math.log10((acidMmol - baseMmol) / totalMl * -1000);
+    }
+    function updateReadings() {
+      const v = state.volume, ph = phFor(v), endpoint = 1 / (1 + Math.exp(-(v - 25) * 3.7));
+      volumeSlider.value = String(v); volumeOutput.value = `${v.toFixed(1)} mL`; volumeRead.textContent = `${v.toFixed(1)} mL`; phRead.textContent = ph.toFixed(2);
+      phRead.classList.toggle('pink', endpoint > .55);
+      const clear = new Color('#eaf7ff'), pink = new Color('#ff76b5'); liquidMat.color.copy(clear).lerp(pink, Math.max(0, endpoint - .42) * 1.7); liquidMat.emissive.copy(liquidMat.color).multiplyScalar(.08); liquidMat.needsUpdate = true;
+      endpointRing.material.opacity = Math.max(0, endpoint - .62) * .55;
+      buretteLiquid.scale.y = Math.max(.02, 1 - v / 52); buretteLiquid.position.y = .4 + buretteLiquid.scale.y * .93;
+      equation.textContent = v < 25 ? `n dư acid = ${(2.5 - v*.1).toFixed(2)} mmol · pH = ${ph.toFixed(2)}` : `n dư base = ${((v*.1)-2.5).toFixed(2)} mmol · pH = ${ph.toFixed(2)}`;
+    }
+    function setStep(index) { state.step = Math.max(0, Math.min(chips.length - 1, index)); chips.forEach((chip, i) => { const active = i === state.step; chip.classList.toggle('on', active); chip.setAttribute('aria-current', active ? 'step' : 'false'); }); stepCopy.innerHTML = `<strong>Bước ${state.step + 1} · ${chips[state.step].textContent.trim().replace(/^\d+/, '')}:</strong> ${stepText[state.step]}`; }
+    chips.forEach((chip, index) => chip.addEventListener('click', () => setStep(index)));
+    volumeSlider.addEventListener('input', () => { state.volume = Number(volumeSlider.value); state.dropping = true; state.dropT = 0; updateReadings(); });
+    document.querySelector('#dropBtn').addEventListener('click', () => { state.volume = Math.min(50, Math.round((state.volume + 1) * 10) / 10); state.dropping = true; state.dropT = 0; updateReadings(); });
+    document.querySelector('#fineBtn').addEventListener('click', () => { state.volume = Math.min(50, Math.round((state.volume + .1) * 10) / 10); state.dropping = true; state.dropT = 0; updateReadings(); });
+    document.querySelector('#resetBtn').addEventListener('click', () => location.reload());
+    document.querySelector('#fullscreenBtn').addEventListener('click', () => document.documentElement.requestFullscreen?.());
+
+    let mode = 'rotate';
+    const orbit = { theta: .32, phi: 1.18, radius: 5.7, target: new Vector3(0, .35, 0), down: null };
+    function applyCamera() { const x = orbit.target.x + orbit.radius * Math.sin(orbit.phi) * Math.sin(orbit.theta); const y = orbit.target.y + orbit.radius * Math.cos(orbit.phi); const z = orbit.target.z + orbit.radius * Math.sin(orbit.phi) * Math.cos(orbit.theta); camera.position.set(x, y, z); camera.lookAt(orbit.target); }
+    canvas.addEventListener('pointerdown', event => { if(event.button !== 0 && event.button !== 2) return; canvas.setPointerCapture?.(event.pointerId); orbit.down = { x:event.clientX, y:event.clientY, theta:orbit.theta, phi:orbit.phi, tx:orbit.target.x, ty:orbit.target.y, tz:orbit.target.z, button:event.button }; });
+    canvas.addEventListener('pointermove', event => { if(!orbit.down) return; const dx=event.clientX-orbit.down.x, dy=event.clientY-orbit.down.y; if(orbit.down.button===2){ orbit.target.x=orbit.down.tx-dx*.004*orbit.radius; orbit.target.y=orbit.down.ty+dy*.004*orbit.radius; } else { orbit.theta=orbit.down.theta-dx*.008; orbit.phi=Math.max(.42,Math.min(2.55,orbit.down.phi+dy*.006)); } applyCamera(); });
+    ['pointerup','pointercancel','pointerleave'].forEach(type => canvas.addEventListener(type, () => { orbit.down=null; }));
+    canvas.addEventListener('wheel', event => { event.preventDefault(); orbit.radius=Math.max(3.1,Math.min(9,orbit.radius+event.deltaY*.005)); applyCamera(); }, {passive:false});
+    window.addEventListener('message', event => { const m=event.data; if(!m || m.protocol!=='3dlearn:legacy-bridge') return; if(m.type==='modeChanged'){ mode=m.payload?.mode||'rotate'; modeRead.textContent = `${mode==='rotate'?'Xoay':mode==='pan'?'Di chuyển':'Zoom'} mô hình · Three.js procedural`; } });
+    function resize(){ const w=canvas.clientWidth||innerWidth,h=canvas.clientHeight||innerHeight; camera.aspect=w/h; camera.updateProjectionMatrix(); renderer.setSize(w,h,false); }
+    window.addEventListener('resize', resize); resize(); applyCamera(); setStep(0); updateReadings();
+    const clock = { last: performance.now() };
+    function render(now){ const dt=Math.min(.05,(now-clock.last)/1000); clock.last=now; stirBar.rotation.y += dt*1.8; if(state.dropping){ state.dropT+=dt*2.8; drop.visible=state.dropT<1; drop.position.set(.18,.16+Math.max(0,1-state.dropT)*.45,.02); if(state.dropT>=1) state.dropping=false; } renderer.render(scene,camera); requestAnimationFrame(render); }
+    requestAnimationFrame(render);
+  </script>
+</body>
+</html>

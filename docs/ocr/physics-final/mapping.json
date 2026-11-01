@@ -1,0 +1,182 @@
+[
+  {
+    "sourceBookId": "vat-li-12",
+    "slug": "photoelectric-step",
+    "catalogTitle": "Hiệu ứng quang điện",
+    "chapter": null,
+    "lesson": null,
+    "printedPage": null,
+    "confidence": "needs-OCR",
+    "evidence": {
+      "source": [
+        "catalog.json",
+        "content/course-mapping.json"
+      ],
+      "titleStatus": "catalog-only-not-official-SGK-name",
+      "pdfPage": null,
+      "figureRef": null
+    }
+  },
+  {
+    "sourceBookId": "vat-li-11",
+    "slug": "capacitor-step",
+    "catalogTitle": "Quan sát sự tích điện và phóng điện của tụ điện",
+    "chapter": null,
+    "lesson": null,
+    "printedPage": null,
+    "confidence": "needs-OCR",
+    "evidence": {
+      "source": [
+        "catalog.json",
+        "content/course-mapping.json"
+      ],
+      "titleStatus": "catalog-only-not-official-SGK-name",
+      "pdfPage": null,
+      "figureRef": null
+    }
+  },
+  {
+    "sourceBookId": "vat-li-10",
+    "slug": "accel-force-step",
+    "catalogTitle": "Thí nghiệm: Tìm hiểu mối liên hệ giữa gia tốc với lực và khối lượng",
+    "chapter": null,
+    "lesson": null,
+    "printedPage": null,
+    "confidence": "needs-OCR",
+    "evidence": {
+      "source": [
+        "catalog.json",
+        "content/course-mapping.json"
+      ],
+      "titleStatus": "catalog-only-not-official-SGK-name",
+      "pdfPage": null,
+      "figureRef": null
+    }
+  },
+  {
+    "sourceBookId": "vat-li-10",
+    "slug": "energy-step",
+    "catalogTitle": "Thí nghiệm: Kiểm chứng định luật bảo toàn cơ năng",
+    "chapter": null,
+    "lesson": null,
+    "printedPage": null,
+    "confidence": "needs-OCR",
+    "evidence": {
+      "source": [
+        "catalog.json",
+        "content/course-mapping.json"
+      ],
+      "titleStatus": "catalog-only-not-official-SGK-name",
+      "pdfPage": null,
+      "figureRef": null
+    }
+  },
+  {
+    "sourceBookId": "vat-li-10",
+    "slug": "projectile-step",
+    "catalogTitle": "Thí nghiệm: Tìm hiểu đặc điểm của chuyển động ném ngang",
+    "chapter": null,
+    "lesson": null,
+    "printedPage": null,
+    "confidence": "needs-OCR",
+    "evidence": {
+      "source": [
+        "catalog.json",
+        "content/course-mapping.json"
+      ],
+      "titleStatus": "catalog-only-not-official-SGK-name",
+      "pdfPage": null,
+      "figureRef": null
+    }
+  },
+  {
+    "sourceBookId": "vat-li-10",
+    "slug": "centripetal-step",
+    "catalogTitle": "Tìm hiểu mối liên hệ giữa độ lớn lực hướng tâm với bán kính, tốc độ góc và khối lượng",
+    "chapter": null,
+    "lesson": null,
+    "printedPage": null,
+    "confidence": "needs-OCR",
+    "evidence": {
+      "source": [
+        "catalog.json",
+        "content/course-mapping.json"
+      ],
+      "titleStatus": "catalog-only-not-official-SGK-name",
+      "pdfPage": null,
+      "figureRef": null
+    }
+  },
+  {
+    "sourceBookId": "vat-li-11",
+    "slug": "self-induction-step",
+    "catalogTitle": "Tự cảm và dòng Foucault",
+    "chapter": null,
+    "lesson": null,
+    "printedPage": null,
+    "confidence": "needs-OCR",
+    "evidence": {
+      "source": [
+        "catalog.json",
+        "content/course-mapping.json"
+      ],
+      "titleStatus": "catalog-only-not-official-SGK-name",
+      "pdfPage": null,
+      "figureRef": null
+    }
+  },
+  {
+    "sourceBookId": "vat-li-11",
+    "slug": "emf-step",
+    "catalogTitle": "Đo suất điện động và điện trở trong của nguồn điện",
+    "chapter": null,
+    "lesson": null,
+    "printedPage": null,
+    "confidence": "needs-OCR",
+    "evidence": {
+      "source": [
+        "catalog.json",
+        "content/course-mapping.json"
+      ],
+      "titleStatus": "catalog-only-not-official-SGK-name",
+      "pdfPage": null,
+      "figureRef": null
+    }
+  },
+  {
+    "sourceBookId": "vat-li-11",
+    "slug": "current-field-step",
+    "catalogTitle": "Từ trường của dòng điện",
+    "chapter": null,
+    "lesson": null,
+    "printedPage": null,
+    "confidence": "needs-OCR",
+    "evidence": {
+      "source": [
+        "catalog.json",
+        "content/course-mapping.json"
+      ],
+      "titleStatus": "catalog-only-not-official-SGK-name",
+      "pdfPage": null,
+      "figureRef": null
+    }
+  },
+  {
+    "sourceBookId": null,
+    "slug": "brownian-step",
+    "catalogTitle": "Chuyển động Brown và sự khuếch tán",
+    "chapter": null,
+    "lesson": null,
+    "printedPage": null,
+    "confidence": "needs-OCR",
+    "evidence": {
+      "source": [
+        "catalog.json",
+        "content/course-mapping.json"
+      ],
+      "titleStatus": "catalog-only-not-official-SGK-name",
+      "pdfPage": null,
+      "figureRef": null
+    }
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-31",
+  "scope": "Physics 10-12 naming overlay from EasyOCR environment check and rendered-page audit",
+  "catalogMutation": false,
+  "ocr": {
+    "engine": "EasyOCR",
+    "import": "available",
+    "version": "1.7.2",
+    "torchVersion": "2.6.0+cu124",
+    "readerInitialization": "blocked-missing-model-weights",
+    "downloadAttempted": false,
+    "rendering": ["pdftoppm 26.07.0", "PyMuPDF 1.28.2"],
+    "textLayer": "not-usable-for-the-supplied-scans",
+    "reviewRequired": true,
+    "evidenceDir": "docs/ocr/physics-easyocr/pages"
+  },
+  "records": [
+    {"courseSlug":"photoelectric-step","currentTitle":"Hiệu ứng quang điện","displayTitle":null,"sourceBookId":"vat-li-12","chapter":null,"lesson":null,"printedPage":null,"figureRef":null,"confidence":"needs-review","reason":"Candidate mapping only; quang điện was not visible in the supplied 65-page scan."},
+    {"courseSlug":"capacitor-step","currentTitle":"Quan sát sự tích điện và phóng điện của tụ điện","displayTitle":null,"sourceBookId":"vat-li-11","chapter":null,"lesson":null,"printedPage":null,"figureRef":null,"confidence":"needs-review","reason":"Candidate mapping only; the rendered Vật lí 11 sample showed Dao động/Sóng, not a confirmed capacitor figure."},
+    {"courseSlug":"accel-force-step","currentTitle":"Thí nghiệm: Tìm hiểu mối liên hệ giữa gia tốc với lực và khối lượng","displayTitle":null,"sourceBookId":"vat-li-10","chapter":null,"lesson":null,"printedPage":null,"figureRef":null,"confidence":"needs-review","reason":"Does not match the visible Bài 11 free-fall practical; do not rename as the SGK practical."},
+    {"courseSlug":"energy-step","currentTitle":"Thí nghiệm: Kiểm chứng định luật bảo toàn cơ năng","displayTitle":null,"sourceBookId":"vat-li-10","chapter":null,"lesson":null,"printedPage":null,"figureRef":null,"confidence":"needs-review","reason":"Candidate chapter mapping is beyond the visibly confirmed portion of the supplied scan."},
+    {"courseSlug":"projectile-step","currentTitle":"Thí nghiệm: Tìm hiểu đặc điểm của chuyển động ném ngang","displayTitle":null,"sourceBookId":"vat-li-10","chapter":"Động học","lesson":"Bài 12. Chuyển động ném","printedPage":null,"figureRef":null,"confidence":"needs-review","reason":"Topic is visually close, but ném ngang, exact figure and printed page are not OCR-confirmed."},
+    {"courseSlug":"centripetal-step","currentTitle":"Tìm hiểu mối liên hệ giữa độ lớn lực hướng tâm với bán kính, tốc độ góc và khối lượng","displayTitle":null,"sourceBookId":"vat-li-10","chapter":null,"lesson":null,"printedPage":null,"figureRef":null,"confidence":"needs-review","reason":"Candidate mapping only; no confirmed figure/page in the rendered sample."},
+    {"courseSlug":"self-induction-step","currentTitle":"Tự cảm và dòng Foucault","displayTitle":null,"sourceBookId":"vat-li-11","chapter":null,"lesson":null,"printedPage":null,"figureRef":null,"confidence":"needs-review","reason":"Candidate mapping only; supplied visible pages do not reach the confirmed electromagnetism lesson."},
+    {"courseSlug":"emf-step","currentTitle":"Đo suất điện động và điện trở trong của nguồn điện","displayTitle":null,"sourceBookId":"vat-li-11","chapter":null,"lesson":null,"printedPage":null,"figureRef":null,"confidence":"needs-review","reason":"Candidate mapping only; no confirmed source figure/page in the rendered sample."},
+    {"courseSlug":"current-field-step","currentTitle":"Từ trường của dòng điện","displayTitle":null,"sourceBookId":"vat-li-11","chapter":null,"lesson":null,"printedPage":null,"figureRef":null,"confidence":"needs-review","reason":"The visible scan shows a Từ trường opening in Vật lí 12, while mapping points to Vật lí 11; source book remains unresolved."},
+    {"courseSlug":"brownian-step","currentTitle":"Chuyển động Brown và sự khuếch tán","displayTitle":null,"sourceBookId":null,"chapter":null,"lesson":null,"printedPage":null,"figureRef":null,"confidence":"needs-review","reason":"Cross-grade candidate mapping; no confirmed Brownian figure or primary book."},
+    {"courseSlug":"phase2-phys-free-fall","currentTitle":"Thực hành: đo gia tốc rơi tự do","displayTitle":null,"sourceBookId":"vat-li-10","chapter":"Động học","lesson":"Bài 11. Thực hành: Đo gia tốc rơi tự do","printedPage":47,"figureRef":null,"confidence":"medium-manual-visual","reason":"Visible rendered page identifies Bài 11 and the title; EasyOCR model weights were unavailable, so figure number and page must be reviewed before canonical catalog naming."}
+  ]
+}

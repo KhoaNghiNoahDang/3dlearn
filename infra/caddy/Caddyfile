@@ -1,0 +1,76 @@
+# Alternative to Nginx for a single-server deployment.
+# Set the public app hostname before using this file in production.
+:80 {
+  root * /srv/3dlearn/current
+
+  encode zstd gzip
+
+  header {
+    -Server
+    X-Content-Type-Options "nosniff"
+    X-Frame-Options "SAMEORIGIN"
+    Referrer-Policy "strict-origin-when-cross-origin"
+    Permissions-Policy "camera=(), microphone=(), geolocation=(), usb=()"
+    Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; frame-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'"
+  }
+
+  @health path /healthz
+  handle @health {
+    header Cache-Control "no-store"
+    rewrite * /healthz.html
+    file_server
+  }
+
+  @version path /version
+  handle @version {
+    header Cache-Control "no-store"
+    rewrite * /version.json
+    file_server
+  }
+
+  @appRoot path /app
+  redir @appRoot /app/ 301
+
+  @app path /app/*
+  handle @app {
+    try_files {path} {path}/ /app/index.html
+    file_server
+  }
+
+  # These paths are static-only. Missing files remain 404 and never fall back
+  # to the React app shell.
+  @courses path /courses/*
+  handle @courses {
+    header Cache-Control "public, max-age=300, must-revalidate"
+    file_server
+  }
+
+  @covers path /covers/*
+  handle @covers {
+    header Cache-Control "public, max-age=2592000, immutable"
+    file_server
+  }
+
+  @content path /content/*
+  handle @content {
+    header Cache-Control "public, max-age=300, must-revalidate"
+    file_server
+  }
+
+  @bridge path /bridge/*
+  handle @bridge {
+    header Cache-Control "public, max-age=300, must-revalidate"
+    file_server
+  }
+
+  @blocked path_regexp blocked ^/(SGK|_viethoa|node_modules|dist|\.git)(/|$)
+  respond @blocked 404
+
+  @catalog path /catalog.json
+  handle @catalog {
+    header Cache-Control "public, max-age=300, must-revalidate"
+    file_server
+  }
+
+  file_server
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "3D Learn SGK OCR evidence record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "sourceBookId",
+    "chapter",
+    "lesson",
+    "printedPage",
+    "figureRef",
+    "confidence"
+  ],
+  "properties": {
+    "sourceBookId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "chapter": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lesson": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "printedPage": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "figureRef": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "unverified",
+        "low",
+        "medium",
+        "high",
+        "confirmed"
+      ]
+    }
+  }
+}

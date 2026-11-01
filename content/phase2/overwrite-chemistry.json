@@ -1,0 +1,186 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-10-31",
+  "purpose": "Conservative chemistry title overwrite patch derived only from naming-chemistry-easyocr.json entries with confidence=high. This file does not modify catalog.json or content/course-mapping.json.",
+  "mappings": [
+    {
+      "slug": "haber-step",
+      "oldTitle": "Tổng hợp ammonia",
+      "newTitle": "Quy trình Haber-Bosch: tổng hợp ammonia",
+      "sourceBookId": "hoa-hoc-11",
+      "chapter": "Chương 2. Nitrogen - sulfur",
+      "lesson": "Bài 5. Ammonia - Muối ammonium",
+      "printedPage": 33,
+      "confidence": "high"
+    },
+    {
+      "slug": "titration-step",
+      "oldTitle": "Chuẩn độ acid mạnh bằng base mạnh",
+      "newTitle": "Chuẩn độ acid-base: xác định điểm tương đương",
+      "sourceBookId": "hoa-hoc-11",
+      "chapter": "Chương 1. Cân bằng hóa học",
+      "lesson": "Bài 2. Cân bằng trong dung dịch nước",
+      "printedPage": 16,
+      "confidence": "high"
+    },
+    {
+      "slug": "blast-furnace-step",
+      "oldTitle": "Luyện gang lò cao",
+      "newTitle": "Luyện gang trong lò cao",
+      "sourceBookId": "hoa-hoc-12",
+      "chapter": "Chương 6. Đại cương về kim loại",
+      "lesson": "Bài 20. Kim loại trong tự nhiên và phương pháp tách kim loại",
+      "printedPage": 94,
+      "confidence": "high"
+    },
+    {
+      "slug": "smelting-step",
+      "oldTitle": "Luyện kim: điện phân muối nóng chảy + nhiệt nhôm",
+      "newTitle": "Luyện kim: điện phân nóng chảy và nhiệt luyện",
+      "sourceBookId": "hoa-hoc-12",
+      "chapter": [
+        "Chương 5. Pin điện và điện phân",
+        "Chương 6. Đại cương về kim loại"
+      ],
+      "lesson": [
+        "Bài 16. Điện phân",
+        "Bài 20. Kim loại trong tự nhiên và phương pháp tách kim loại"
+      ],
+      "printedPage": [78, 94],
+      "confidence": "high"
+    },
+    {
+      "slug": "sulfuric-step",
+      "oldTitle": "Điều chế H₂SO₄ (PP tiếp xúc)",
+      "newTitle": "Sản xuất sulfuric acid theo phương pháp tiếp xúc",
+      "sourceBookId": "hoa-hoc-11",
+      "chapter": "Chương 2. Nitrogen - sulfur",
+      "lesson": "Bài 8. Sulfuric acid và muối sulfate",
+      "printedPage": 48,
+      "confidence": "high"
+    },
+    {
+      "slug": "hydrolysis-step",
+      "oldTitle": "Sự thuỷ phân của muối và ứng dụng",
+      "newTitle": "Sự thủy phân của muối",
+      "sourceBookId": "hoa-hoc-11",
+      "chapter": "Chương 1. Cân bằng hóa học",
+      "lesson": "Bài 2. Cân bằng trong dung dịch nước",
+      "printedPage": 16,
+      "confidence": "high"
+    },
+    {
+      "slug": "electrolysis-step",
+      "oldTitle": "Nguyên lý điện phân: điện phân dung dịch copper(II) chloride và dung dịch muối ăn bão hoà",
+      "newTitle": "Điện phân dung dịch và ứng dụng",
+      "sourceBookId": "hoa-hoc-12",
+      "chapter": "Chương 5. Pin điện và điện phân",
+      "lesson": "Bài 16. Điện phân",
+      "printedPage": 78,
+      "confidence": "high"
+    },
+    {
+      "slug": "ammonia-step",
+      "oldTitle": "Điều chế và tính chất của ammonia (gồm thí nghiệm “đài phun”)",
+      "newTitle": "Ammonia và muối ammonium: điều chế và tính chất",
+      "sourceBookId": "hoa-hoc-11",
+      "chapter": "Chương 2. Nitrogen - sulfur",
+      "lesson": "Bài 5. Ammonia - Muối ammonium",
+      "printedPage": 33,
+      "confidence": "high"
+    },
+    {
+      "slug": "equilibrium-step",
+      "oldTitle": "Tìm hiểu các yếu tố ảnh hưởng đến chuyển dịch cân bằng hoá học",
+      "newTitle": "Các yếu tố ảnh hưởng đến chuyển dịch cân bằng hóa học",
+      "sourceBookId": "hoa-hoc-11",
+      "chapter": "Chương 1. Cân bằng hóa học",
+      "lesson": "Bài 1. Khái niệm về cân bằng hóa học",
+      "printedPage": 6,
+      "confidence": "high"
+    },
+    {
+      "slug": "galvanic-step",
+      "oldTitle": "Pin điện hoá: từ một dung dịch đến hai dung dịch",
+      "newTitle": "Pin điện hóa và nguồn điện hóa học",
+      "sourceBookId": "hoa-hoc-12",
+      "chapter": "Chương 5. Pin điện và điện phân",
+      "lesson": "Bài 15. Thế điện cực và nguồn điện hóa học",
+      "printedPage": 67,
+      "confidence": "high"
+    },
+    {
+      "slug": "conductivity-step",
+      "oldTitle": "Sự điện li của chất điện li, tính dẫn điện của dung dịch và bản chất của phản ứng ion",
+      "newTitle": "Chất điện li và tính dẫn điện của dung dịch",
+      "sourceBookId": "hoa-hoc-11",
+      "chapter": "Chương 1. Cân bằng hóa học",
+      "lesson": "Bài 2. Cân bằng trong dung dịch nước",
+      "printedPage": 16,
+      "confidence": "high"
+    },
+    {
+      "slug": "nitric-lab-step",
+      "oldTitle": "Tính chất của nitric acid đặc, loãng và sự chuyển hoá các oxide của nitrogen",
+      "newTitle": "Nitrogen oxide và nitric acid",
+      "sourceBookId": "hoa-hoc-11",
+      "chapter": "Chương 2. Nitrogen - sulfur",
+      "lesson": "Bài 6. Một số hợp chất của nitrogen với oxygen",
+      "printedPage": 38,
+      "confidence": "high"
+    },
+    {
+      "slug": "sodium-step",
+      "oldTitle": "Tính chất của kim loại sodium (gồm cách dập cháy sodium)",
+      "newTitle": "Nguyên tố nhóm IA: sodium và hợp chất",
+      "sourceBookId": "hoa-hoc-12",
+      "chapter": "Chương 7. Nguyên tố nhóm IA và nhóm IIA",
+      "lesson": "Bài 24. Nguyên tố nhóm IA",
+      "printedPage": 108,
+      "confidence": "high"
+    },
+    {
+      "slug": "sulfur-step",
+      "oldTitle": "Tính chất của sulfur, sulfur dioxide, sulfuric acid đặc và sự chuyển hoá giữa các chất chứa sulfur có số oxi hoá khác nhau",
+      "newTitle": "Sulfur, sulfur dioxide và sulfuric acid: tính chất và chuyển hóa",
+      "sourceBookId": "hoa-hoc-11",
+      "chapter": "Chương 2. Nitrogen - sulfur",
+      "lesson": [
+        "Bài 7. Sulfur và sulfur dioxide",
+        "Bài 8. Sulfuric acid và muối sulfate"
+      ],
+      "printedPage": [42, 48],
+      "confidence": "high"
+    },
+    {
+      "slug": "corrosion-step",
+      "oldTitle": "Ăn mòn hấp thụ oxygen và thiết kế miếng dán giữ nhiệt",
+      "newTitle": "Ăn mòn kim loại và thiết kế miếng dán giữ nhiệt",
+      "sourceBookId": "hoa-hoc-12",
+      "chapter": "Chương 6. Đại cương về kim loại",
+      "lesson": "Bài 22. Sự ăn mòn kim loại",
+      "printedPage": 102,
+      "confidence": "high"
+    },
+    {
+      "slug": "chlor-alkali-step",
+      "oldTitle": "Công nghiệp chlor-kiềm",
+      "newTitle": "Điện phân dung dịch NaCl và công nghiệp chlor-kiềm",
+      "sourceBookId": "hoa-hoc-12",
+      "chapter": "Chương 5. Pin điện và điện phân",
+      "lesson": "Bài 16. Điện phân",
+      "printedPage": 78,
+      "confidence": "high"
+    },
+    {
+      "slug": "phase2-chem-acid-base-titration",
+      "oldTitle": "Chuẩn độ acid-base: xác định điểm tương đương",
+      "newTitle": "Chuẩn độ acid-base: xác định điểm tương đương",
+      "sourceBookId": "hoa-hoc-11",
+      "chapter": "Chương 1. Cân bằng hóa học",
+      "lesson": "Bài 2. Cân bằng trong dung dịch nước",
+      "printedPage": 16,
+      "confidence": "high"
+    }
+  ]
+}

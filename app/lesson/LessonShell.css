@@ -1,0 +1,1035 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   LessonShell  –  Thin immersive wrapper for 3D experiment iframes
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Reset & Shell ─────────────────────────────────────────────────── */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.ls-shell {
+  --ls-accent: #6d7cff;
+  --ls-topbar-h: 48px;
+  --ls-radius: 10px;
+  --ls-glass: rgba(10, 16, 28, .72);
+  --ls-glass-border: rgba(255, 255, 255, .08);
+  --ls-text: #f0f2f8;
+  --ls-text-muted: #8d99b0;
+  --ls-bg: #060b14;
+
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  background: #f8fcfd;
+  color: var(--ls-text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  overflow: hidden;
+}
+
+.ls-shell *,
+.ls-shell *::before,
+.ls-shell *::after {
+  box-sizing: border-box;
+}
+
+.ls-shell button:focus-visible,
+.ls-shell [tabindex]:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--ls-accent) 72%, white);
+  outline-offset: 2px;
+}
+
+/* ── SVG icons ─────────────────────────────────────────────────────── */
+.ls-icon {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* ── Top bar ───────────────────────────────────────────────────────── */
+.ls-topbar {
+  flex: 0 0 var(--ls-topbar-h);
+  height: var(--ls-topbar-h);
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 12px;
+  background: var(--ls-glass);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid var(--ls-glass-border);
+  z-index: 100;
+  user-select: none;
+}
+
+/* Back button */
+.ls-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ls-text-muted);
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.ls-back:hover:not(:disabled) {
+  background: rgba(255, 255, 255, .08);
+  color: var(--ls-text);
+}
+.ls-back:disabled {
+  opacity: .35;
+  cursor: default;
+}
+
+/* Vertical divider */
+.ls-divider {
+  width: 1px;
+  height: 22px;
+  margin: 0 8px;
+  background: rgba(255, 255, 255, .1);
+}
+
+/* Subject badge */
+.ls-subject-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--ls-accent);
+  background: color-mix(in srgb, var(--ls-accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ls-accent) 24%, transparent);
+  white-space: nowrap;
+  margin-right: 10px;
+}
+.ls-subject-badge .ls-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* Title area */
+.ls-title-area {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  min-width: 0;
+  flex: 1 1 0;
+  overflow: hidden;
+}
+.ls-title-area h1 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--ls-text);
+}
+.ls-type {
+  flex: none;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ls-text-muted);
+  opacity: .7;
+}
+
+/* Progress */
+.ls-progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  margin-right: 6px;
+  flex: none;
+}
+.ls-progress span {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ls-text-muted);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.ls-progress-bar {
+  width: 60px;
+  height: 4px;
+  background: rgba(255, 255, 255, .1);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.ls-progress-bar i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--ls-accent);
+  transform: scaleX(1);
+  transform-origin: left center;
+  transition: transform .35s cubic-bezier(.4, 0, .2, 1);
+}
+
+/* Action buttons */
+.ls-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: none;
+}
+.ls-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 0;
+  border-radius: 7px;
+  padding: 6px 10px;
+  min-height: 36px;
+  background: transparent;
+  color: var(--ls-text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+  white-space: nowrap;
+}
+.ls-action-btn .ls-icon {
+  width: 15px;
+  height: 15px;
+}
+.ls-action-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, .08);
+  color: var(--ls-text);
+}
+.ls-action-btn:disabled {
+  opacity: .35;
+  cursor: default;
+}
+.ls-fullscreen-btn {
+  border: 1px solid rgba(131, 226, 216, .25);
+  background: rgba(19, 105, 111, .35);
+  color: #c5efea;
+}
+.ls-fullscreen-btn:hover:not(:disabled) {
+  background: rgba(29, 136, 136, .65) !important;
+  border-color: rgba(131, 226, 216, .55);
+  color: #e8fffb;
+}
+
+/* ── Viewport ──────────────────────────────────────────────────────── */
+.ls-viewport {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 0;
+  background: #eef4f5;
+  overflow: hidden;
+}
+
+/* iframe */
+.ls-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+}
+
+/* ── Status overlay (loading / error) ──────────────────────────────── */
+.ls-status {
+  position: absolute;
+  z-index: 10;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: radial-gradient(circle at 50% 40%, rgba(58, 158, 177, .12), transparent 40%),
+              linear-gradient(145deg, rgba(12, 28, 49, .96), rgba(8, 19, 33, .98));
+  color: var(--ls-text);
+  text-align: center;
+  pointer-events: none;
+}
+.ls-status strong {
+  font-size: 14px;
+  font-weight: 700;
+}
+.ls-status small {
+  max-width: 300px;
+  color: var(--ls-text-muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.ls-status-error {
+  pointer-events: auto;
+}
+.ls-status-error .ls-error-mark {
+  margin-bottom: 6px;
+}
+
+/* Spinner */
+.ls-spinner {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(255, 255, 255, .15);
+  border-top-color: var(--ls-accent);
+  border-radius: 50%;
+  animation: ls-spin .75s linear infinite;
+}
+@keyframes ls-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Error mark (!) */
+.ls-error-mark {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(226, 98, 43, .15);
+  color: #ff8757;
+  font-weight: 900;
+  font-size: 22px;
+}
+
+/* WebGL notice */
+.ls-webgl-notice {
+  position: absolute;
+  z-index: 15;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 16px;
+  border: 1px solid rgba(255, 184, 107, .4);
+  border-radius: 12px;
+  background: rgba(60, 39, 30, .92);
+  color: #ffe2bd;
+  font-size: 12px;
+  line-height: 1.45;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
+}
+.ls-webgl-notice strong {
+  white-space: nowrap;
+}
+
+/* Connection indicator pill */
+.ls-connection {
+  position: absolute;
+  z-index: 20;
+  bottom: 12px;
+  right: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px 4px 8px;
+  border-radius: 20px;
+  background: rgba(10, 16, 28, .65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, .06);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ls-text-muted);
+  pointer-events: none;
+  opacity: .75;
+  transition: opacity .4s, color .3s;
+}
+.ls-connection i {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff8757;
+  box-shadow: 0 0 0 3px rgba(255, 135, 87, .2);
+  transition: background .3s, box-shadow .3s;
+}
+.ls-connection.is-connected {
+  opacity: .6;
+}
+.ls-connection.is-connected i {
+  background: #41c98a;
+  box-shadow: 0 0 0 3px rgba(65, 201, 138, .2);
+}
+
+/* ── Error card (not-found state) ──────────────────────────────────── */
+.ls-shell-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ls-error-card {
+  max-width: 480px;
+  padding: 48px 38px;
+  text-align: center;
+  background: rgba(255, 255, 255, .04);
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 22px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .25);
+}
+.ls-error-card .ls-error-mark {
+  margin: 0 auto 18px;
+}
+.ls-kicker {
+  font-size: 10px;
+  letter-spacing: .14em;
+  font-weight: 900;
+  color: var(--ls-accent);
+  margin: 0 0 8px;
+}
+.ls-error-card h1 {
+  margin: 0 0 12px;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--ls-text);
+}
+.ls-error-card p {
+  color: var(--ls-text-muted);
+  line-height: 1.6;
+  margin: 0 0 20px;
+  font-size: 14px;
+}
+.ls-error-card code {
+  background: rgba(255, 255, 255, .08);
+  padding: 2px 7px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+/* Buttons */
+.ls-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 10px;
+  padding: 11px 18px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: filter .15s, transform .1s;
+}
+.ls-btn:active {
+  transform: scale(.97);
+}
+.ls-btn-primary {
+  color: #fff;
+  background: var(--ls-accent);
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--ls-accent) 30%, transparent);
+}
+.ls-btn-primary:hover {
+  filter: brightness(1.12);
+}
+
+/* ── Fullscreen mode ───────────────────────────────────────────────── */
+.ls-shell.is-fullscreen .ls-topbar {
+  display: none;
+}
+.ls-shell.is-fullscreen .ls-viewport {
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* The study guide is a real side column, not an overlay over the experiment. */
+.ls-shell { --ls-guide-width: min(360px, 32vw); }
+.ls-shell.has-guide .ls-frame {
+  width: calc(100% - var(--ls-guide-width));
+  transition: width .24s ease;
+}
+.ls-shell.has-guide .ls-status,
+.ls-shell.has-guide .ls-webgl-notice { right: var(--ls-guide-width); }
+.ls-shell.has-guide .ls-guide { width: var(--ls-guide-width); }
+
+/* Brighter reading surface for the lesson guide. */
+.ls-guide {
+  color: #17324a;
+  background: rgba(248, 252, 253, .98);
+  border-left-color: #d8e6eb;
+  box-shadow: -18px 0 42px rgba(24, 57, 75, .16);
+}
+.ls-guide-header { background: rgba(255, 255, 255, .98); border-bottom-color: #dfe9ed; }
+.ls-guide-header h2 { color: #17324a; }
+.ls-guide-close { color: #718493; background: #eef4f6; }
+.ls-guide-close:hover { color: #17324a; background: #e2f3ef; }
+.ls-guide-section { border-bottom-color: #dfe9ed; }
+.ls-guide-section h3 { color: #637887; }
+.ls-guide-section h3 .ls-icon { color: var(--ls-accent); }
+.ls-guide-section > p { color: #17324a; }
+.ls-guide-tag {
+  background: color-mix(in srgb, var(--ls-accent) 14%, #fff);
+  color: #24506b;
+  border: 1px solid color-mix(in srgb, var(--ls-accent) 24%, #d8e6eb);
+}
+.ls-guide-steps li { color: #78909d; }
+.ls-guide-steps li:not(:last-child)::after { background: #d7e5e9; }
+.ls-step-num { color: #718493; background: #f0f5f6; border-color: #d2e1e5; }
+.ls-step-text small { color: #718493; }
+.ls-guide-steps li.is-active { color: #17324a; }
+.ls-guide-steps li.is-active .ls-step-text small { color: #607887; }
+.ls-guide-steps li.is-done { color: #21815f; }
+.ls-guide-ref { color: #5d7381 !important; background: #f1f7f7; border-color: #dce8eb; }
+.ls-guide-footer { border-top-color: #dfe9ed; }
+.ls-guide-footer small { color: #718493; }
+.ls-guide-footer kbd { color: #365363; background: #edf4f5; border-color: #cbdde2; }
+.ls-step-button {
+  min-height: 44px;
+  padding: 8px 10px;
+  color: #365363;
+}
+.ls-step-button:hover { background: #e8f6f2; }
+.ls-step-button:active { background: #dff1ec; }
+.ls-guide-steps li.is-active .ls-step-button { color: #17324a; }
+
+/* Keep the final guide skin after the legacy dark defaults below. */
+.ls-guide,
+.ls-guide-header,
+.ls-guide-section,
+.ls-guide-footer {
+  color: #17324a;
+  background: #f8fcfd;
+  border-color: #dfe9ed;
+}
+.ls-guide-header {
+  background: rgba(255, 255, 255, .98);
+}
+.ls-guide-header h2 { color: #17324a; }
+.ls-guide-close { color: #718493; background: #eef4f6; }
+.ls-guide-close:hover { color: #17324a; background: #e2f3ef; }
+.ls-guide-section h3 { color: #637887; }
+.ls-guide-section > p { color: #17324a; }
+.ls-guide-steps li { color: #78909d; }
+.ls-guide-steps li.is-active { color: #17324a; }
+.ls-guide-steps li.is-done { color: #21815f; }
+.ls-guide-steps li:not(:last-child)::after { background: #d7e5e9; }
+.ls-step-text small { color: #718493; }
+.ls-guide-footer small { color: #718493; }
+.ls-guide-footer kbd { color: #365363; background: #edf4f5; border-color: #cbdde2; }
+
+/* Let the lesson inherit the actual height of its host container. */
+@media (min-width: 601px) {
+  .ls-shell {
+    height: auto;
+    min-height: 0;
+  }
+  .ls-shell.is-fullscreen .ls-viewport {
+    height: auto;
+  }
+}
+
+/* Desktop: reserve a real column for the guide. The guide must not sit on
+   top of the canvas or force the iframe to resize underneath it. */
+@media (min-width: 601px) {
+  .ls-shell.has-guide .ls-viewport {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--ls-guide-width);
+  }
+  .ls-shell.has-guide .ls-frame {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100% !important;
+    min-width: 0;
+  }
+  .ls-shell.has-guide .ls-guide {
+    grid-column: 2;
+    grid-row: 1;
+    position: relative;
+    inset: auto;
+    width: auto !important;
+    height: 100%;
+    max-height: none;
+    border-radius: 0;
+  }
+
+  /* Fullscreen is reserved for observing the experiment. Keep the guide
+     available through the G shortcut, but never let it consume canvas area
+     while the viewport itself is fullscreen. */
+  .ls-shell.is-fullscreen.has-guide .ls-viewport {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .ls-shell.is-fullscreen.has-guide .ls-guide {
+    display: none;
+  }
+  .ls-shell.is-fullscreen.has-guide .ls-status,
+  .ls-shell.is-fullscreen.has-guide .ls-webgl-notice {
+    right: 0;
+  }
+}
+
+/* Light chrome: keep the 3D canvas dark for depth, while making the
+   navigation and action bars feel consistent with the bright learning UI. */
+.ls-topbar {
+  background: linear-gradient(135deg, #ffffff 0%, #f1faf8 100%);
+  border-bottom-color: #d8e8e6;
+  box-shadow: 0 5px 18px rgba(40, 89, 96, .08);
+}
+.ls-back { color: #6b8190; }
+.ls-back:hover:not(:disabled) { color: #17324a; background: #e5f5f0; }
+.ls-divider { background: #d8e6e8; }
+.ls-title-area h1 { color: #17324a; }
+.ls-type { color: #718493; }
+.ls-progress span { color: #637887; }
+.ls-progress-bar { background: #dcebea; }
+.ls-topbar-actions { color: #5f7482; }
+.ls-action-btn { color: #5f7482; }
+.ls-action-btn:hover:not(:disabled) { color: #17324a; background: #e5f5f0; }
+.ls-fullscreen-btn {
+  color: #176b68;
+  background: #dff5ee;
+  border-color: #9ed9ca;
+}
+.ls-fullscreen-btn:hover:not(:disabled) {
+  color: #075b58;
+  background: #c8eee3 !important;
+  border-color: #64bda8;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────── */
+
+/* Tablets & small laptops */
+@media (max-width: 900px) {
+  .ls-topbar {
+    padding: 0 8px;
+  }
+  .ls-subject-badge {
+    display: none;
+  }
+  .ls-divider {
+    display: none;
+  }
+  .ls-title-area h1 {
+    font-size: 14px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  :root {
+    --ls-topbar-h: 44px;
+  }
+  .ls-topbar {
+    gap: 0;
+    padding: 0 6px;
+  }
+  .ls-back {
+    width: 32px;
+    height: 32px;
+  }
+  .ls-title-area h1 {
+    font-size: 13px;
+  }
+  .ls-type {
+    display: none;
+  }
+  .ls-progress-bar {
+    width: 40px;
+  }
+  .ls-action-btn span {
+    /* Hide text labels, keep icons */
+    display: none;
+  }
+  .ls-action-btn {
+    padding: 6px 8px;
+    min-width: 40px;
+    min-height: 40px;
+  }
+  .ls-webgl-notice {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+  }
+  .ls-connection {
+    bottom: 8px;
+    right: 8px;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 380px) {
+  .ls-title-area h1 {
+    font-size: 12px;
+  }
+  .ls-progress {
+    display: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Guide Panel  –  Floating toggleable info overlay for lesson context
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.ls-guide {
+  position: absolute;
+  z-index: 50;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(360px, 85vw);
+  display: flex;
+  flex-direction: column;
+  background: rgba(8, 14, 26, .88);
+  backdrop-filter: blur(28px) saturate(1.4);
+  -webkit-backdrop-filter: blur(28px) saturate(1.4);
+  border-left: 1px solid rgba(255, 255, 255, .08);
+  box-shadow: -16px 0 48px rgba(0, 0, 0, .35);
+  overflow-y: auto;
+  min-height: 0;
+  overscroll-behavior: contain;
+  animation: ls-guide-in .28s cubic-bezier(.32, .72, 0, 1);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, .12) transparent;
+}
+.ls-guide::-webkit-scrollbar { width: 5px; }
+.ls-guide::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, .12); border-radius: 99px; }
+
+@keyframes ls-guide-in {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+/* Header */
+.ls-guide-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 14px;
+  background: rgba(8, 14, 26, .92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, .06);
+}
+.ls-guide-header h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ls-text);
+  letter-spacing: -.01em;
+}
+.ls-guide-close {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .06);
+  color: var(--ls-text-muted);
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.ls-guide-close .ls-icon {
+  width: 14px;
+  height: 14px;
+}
+.ls-guide-close:hover {
+  background: rgba(255, 255, 255, .12);
+  color: var(--ls-text);
+}
+
+/* Sections */
+.ls-guide-section {
+  padding: 18px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, .05);
+}
+.ls-guide-section:last-of-type {
+  border-bottom: 0;
+}
+.ls-guide-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ls-text-muted);
+}
+.ls-guide-section h3 .ls-icon {
+  width: 15px;
+  height: 15px;
+  color: var(--ls-accent);
+}
+.ls-guide-section > p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ls-text);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Lesson type tag */
+.ls-guide-tag {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--ls-accent) 14%, transparent);
+  color: var(--ls-accent);
+  font-size: 12px !important;
+  font-weight: 700;
+  letter-spacing: .03em;
+}
+
+/* Steps list */
+.ls-guide-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ls-guide-steps li {
+  position: relative;
+  display: block;
+  padding: 4px 0;
+  color: rgba(255, 255, 255, .4);
+  transition: color .2s;
+}
+.ls-guide-steps li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 36px;
+  bottom: -2px;
+  width: 1px;
+  background: rgba(255, 255, 255, .06);
+}
+
+/* Step number circle */
+.ls-step-num {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 25px;
+  height: 25px;
+  margin-top: 1px;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid rgba(255, 255, 255, .1);
+  color: rgba(255, 255, 255, .35);
+  transition: all .25s;
+}
+
+.ls-step-button {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 4px 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.ls-step-button:hover {
+  background: rgba(255, 255, 255, .06);
+}
+
+/* Step text */
+.ls-step-text {
+  min-width: 0;
+}
+.ls-step-text strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.ls-step-text small {
+  display: block;
+  margin-top: 3px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, .3);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Active step */
+.ls-guide-steps li.is-active {
+  color: var(--ls-text);
+}
+.ls-guide-steps li.is-active .ls-step-num {
+  background: var(--ls-accent);
+  border-color: var(--ls-accent);
+  color: #fff;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--ls-accent) 18%, transparent);
+}
+.ls-guide-steps li.is-active .ls-step-text small {
+  color: var(--ls-text-muted);
+}
+
+/* Completed step */
+.ls-guide-steps li.is-done {
+  color: rgba(65, 201, 138, .75);
+}
+.ls-guide-steps li.is-done .ls-step-num {
+  background: rgba(65, 201, 138, .15);
+  border-color: rgba(65, 201, 138, .35);
+  color: #41c98a;
+}
+.ls-guide-steps li.is-done:not(:last-child)::after {
+  background: rgba(65, 201, 138, .2);
+}
+
+/* Textbook refs */
+.ls-guide-ref {
+  font-size: 12px !important;
+  color: var(--ls-text-muted) !important;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, .03);
+  border: 1px solid rgba(255, 255, 255, .04);
+  border-radius: 8px;
+  margin-bottom: 6px !important;
+  line-height: 1.5 !important;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.ls-guide-ref:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Footer */
+.ls-guide-footer {
+  margin-top: auto;
+  padding: 14px 20px;
+  border-top: 1px solid rgba(255, 255, 255, .04);
+  text-align: center;
+}
+.ls-guide-footer small {
+  font-size: 11px;
+  color: rgba(255, 255, 255, .25);
+}
+.ls-guide-footer kbd {
+  display: inline-block;
+  padding: 1px 5px;
+  border: 1px solid rgba(255, 255, 255, .15);
+  border-radius: 4px;
+  font-size: 10px;
+  font-family: inherit;
+  color: rgba(255, 255, 255, .4);
+  background: rgba(255, 255, 255, .04);
+}
+
+/* Guide toggle active state */
+.ls-guide-toggle.is-active {
+  background: color-mix(in srgb, var(--ls-accent) 16%, transparent);
+  color: var(--ls-accent);
+  border: 1px solid color-mix(in srgb, var(--ls-accent) 22%, transparent);
+}
+.ls-guide-toggle.is-active:hover {
+  background: color-mix(in srgb, var(--ls-accent) 22%, transparent) !important;
+}
+
+/* Final light guide skin: this block intentionally comes after the base
+   guide rules so the dark legacy defaults cannot override it. */
+.ls-guide {
+  color: #17324a;
+  background: #f8fcfd;
+  border-left-color: #d8e6eb;
+  box-shadow: -18px 0 42px rgba(24, 57, 75, .16);
+}
+.ls-guide-header {
+  background: rgba(255, 255, 255, .98);
+  border-bottom-color: #dfe9ed;
+}
+.ls-guide-header h2 { color: #17324a; }
+.ls-guide-close { color: #718493; background: #eef4f6; }
+.ls-guide-close:hover { color: #17324a; background: #e2f3ef; }
+.ls-guide-section { border-bottom-color: #dfe9ed; }
+.ls-guide-section h3 { color: #637887; }
+.ls-guide-section > p { color: #17324a; }
+.ls-guide-steps li { color: #78909d; }
+.ls-guide-steps li.is-active { color: #17324a; }
+.ls-guide-steps li.is-done { color: #21815f; }
+.ls-guide-steps li:not(:last-child)::after { background: #d7e5e9; }
+.ls-step-text small { color: #718493; }
+.ls-guide-footer { border-top-color: #dfe9ed; }
+.ls-guide-footer small { color: #718493; }
+.ls-guide-footer kbd { color: #365363; background: #edf4f5; border-color: #cbdde2; }
+
+/* ── Guide responsive ──────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .ls-guide {
+    width: min(320px, 80vw);
+  }
+}
+
+@media (max-width: 600px) {
+  .ls-shell.has-guide .ls-frame { width: 100%; }
+  .ls-shell.has-guide .ls-status,
+  .ls-shell.has-guide .ls-webgl-notice { right: 0; }
+  .ls-shell.has-guide .ls-guide { width: 100%; }
+  .ls-guide {
+    /* Bottom sheet on mobile */
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: 65vh;
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    border-radius: 18px 18px 0 0;
+    box-shadow: 0 -12px 40px rgba(0, 0, 0, .4);
+    animation: ls-guide-up .28s cubic-bezier(.32, .72, 0, 1);
+  }
+  @keyframes ls-guide-up {
+    from { transform: translateY(100%); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+  }
+  .ls-guide-section {
+    padding: 14px 16px;
+  }
+  .ls-guide-header {
+    padding: 14px 16px 12px;
+  }
+  /* Drag handle hint */
+  .ls-guide-header::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36px;
+    height: 4px;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, .15);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ls-shell *,
+  .ls-shell *::before,
+  .ls-shell *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}

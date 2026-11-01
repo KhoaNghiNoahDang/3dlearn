@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "0.2.0",
+  "purpose": "EasyOCR-backed naming and evidence mapping for SGK Địa lí 10; additive only, catalog.json remains unchanged.",
+  "canonical": {
+    "bookId": "dia-li-10-ket-noi-tri-thuc",
+    "title": "Địa lí 10 – Kết nối tri thức với cuộc sống",
+    "subjectKey": "geo",
+    "grade": 10,
+    "publisher": "Nhà xuất bản Giáo dục Việt Nam",
+    "isbn": "978-604-0-31083-5",
+    "file": "SGK/SGK Địa lí 10-mau.pdf"
+  },
+  "ocr": {
+    "engine": "EasyOCR",
+    "languages": ["vi", "en"],
+    "status": "selected-evidence-pages-complete",
+    "sourcePdfPages": 60,
+    "ocrPdfPages": [4, 5, 13, 28, 36, 45, 50],
+    "renderScale": 1.4,
+    "rawEvidence": "tmp/easyocr-geography/selected.json",
+    "scope": "Trang 4–5 dùng để đọc mục lục; trang 13, 28, 36, 45, 50 dùng để xác nhận các bài P0 và dữ liệu bài thực hành.",
+    "limitations": [
+      "Chưa chạy OCR toàn bộ 60 trang; các trang chưa chọn không được dùng để gán figureRef.",
+      "EasyOCR có lỗi tách dòng/dấu tiếng Việt ở một số tiêu đề; tên chuẩn hóa được đối chiếu lại với mục lục nhìn trực quan và mapping hiện có.",
+      "Confidence của tên bài dưới đây là confidence sau chuẩn hóa có kiểm tra người, không phải confidence thô của từng box OCR."
+    ]
+  },
+  "normalization": {
+    "preferredSpelling": ["Địa lí", "thuỷ quyển", "thuỷ sản", "đô thị hoá", "vỏ địa lí", "Mặt Trời", "Trái Đất", "sông Hồng"],
+    "aliases": {
+      "Địa lý 10": "Địa lí 10 – Kết nối tri thức với cuộc sống",
+      "SGK Địa lí 10": "Địa lí 10 – Kết nối tri thức với cuộc sống",
+      "Địa lí 10 KNTT": "Địa lí 10 – Kết nối tri thức với cuộc sống"
+    },
+    "rule": "Dùng đúng tên bài trong mục lục SGK; giữ tên mô phỏng riêng nếu course diễn giải rộng hơn, không đổi catalog chỉ từ tương đồng chủ đề."
+  },
+  "lessons": [
+    {"lessonNo":1,"chapterNo":1,"chapter":"Sử dụng bản đồ","part":"Phần một. Một số vấn đề chung","printedPage":5,"title":"Môn Địa lí với định hướng nghề nghiệp","confidence":"high","evidence":"toc-pdf-4 + visual cross-check"},
+    {"lessonNo":2,"chapterNo":1,"chapter":"Sử dụng bản đồ","part":"Phần một. Một số vấn đề chung","printedPage":7,"title":"Một số phương pháp biểu hiện các đối tượng địa lí trên bản đồ","confidence":"high","evidence":"EasyOCR toc-pdf-4; title boxes 0.772/0.662"},
+    {"lessonNo":3,"chapterNo":1,"chapter":"Sử dụng bản đồ","part":"Phần một. Một số vấn đề chung","printedPage":12,"title":"Sử dụng bản đồ trong học tập và đời sống, một số ứng dụng của GPS và bản đồ số trong đời sống","confidence":"high","evidence":"EasyOCR toc-pdf-4 + content-pdf-13 title"},
+    {"lessonNo":4,"chapterNo":2,"chapter":"Trái Đất","part":"Phần hai. Địa lí tự nhiên","printedPage":15,"title":"Sự hình thành Trái Đất, vỏ Trái Đất và vật liệu cấu tạo vỏ Trái Đất","confidence":"high","evidence":"EasyOCR toc-pdf-4; title/page boxes 0.999/1.000"},
+    {"lessonNo":5,"chapterNo":2,"chapter":"Trái Đất","part":"Phần hai. Địa lí tự nhiên","printedPage":17,"title":"Hệ quả địa lí các chuyển động của Trái Đất","confidence":"high","evidence":"EasyOCR toc-pdf-4 + visual cross-check"},
+    {"lessonNo":6,"chapterNo":3,"chapter":"Thạch quyển","part":"Phần hai. Địa lí tự nhiên","printedPage":21,"title":"Thạch quyển, thuyết kiến tạo mảng","confidence":"high","evidence":"EasyOCR toc-pdf-4; title split across boxes + visual cross-check"},
+    {"lessonNo":7,"chapterNo":3,"chapter":"Thạch quyển","part":"Phần hai. Địa lí tự nhiên","printedPage":24,"title":"Nội lực và ngoại lực","confidence":"high","evidence":"EasyOCR toc-pdf-4 title box 0.371 + visual cross-check"},
+    {"lessonNo":8,"chapterNo":3,"chapter":"Thạch quyển","part":"Phần hai. Địa lí tự nhiên","printedPage":27,"title":"Thực hành: Sự phân bố các vành đai động đất, núi lửa","confidence":"high","evidence":"EasyOCR content-pdf-28 title 0.785/0.623/0.738"},
+    {"lessonNo":9,"chapterNo":4,"chapter":"Khí quyển","part":"Phần hai. Địa lí tự nhiên","printedPage":28,"title":"Khí quyển, các yếu tố khí hậu","confidence":"high","evidence":"EasyOCR toc-pdf-4 + visual cross-check"},
+    {"lessonNo":10,"chapterNo":4,"chapter":"Khí quyển","part":"Phần hai. Địa lí tự nhiên","printedPage":35,"title":"Thực hành: Đọc bản đồ các đới và các kiểu khí hậu trên Trái Đất, phân tích biểu đồ một số kiểu khí hậu","confidence":"high","evidence":"EasyOCR content-pdf-36 title 0.895/0.637/0.762/0.824"},
+    {"lessonNo":11,"chapterNo":5,"chapter":"Thuỷ quyển","part":"Phần hai. Địa lí tự nhiên","printedPage":37,"title":"Thuỷ quyển, nước trên lục địa","confidence":"high","evidence":"EasyOCR toc-pdf-4 + visual cross-check"},
+    {"lessonNo":12,"chapterNo":5,"chapter":"Thuỷ quyển","part":"Phần hai. Địa lí tự nhiên","printedPage":41,"title":"Nước biển và đại dương","confidence":"high","evidence":"EasyOCR toc-pdf-4 title 0.982"},
+    {"lessonNo":13,"chapterNo":5,"chapter":"Thuỷ quyển","part":"Phần hai. Địa lí tự nhiên","printedPage":44,"title":"Thực hành: Phân tích chế độ nước của sông Hồng","confidence":"high","evidence":"EasyOCR content-pdf-45 title 0.949/0.901/0.977; Bảng 13 and station Hà Nội"},
+    {"lessonNo":14,"chapterNo":6,"chapter":"Sinh quyển","part":"Phần hai. Địa lí tự nhiên","printedPage":45,"title":"Đất trên Trái Đất","confidence":"high","evidence":"EasyOCR toc-pdf-4 title 0.937"},
+    {"lessonNo":15,"chapterNo":6,"chapter":"Sinh quyển","part":"Phần hai. Địa lí tự nhiên","printedPage":47,"title":"Sinh quyển","confidence":"high","evidence":"EasyOCR toc-pdf-4 title 0.999"},
+    {"lessonNo":16,"chapterNo":6,"chapter":"Sinh quyển","part":"Phần hai. Địa lí tự nhiên","printedPage":49,"title":"Thực hành: Tìm hiểu sự phân bố đất và sinh vật trên Trái Đất","confidence":"high","evidence":"EasyOCR content-pdf-50 title 0.576/0.551/0.834"},
+    {"lessonNo":17,"chapterNo":7,"chapter":"Một số quy luật của vỏ địa lí","part":"Phần hai. Địa lí tự nhiên","printedPage":51,"title":"Vỏ địa lí, quy luật thống nhất và hoàn chỉnh của vỏ địa lí","confidence":"high","evidence":"EasyOCR toc-pdf-4 title/page boxes 0.710/0.575/0.966"},
+    {"lessonNo":18,"chapterNo":7,"chapter":"Một số quy luật của vỏ địa lí","part":"Phần hai. Địa lí tự nhiên","printedPage":53,"title":"Quy luật địa đới và quy luật phi địa đới","confidence":"high","evidence":"EasyOCR toc-pdf-4 title 0.861/0.820"},
+    {"lessonNo":19,"chapterNo":8,"chapter":"Địa lí dân cư","part":"Phần ba. Địa lí kinh tế – xã hội","printedPage":55,"title":"Quy mô dân số, gia tăng dân số và cơ cấu dân số thế giới","confidence":"high","evidence":"EasyOCR toc-pdf-4 title/page boxes + visual cross-check"},
+    {"lessonNo":20,"chapterNo":8,"chapter":"Địa lí dân cư","part":"Phần ba. Địa lí kinh tế – xã hội","printedPage":60,"title":"Phân bố dân cư và đô thị hoá trên thế giới","confidence":"high","evidence":"EasyOCR toc-pdf-4 title 0.841/0.671"},
+    {"lessonNo":21,"chapterNo":9,"chapter":"Các nguồn lực, một số tiêu chí đánh giá sự phát triển kinh tế","part":"Phần ba. Địa lí kinh tế – xã hội","printedPage":63,"title":"Các nguồn lực phát triển kinh tế","confidence":"high","evidence":"EasyOCR toc-pdf-4 title 0.999/0.705"},
+    {"lessonNo":22,"chapterNo":9,"chapter":"Các nguồn lực, một số tiêu chí đánh giá sự phát triển kinh tế","part":"Phần ba. Địa lí kinh tế – xã hội","printedPage":65,"title":"Cơ cấu kinh tế, tổng sản phẩm trong nước và tổng thu nhập quốc gia","confidence":"high","evidence":"EasyOCR toc-pdf-4 title/page boxes + visual cross-check"},
+    {"lessonNo":23,"chapterNo":10,"chapter":"Địa lí ngành nông nghiệp, lâm nghiệp, thuỷ sản","part":"Phần ba. Địa lí kinh tế – xã hội","printedPage":67,"title":"Vai trò, đặc điểm, các nhân tố ảnh hưởng tới sự phát triển và phân bố nông nghiệp, lâm nghiệp, thuỷ sản","confidence":"high","evidence":"EasyOCR toc-pdf-4 title/page boxes + visual cross-check"},
+    {"lessonNo":24,"chapterNo":10,"chapter":"Địa lí ngành nông nghiệp, lâm nghiệp, thuỷ sản","part":"Phần ba. Địa lí kinh tế – xã hội","printedPage":69,"title":"Địa lí ngành nông nghiệp","confidence":"high","evidence":"EasyOCR toc-pdf-4 title 0.959/0.921"},
+    {"lessonNo":25,"chapterNo":10,"chapter":"Địa lí ngành nông nghiệp, lâm nghiệp, thuỷ sản","part":"Phần ba. Địa lí kinh tế – xã hội","printedPage":73,"title":"Địa lí ngành lâm nghiệp và ngành thuỷ sản","confidence":"high","evidence":"EasyOCR toc-pdf-4 title 0.773/0.955/0.921"},
+    {"lessonNo":26,"chapterNo":10,"chapter":"Địa lí ngành nông nghiệp, lâm nghiệp, thuỷ sản","part":"Phần ba. Địa lí kinh tế – xã hội","printedPage":76,"title":"Tổ chức lãnh thổ nông nghiệp, một số vấn đề phát triển nông nghiệp hiện đại trên thế giới và định hướng phát triển nông nghiệp trong tương lai","confidence":"high","evidence":"EasyOCR toc-pdf-4 title/page boxes + visual cross-check"},
+    {"lessonNo":27,"chapterNo":10,"chapter":"Địa lí ngành nông nghiệp, lâm nghiệp, thuỷ sản","part":"Phần ba. Địa lí kinh tế – xã hội","printedPage":78,"title":"Thực hành: Vẽ và nhận xét biểu đồ về sản lượng lương thực của thế giới","confidence":"high","evidence":"EasyOCR toc-pdf-4 title/page boxes 0.689/0.738/0.914"},
+    {"lessonNo":28,"chapterNo":11,"chapter":"Địa lí ngành công nghiệp","part":"Phần ba. Địa lí kinh tế – xã hội","printedPage":79,"title":"Vai trò, đặc điểm, cơ cấu ngành công nghiệp, các nhân tố ảnh hưởng tới sự phát triển và phân bố công nghiệp","confidence":"high","evidence":"EasyOCR toc-pdf-4 title/page boxes + visual cross-check"},
+    {"lessonNo":29,"chapterNo":11,"chapter":"Địa lí ngành công nghiệp","part":"Phần ba. Địa lí kinh tế – xã hội","printedPage":81,"title":"Địa lí một số ngành công nghiệp","confidence":"high","evidence":"EasyOCR toc-pdf-4 title 0.895/0.987"},
+    {"lessonNo":30,"chapterNo":11,"chapter":"Địa lí ngành công nghiệp","part":"Phần ba. Địa lí kinh tế – xã hội","printedPage":86,"title":"Tổ chức lãnh thổ công nghiệp","confidence":"high","evidence":"EasyOCR toc-pdf-4 title/page boxes + visual cross-check"},
+    {"lessonNo":31,"chapterNo":11,"chapter":"Địa lí ngành công nghiệp","part":"Phần ba. Địa lí kinh tế – xã hội","printedPage":88,"title":"Tác động của công nghiệp đối với môi trường, phát triển năng lượng tái tạo, định hướng phát triển công nghiệp trong tương lai","confidence":"high","evidence":"EasyOCR toc-pdf-4 title/page boxes + visual cross-check"},
+    {"lessonNo":32,"chapterNo":11,"chapter":"Địa lí ngành công nghiệp","part":"Phần ba. Địa lí kinh tế – xã hội","printedPage":90,"title":"Thực hành: Viết báo cáo tìm hiểu một vấn đề về công nghiệp","confidence":"high","evidence":"EasyOCR toc-pdf-5 title 0.956/0.804/0.998"},
+    {"lessonNo":33,"chapterNo":12,"chapter":"Địa lí ngành dịch vụ","part":"Phần ba. Địa lí kinh tế – xã hội","printedPage":91,"title":"Cơ cấu, vai trò, đặc điểm, các nhân tố ảnh hưởng tới sự phát triển và phân bố dịch vụ","confidence":"high","evidence":"EasyOCR toc-pdf-5 title/page boxes + visual cross-check"},
+    {"lessonNo":34,"chapterNo":12,"chapter":"Địa lí ngành dịch vụ","part":"Phần ba. Địa lí kinh tế – xã hội","printedPage":93,"title":"Địa lí ngành giao thông vận tải","confidence":"high","evidence":"EasyOCR toc-pdf-5 title 0.559/0.924"},
+    {"lessonNo":35,"chapterNo":12,"chapter":"Địa lí ngành dịch vụ","part":"Phần ba. Địa lí kinh tế – xã hội","printedPage":98,"title":"Địa lí ngành bưu chính viễn thông","confidence":"high","evidence":"EasyOCR toc-pdf-5 title 0.631"},
+    {"lessonNo":36,"chapterNo":12,"chapter":"Địa lí ngành dịch vụ","part":"Phần ba. Địa lí kinh tế – xã hội","printedPage":101,"title":"Địa lí ngành du lịch","confidence":"high","evidence":"EasyOCR toc-pdf-5 title 0.735"},
+    {"lessonNo":37,"chapterNo":12,"chapter":"Địa lí ngành dịch vụ","part":"Phần ba. Địa lí kinh tế – xã hội","printedPage":103,"title":"Địa lí ngành thương mại và ngành tài chính ngân hàng","confidence":"high","evidence":"EasyOCR toc-pdf-5 title split across boxes + visual cross-check"},
+    {"lessonNo":38,"chapterNo":12,"chapter":"Địa lí ngành dịch vụ","part":"Phần ba. Địa lí kinh tế – xã hội","printedPage":107,"title":"Thực hành: Viết báo cáo tìm hiểu về một ngành dịch vụ","confidence":"high","evidence":"EasyOCR toc-pdf-5 title 0.666/0.739/0.677"},
+    {"lessonNo":39,"chapterNo":13,"chapter":"Phát triển bền vững và tăng trưởng xanh","part":"Phần ba. Địa lí kinh tế – xã hội","printedPage":108,"title":"Môi trường và tài nguyên thiên nhiên","confidence":"high","evidence":"EasyOCR toc-pdf-5 title 0.760/0.797"},
+    {"lessonNo":40,"chapterNo":13,"chapter":"Phát triển bền vững và tăng trưởng xanh","part":"Phần ba. Địa lí kinh tế – xã hội","printedPage":111,"title":"Phát triển bền vững và tăng trưởng xanh","confidence":"high","evidence":"EasyOCR toc-pdf-5 title 0.844/0.585 + visual cross-check"}
+  ],
+  "courseComparison": {
+    "catalogMutation": false,
+    "existingGeoCourseCount": 14,
+    "courses": [
+      {"slug":"river-step","courseTitle":"Sự phát triển của địa hình sông","normalizedTextbookLessons":[7,11,13],"status":"partial","note":"Có mô hình sông; chưa đủ bằng chứng là dữ liệu chế độ nước sông Hồng."},
+      {"slug":"insolation-step","courseTitle":"Chuyển động biểu kiến của điểm Mặt Trời lên thiên đỉnh, bốn mùa và năm vành đai nhiệt","normalizedTextbookLessons":[5],"status":"core"},
+      {"slug":"currents-step","courseTitle":"Quy luật phân bố và ảnh hưởng của các dòng biển trên thế giới","normalizedTextbookLessons":[12],"status":"partial"},
+      {"slug":"enso-step","courseTitle":"Tương tác biển – khí quyển và El Niño, La Niña","normalizedTextbookLessons":[12],"status":"partial"},
+      {"slug":"heating-step","courseTitle":"Khí quyển nhận nhiệt","normalizedTextbookLessons":[9],"status":"core"},
+      {"slug":"karst-step","courseTitle":"Sự hình thành và nhận biết địa hình các-xtơ","normalizedTextbookLessons":[7],"status":"partial"},
+      {"slug":"carbon-step","courseTitle":"Biến đổi khí hậu toàn cầu và an ninh quốc gia","normalizedTextbookLessons":[31,39,40],"status":"partial","note":"Không đổi tên course thành tên bài SGK; đây là chủ đề liên quan."},
+      {"slug":"tectonic-step","courseTitle":"Sự hình thành địa hình kiến tạo","normalizedTextbookLessons":[6],"status":"core"},
+      {"slug":"earth-motion-step","courseTitle":"Hệ quả địa lý của các chuyển động của Trái Đất","normalizedTextbookLessons":[5],"status":"core","normalizedDisplayTitle":"Hệ quả địa lí các chuyển động của Trái Đất"},
+      {"slug":"soil-step","courseTitle":"Các nhân tố hình thành đất và quan sát phẫu diện đất","normalizedTextbookLessons":[14],"status":"core"},
+      {"slug":"thermal-step","courseTitle":"Hoàn lưu nhiệt","normalizedTextbookLessons":[9],"status":"core"},
+      {"slug":"wind-step","courseTitle":"Chuyển động ngang của không khí – gió","normalizedTextbookLessons":[9],"status":"core"},
+      {"slug":"water-cycle-step","courseTitle":"Quá trình và ý nghĩa địa lý của vòng tuần hoàn nước","normalizedTextbookLessons":[11],"status":"partial","normalizedDisplayTitle":"Quá trình và ý nghĩa địa lí của vòng tuần hoàn nước"},
+      {"slug":"circulation-step","courseTitle":"Đai khí áp, đới gió và hoàn lưu ba vòng","normalizedTextbookLessons":[9],"status":"core"}
+    ]
+  },
+  "phase2Comparison": {
+    "catalogMutation": false,
+    "simulations": [
+      {"id":"phase2-geo-gps-step","normalizedTextbookLesson":3,"title":"Sử dụng bản đồ trong học tập và đời sống, một số ứng dụng của GPS và bản đồ số trong đời sống","status":"evidence-backed","evidence":"EasyOCR content-pdf-13 title and GPS section"},
+      {"id":"phase2-geo-earthquake-volcano-step","normalizedTextbookLesson":8,"title":"Thực hành: Sự phân bố các vành đai động đất, núi lửa","status":"evidence-backed","evidence":"EasyOCR content-pdf-28 title, Hình 8 and exercise prompts"},
+      {"id":"phase2-geo-red-river-regime-step","normalizedTextbookLesson":13,"title":"Thực hành: Phân tích chế độ nước của sông Hồng","status":"new-p0","evidence":"EasyOCR content-pdf-45 title, Bảng 13, station Hà Nội and chart task"}
+    ]
+  },
+  "dataEvidence": {
+    "lessonNo": 13,
+    "pdfPage": 45,
+    "printedPage": 44,
+    "table": "BẢNG 13 LƯU LƯỢNG NƯỚC TRUNG BÌNH THÁNG CỦA SÔNG HỒNG TẠI TRẠM HÀ NỘI",
+    "monthlyMeanDischargeM3s": [1455, 1343, 1215, 1522, 2403, 4214, 7300, 7266, 5181, 3507, 2240, 1517],
+    "annualMeanM3s": 3263.58,
+    "floodMonths": [6, 7, 8, 9, 10],
+    "dryMonths": [11, 12, 1, 2, 3, 4, 5],
+    "confidence": "high",
+    "note": "EasyOCR đọc được tiêu đề bảng, trạm Hà Nội, 12 tháng, dãy trị số và yêu cầu vẽ biểu đồ; cần một lượt kiểm duyệt bản scan trước khi dùng làm dữ liệu chính thức lâu dài."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "0.1.0",
+  "purpose": "Manual-review-only overwrite patch for high-confidence Physics names.",
+  "catalogMutation": false,
+  "overwritePolicy": {
+    "includeConfidence": ["high", "verified"],
+    "excludeConfidence": ["needs-review", "medium-manual-visual", "provisional"],
+    "applyMode": "manual-review-only",
+    "source": "content/phase2/naming-physics-easyocr.json",
+    "pageMeaning": "printed page from SGK",
+    "figureRefRule": "Only include a figure reference when directly verified from the source page."
+  },
+  "overwrites": [],
+  "audit": {
+    "catalogPhysicsRecordsChecked": 10,
+    "courseMappingPhysicsRecordsChecked": 10,
+    "namingRecordsChecked": 11,
+    "highOrVerifiedRecordsIncluded": 0,
+    "needsReviewRecordsLeftUnchanged": 11,
+    "catalogFileChanged": false,
+    "reason": "All current Physics naming overlay records are needs-review or medium-manual-visual; course-mapping records remain provisional/needs-verification."
+  }
+}

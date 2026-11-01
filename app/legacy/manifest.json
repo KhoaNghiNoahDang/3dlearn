@@ -1,0 +1,2251 @@
+{
+  "schemaVersion": 1,
+  "generatedFrom": {
+    "catalog": "catalog.json",
+    "coursesDirectory": "courses/"
+  },
+  "compatibility": {
+    "kind": "self-contained-html",
+    "defaultMode": "iframe",
+    "routePrefix": "/legacy",
+    "coursePath": "/courses/{slug}.html",
+    "protectedFiles": [
+      "courses/*.html",
+      "content/**"
+    ],
+    "note": "The adapter resolves only slugs present in this manifest and never accepts an arbitrary path."
+  },
+  "curriculum": {
+    "booksDirectory": "SGK/",
+    "mappingStatus": "pending",
+    "note": "The legacy lesson catalog is useful for candidate topics, but SGK chapter/page alignment must be reviewed from the Vietnamese books."
+  },
+  "lessons": [
+    {
+      "id": "legacy:haber-step",
+      "slug": "haber-step",
+      "title": "Tổng hợp ammonia",
+      "subject": "chem",
+      "type": "Quy trình công nghiệp",
+      "question": "Làm thế nào biến nitrogen trong không khí thành ammonia vừa nhanh, vừa nhiều, vừa tiết kiệm?",
+      "steps": [
+        "Vì sao xây nhà máy",
+        "Vì sao làm sạch",
+        "Vì sao tăng áp",
+        "Vì sao nhiệt độ cao",
+        "Trong tháp ra sao",
+        "Vì sao tuần hoàn",
+        "Kiểm tra · trưởng ca"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/haber-step.html",
+        "cover": "covers/haber-step.webp",
+        "textbook": [
+          "Tự chọn bắt buộc 1 Nguyên lý phản ứng hoá học · Chương 2 Tốc độ phản ứng hoá học và cân bằng hoá học · Bài 4 Điều khiển phản ứng hoá học",
+          "Bắt buộc – Tập 2 · Chương 5 Các nguyên tố phi kim quan trọng trong sản xuất hoá học · Bài 2 Nitrogen và hợp chất"
+        ]
+      },
+      "launch": {
+        "path": "/courses/haber-step.html",
+        "route": "/legacy/haber-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:river-step",
+      "slug": "river-step",
+      "title": "Sự phát triển của địa hình sông",
+      "subject": "geo",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Vì sao đường bờ đoạn Trấn Giang của sông Trường Giang liên tục dịch chuyển về phía bắc?",
+      "steps": [
+        "Làm quen sa bàn",
+        "Thung lũng chữ V",
+        "Mặt cắt thung lũng",
+        "Quạt bồi tích",
+        "Bờ lõm, bờ lồi",
+        "Bãi bồi",
+        "Tam giác châu",
+        "Kiểm tra: mùa lũ tới"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/river-step.html",
+        "cover": "covers/river-step.webp",
+        "textbook": [
+          "Tự chọn bắt buộc 1 Cơ sở địa lý tự nhiên · Chương 2 Sự hình thành địa hình bề mặt · Bài 3 Sự phát triển của địa hình sông"
+        ]
+      },
+      "launch": {
+        "path": "/courses/river-step.html",
+        "route": "/legacy/river-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:rate-step",
+      "slug": "rate-step",
+      "title": "Các yếu tố ảnh hưởng đến tốc độ phản ứng hoá học",
+      "subject": "chem",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Cùng là hai phản ứng, vì sao có phản ứng vài giây đã xong, có phản ứng phải chờ rất lâu? Nhanh hay chậm rốt cuộc do đâu quyết định?",
+      "steps": [
+        "Làm quen bàn TN",
+        "Nồng độ",
+        "Nhiệt độ",
+        "Chất xúc tác",
+        "Đo tốc độ",
+        "Nhìn vào trong",
+        "Sai số và thao tác sai",
+        "Kiểm tra · Tự làm TN"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/rate-step.html",
+        "cover": "covers/rate-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 2 · Chương 6 Phản ứng hoá học và năng lượng · Hoạt động thí nghiệm 7 Các yếu tố ảnh hưởng đến tốc độ phản ứng hoá học",
+          "Tự chọn bắt buộc 1 Nguyên lý phản ứng hoá học · Chương 2 Tốc độ phản ứng hoá học và cân bằng hoá học · Bài 1 Tốc độ phản ứng hoá học"
+        ]
+      },
+      "launch": {
+        "path": "/courses/rate-step.html",
+        "route": "/legacy/rate-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:insolation-step",
+      "slug": "insolation-step",
+      "title": "Chuyển động biểu kiến của điểm Mặt Trời lên thiên đỉnh, bốn mùa và năm vành đai nhiệt",
+      "subject": "geo",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Góc nhập xạ lúc giữa trưa và hướng Mặt Trời lúc giữa trưa ở nơi trường em, vì sao trong một năm lại thay đổi có quy luật?",
+      "steps": [
+        "Góc hoàng – xích",
+        "Chuyển động biểu kiến",
+        "Góc giữa trưa",
+        "Theo vĩ độ",
+        "Thay đổi trong năm",
+        "Hướng giữa trưa",
+        "Bốn mùa",
+        "5 vành đai nhiệt",
+        "Kiểm tra · vành đai"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/insolation-step.html",
+        "cover": "covers/insolation-step.webp",
+        "textbook": [
+          "Tự chọn bắt buộc 1 Cơ sở địa lý tự nhiên · Chương 1 Chuyển động của Trái Đất · Bài 2 Hệ quả địa lý của các chuyển động của Trái Đất · Chuyển động biểu kiến của điểm Mặt Trời lên thiên đỉnh · Bốn mùa và năm vành đai nhiệt"
+        ]
+      },
+      "launch": {
+        "path": "/courses/insolation-step.html",
+        "route": "/legacy/insolation-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:ball-stick-step",
+      "slug": "ball-stick-step",
+      "title": "Lắp mô hình rỗng (quả cầu – que) tìm hiểu cấu trúc phân tử hợp chất hữu cơ",
+      "subject": "chem",
+      "type": "Mô phỏng nguyên lý và hiện tượng",
+      "question": "Phân tử vẽ trên giấy thì phẳng, hình dạng ba chiều thực sự của nó ra sao? Lắp một mô hình rỗng thì thấy được gì?",
+      "steps": [
+        "Hộp linh kiện",
+        "Methane",
+        "Dichloromethane",
+        "Liên kết đơn quay được",
+        "Mạch carbon",
+        "Đồng phân",
+        "Ethylene và acetylene",
+        "Benzene",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/ball-stick-step.html",
+        "cover": "covers/ball-stick-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 2 · Chương 7 Hợp chất hữu cơ · Hoạt động thí nghiệm 8 Lắp mô hình rỗng để tìm hiểu cấu trúc phân tử hợp chất hữu cơ"
+        ]
+      },
+      "launch": {
+        "path": "/courses/ball-stick-step.html",
+        "route": "/legacy/ball-stick-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:titration-step",
+      "slug": "titration-step",
+      "title": "Chuẩn độ acid mạnh bằng base mạnh",
+      "subject": "chem",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Trước đó thêm hơn 20 mL gần như không thấy thay đổi, vì sao nửa giọt cuối cùng lại làm đổi màu hẳn?",
+      "steps": [
+        "Bộ chuẩn độ",
+        "Tráng, đuổi bọt khí",
+        "Lấy dung dịch và thêm chất chỉ thị",
+        "Nhỏ từng giọt",
+        "Nửa giọt đến điểm cuối",
+        "Đọc số, tính toán",
+        "Nhìn vào trong",
+        "Sai số và thao tác sai",
+        "Kiểm tra · chuẩn độ"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/titration-step.html",
+        "cover": "covers/titration-step.webp",
+        "textbook": [
+          "Tự chọn bắt buộc 1 Nguyên lý phản ứng hoá học · Chương 3 Phản ứng ion và cân bằng trong dung dịch nước · Bài 2 Sự điện li của nước và pH của dung dịch · Chuẩn độ trung hoà acid – base · Hoạt động thí nghiệm 2"
+        ]
+      },
+      "launch": {
+        "path": "/courses/titration-step.html",
+        "route": "/legacy/titration-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:chlorine-step",
+      "slug": "chlorine-step",
+      "title": "Điều chế và tính chất của chlorine",
+      "subject": "chem",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Muốn có một bình chlorine khô, tinh khiết, mỗi đoạn của bộ thí nghiệm đảm nhận việc gì? Thiếu một đoạn thì sao?",
+      "steps": [
+        "Làm quen bộ thí nghiệm",
+        "Vì sao đun nóng",
+        "Vì sao cần acid đặc",
+        "Bình thứ nhất rửa gì",
+        "Bình thứ hai rửa gì",
+        "Thu thế nào",
+        "Chlorine dư đi đâu",
+        "Nước chlorine có gì",
+        "Kiểm tra · Tự làm TN"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/chlorine-step.html",
+        "cover": "covers/chlorine-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 1 · Chương 2 Các nguyên tố quan trọng trong nước biển – sodium và chlorine · Bài 2 Chlorine và hợp chất"
+        ]
+      },
+      "launch": {
+        "path": "/courses/chlorine-step.html",
+        "route": "/legacy/chlorine-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:blast-furnace-step",
+      "slug": "blast-furnace-step",
+      "title": "Luyện gang lò cao",
+      "subject": "chem",
+      "type": "Quy trình công nghiệp",
+      "question": "Một đống quặng đổ xuống từ đỉnh lò, sao vài giờ sau đã thành dòng gang lỏng, lại còn càng tiết kiệm càng tốt?",
+      "steps": [
+        "Quặng thành gang",
+        "Rải liệu thành lớp",
+        "Cắt ra xem lớp",
+        "Mắt gió đốt cốc",
+        "Khử từng cấp",
+        "Đá vôi tạo xỉ",
+        "Bài toán nhiệt độ gió",
+        "Kiểm tra ca trực"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/blast-furnace-step.html",
+        "cover": "covers/blast-furnace-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 2 · Chương 8 Hoá học và phát triển bền vững · Bài 1 Khai thác và sử dụng tài nguyên thiên nhiên · Khai thác và sử dụng khoáng sản kim loại"
+        ]
+      },
+      "launch": {
+        "path": "/courses/blast-furnace-step.html",
+        "route": "/legacy/blast-furnace-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:smelting-step",
+      "slug": "smelting-step",
+      "title": "Luyện kim: điện phân muối nóng chảy + nhiệt nhôm",
+      "subject": "chem",
+      "type": "Quy trình công nghiệp",
+      "question": "Vì sao nhôm chỉ có thể dùng điện để “tách” ra, còn sắt lại có thể bị nhôm “đẩy” ra?",
+      "steps": [
+        "Ba bàn",
+        "Chỉ điện phân",
+        "Cắt bể",
+        "Ai đi về đâu",
+        "Thêm cryolite",
+        "Bài toán điện năng",
+        "Nhiệt nhôm",
+        "Kiểm tra ca trực"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/smelting-step.html",
+        "cover": "covers/smelting-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 2 · Chương 8 Hoá học và phát triển bền vững · Bài 1 Khai thác và sử dụng tài nguyên thiên nhiên · Khai thác và sử dụng khoáng sản kim loại"
+        ]
+      },
+      "launch": {
+        "path": "/courses/smelting-step.html",
+        "route": "/legacy/smelting-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:currents-step",
+      "slug": "currents-step",
+      "title": "Quy luật phân bố và ảnh hưởng của các dòng biển trên thế giới",
+      "subject": "geo",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Hàng vạn con vịt đồ chơi rơi xuống mặt biển, vì sao lại trôi dạt tới bờ biển khắp nơi trên thế giới?",
+      "steps": [
+        "Gió đẩy nước đi",
+        "Vĩ độ thấp – TB thành vòng",
+        "Vĩ độ TB – cao quay ngược",
+        "Dòng nóng, lạnh",
+        "Không vòng, đảo chiều",
+        "Tính chất nước biển",
+        "Ảnh hưởng khí hậu",
+        "Ngư trường",
+        "Kiểm tra · Bốn điểm"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/currents-step.html",
+        "cover": "covers/currents-step.webp",
+        "textbook": [
+          "Tự chọn bắt buộc 1 Cơ sở địa lý tự nhiên · Chương 4 Sự vận động của nước · Bài 2 Dòng biển",
+          "Bắt buộc – Tập 1 · Chương 3 Nước trên Trái Đất · Bài 3 Sự vận động của nước biển"
+        ]
+      },
+      "launch": {
+        "path": "/courses/currents-step.html",
+        "route": "/legacy/currents-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:enso-step",
+      "slug": "enso-step",
+      "title": "Tương tác biển – khí quyển và El Niño, La Niña",
+      "subject": "geo",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Ven biển Pê-ru quanh năm khô hạn, vì sao cuối năm 2016 nước biển vừa ấm lên đã mưa lớn, làm gần một trăm người thiệt mạng?",
+      "steps": [
+        "Trao đổi",
+        "Chênh",
+        "Hoàn lưu",
+        "El Niño",
+        "Vượt ngưỡng",
+        "La Niña",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/enso-step.html",
+        "cover": "covers/enso-step.webp",
+        "textbook": [
+          "Tự chọn bắt buộc 1 Cơ sở địa lý tự nhiên · Chương 4 Sự vận động của nước · Bài 3 Tương tác biển – khí quyển"
+        ]
+      },
+      "launch": {
+        "path": "/courses/enso-step.html",
+        "route": "/legacy/enso-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:coal-gas-step",
+      "slug": "coal-gas-step",
+      "title": "Sử dụng tổng hợp than đá: lấy khí hoá than làm mạch chính",
+      "subject": "chem",
+      "type": "Quy trình công nghiệp",
+      "question": "Than đá chỉ để đốt thôi sao? Làm thế nào biến than thành khí để sản xuất phân bón, methanol?",
+      "steps": [
+        "Vì sao khí hoá",
+        "Cấp nhiệt hay cấp khí",
+        "Bên trong lò trông thế nào",
+        "Hơi nước nhiều hay ít thì tốt",
+        "Chuyển hoá CO chỉnh tỉ lệ",
+        "Vì sao khử lưu huỳnh",
+        "Thành sản phẩm gì",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/coal-gas-step.html",
+        "cover": "covers/coal-gas-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 2 · Chương 8 Hoá học và phát triển bền vững · Bài 1 Khai thác và sử dụng tài nguyên thiên nhiên · Sử dụng tổng hợp than"
+        ]
+      },
+      "launch": {
+        "path": "/courses/coal-gas-step.html",
+        "route": "/legacy/coal-gas-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:sulfuric-step",
+      "slug": "sulfuric-step",
+      "title": "Điều chế H₂SO₄ (PP tiếp xúc)",
+      "subject": "chem",
+      "type": "Quy trình công nghiệp",
+      "question": "Làm thế nào biến sulfur trong quặng thành sulfuric acid vừa nhanh, vừa nhiều, vừa tiết kiệm, vừa sạch?",
+      "steps": [
+        "Vì sao chia 5 công đoạn",
+        "Vì sao làm sạch trước",
+        "Vì sao nhiệt độ này",
+        "Vì sao áp suất thường",
+        "Trong tháp ra sao",
+        "Vì sao dùng acid đặc",
+        "Kiểm tra · trưởng ca"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/sulfuric-step.html",
+        "cover": "covers/sulfuric-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 2 · Chương 5 Các nguyên tố phi kim quan trọng trong sản xuất hoá học · Bài 1 Sulfur và hợp chất · Sản xuất sulfuric acid trong công nghiệp"
+        ]
+      },
+      "launch": {
+        "path": "/courses/sulfuric-step.html",
+        "route": "/legacy/sulfuric-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:hydrolysis-step",
+      "slug": "hydrolysis-step",
+      "title": "Sự thuỷ phân của muối và ứng dụng",
+      "subject": "chem",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Các ion do muối phân li ra trông “chẳng acid cũng chẳng base”, dựa vào đâu mà làm dung dịch có tính acid hay base?",
+      "steps": [
+        "Làm quen thí nghiệm",
+        "Loại muối",
+        "Nhìn vào trong",
+        "Nồng độ",
+        "Nhiệt độ",
+        "Thêm acid ức chế",
+        "Làm trong",
+        "Đun sôi và cô cạn",
+        "Kiểm tra · pha dd"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/hydrolysis-step.html",
+        "cover": "covers/hydrolysis-step.webp",
+        "textbook": [
+          "Tự chọn bắt buộc 1 Nguyên lý phản ứng hoá học · Chương 3 Phản ứng ion và cân bằng trong dung dịch nước · Bài 3 Sự thuỷ phân của muối · Hoạt động thí nghiệm 3 Ứng dụng của sự thuỷ phân muối"
+        ]
+      },
+      "launch": {
+        "path": "/courses/hydrolysis-step.html",
+        "route": "/legacy/hydrolysis-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:heating-step",
+      "slug": "heating-step",
+      "title": "Khí quyển nhận nhiệt",
+      "subject": "geo",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Mặt đất phơi nắng cả ngày, vì sao ban ngày nóng lên trước, ban đêm lại nguội nhanh đến thế – khí quyển rốt cuộc giữ lại cho mặt đất bao nhiêu nhiệt?",
+      "steps": [
+        "Suy yếu",
+        "Mặt đất hấp thụ",
+        "Sóng dài",
+        "Giữ lại",
+        "Bức xạ ngược",
+        "Mây",
+        "Khí nhà kính",
+        "Đối chứng Mặt Trăng",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/heating-step.html",
+        "cover": "covers/heating-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 1 · Chương 2 Khí quyển Trái Đất · Bài 2 Quá trình nhận nhiệt và chuyển động của khí quyển · Quá trình nhận nhiệt của khí quyển"
+        ]
+      },
+      "launch": {
+        "path": "/courses/heating-step.html",
+        "route": "/legacy/heating-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:karst-step",
+      "slug": "karst-step",
+      "title": "Sự hình thành và nhận biết địa hình các-xtơ",
+      "subject": "geo",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Từ Hà Khách viết “núi dựng tách rời, xếp hàng đua nhọn” – những đỉnh nhọn như mọc lên từ lòng đất này được biến ra từ một lớp đá như thế nào?",
+      "steps": [
+        "Tan",
+        "Rãnh→trũng",
+        "Cụm đỉnh→rừng đá",
+        "Núi sót→đồi sót",
+        "Nhanh chậm",
+        "Hang",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/karst-step.html",
+        "cover": "covers/karst-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 1 · Chương 4 Địa hình · Bài 1 Các dạng địa hình thường gặp · Địa hình các-xtơ"
+        ]
+      },
+      "launch": {
+        "path": "/courses/karst-step.html",
+        "route": "/legacy/karst-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:cement-step",
+      "slug": "cement-step",
+      "title": "Sản xuất xi măng",
+      "subject": "chem",
+      "type": "Quy trình công nghiệp",
+      "question": "Một xe đá và đất, dựa vào đâu mà nghiền một chút, nung một chút, rồi nghiền thêm là thành xi măng đủ sức xây đập?",
+      "steps": [
+        "Xem toàn nhà máy",
+        "Chuẩn bị liệu",
+        "Gia nhiệt – phân huỷ",
+        "Đi trong lò",
+        "Vùng nung",
+        "Làm nguội nhanh",
+        "Thêm thạch cao",
+        "Kiểm tra ca trực"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/cement-step.html",
+        "cover": "covers/cement-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 2 · Chương 5 Các nguyên tố phi kim quan trọng trong sản xuất hoá học · Bài 3 Vật liệu vô cơ phi kim loại"
+        ]
+      },
+      "launch": {
+        "path": "/courses/cement-step.html",
+        "route": "/legacy/cement-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:carbon-step",
+      "slug": "carbon-step",
+      "title": "Biến đổi khí hậu toàn cầu và an ninh quốc gia",
+      "subject": "geo",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Vì sao Man-đi-vơ lại tổ chức họp nội các dưới đáy biển sâu 6 mét?",
+      "steps": [
+        "Chu trình carbon",
+        "Hai nguồn vào",
+        "Phát thải đi đâu",
+        "Giữ nhiệt tăng",
+        "Vượt ngưỡng",
+        "Quốc gia",
+        "Ứng phó",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/carbon-step.html",
+        "cover": "covers/carbon-step.webp",
+        "textbook": [
+          "Tự chọn bắt buộc 3 Tài nguyên, môi trường và an ninh quốc gia · Chương 3 An ninh môi trường và an ninh quốc gia · Bài 4 Biến đổi khí hậu toàn cầu và an ninh quốc gia"
+        ]
+      },
+      "launch": {
+        "path": "/courses/carbon-step.html",
+        "route": "/legacy/carbon-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:tectonic-step",
+      "slug": "tectonic-step",
+      "title": "Sự hình thành địa hình kiến tạo",
+      "subject": "geo",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Vì sao trên cao nguyên Thanh Tạng lại tìm thấy hoá thạch lá cây lá rộng – sức mạnh nào đã nâng bề mặt lên, rồi lại cắt nó ra?",
+      "steps": [
+        "Uốn",
+        "Phân bổ",
+        "Đảo ngược",
+        "Xê dịch",
+        "Nâng hạ",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/tectonic-step.html",
+        "cover": "covers/tectonic-step.webp",
+        "textbook": [
+          "Tự chọn bắt buộc 1 Cơ sở địa lý tự nhiên · Chương 2 Sự hình thành địa hình bề mặt · Bài 2 Sự hình thành địa hình kiến tạo"
+        ]
+      },
+      "launch": {
+        "path": "/courses/tectonic-step.html",
+        "route": "/legacy/tectonic-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:photoelectric-step",
+      "slug": "photoelectric-step",
+      "title": "Hiệu ứng quang điện",
+      "subject": "phys",
+      "type": "Nguyên lý và TN",
+      "question": "Cùng một chùm sáng, vì sao đổi sang kim loại khác thì không bật ra được electron nào? Năng lượng của quang electron rốt cuộc do yếu tố nào của ánh sáng quyết định?",
+      "steps": [
+        "Làm quen mạch điện",
+        "Tăng đến bão hoà",
+        "Quét chiều ngược",
+        "Đổi cường độ sáng",
+        "Đổi tần số",
+        "Đổi kim loại",
+        "Vẽ đồ thị đo h",
+        "Dụng cụ thực",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/photoelectric-step.html",
+        "cover": "covers/photoelectric-step.webp",
+        "textbook": [
+          "Tự chọn bắt buộc – Tập 3 · Chương 4 Cấu trúc nguyên tử và lưỡng tính sóng – hạt · Bài 2 Hiệu ứng quang điện"
+        ]
+      },
+      "launch": {
+        "path": "/courses/photoelectric-step.html",
+        "route": "/legacy/photoelectric-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:capacitor-step",
+      "slug": "capacitor-step",
+      "title": "Quan sát sự tích điện và phóng điện của tụ điện",
+      "subject": "phys",
+      "type": "Nguyên lý và TN",
+      "question": "Trong tụ điện thực sự chứa cái gì? Có thể chỉ dùng một con số để đo “sức chứa” của nó không?",
+      "steps": [
+        "Làm quen dụng cụ",
+        "Gạt sang 1 tích điện",
+        "Gạt sang 2 phóng điện",
+        "Diện tích ra điện tích",
+        "Hai cách mắc",
+        "Ghi q-u",
+        "Đổi C, đổi R",
+        "Dụng cụ thực",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/capacitor-step.html",
+        "cover": "covers/capacitor-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 3 · Chương 10 Năng lượng trong điện trường tĩnh · Bài 4 Điện dung của tụ điện · Thí nghiệm bắt buộc của học sinh: Quan sát sự tích điện và phóng điện của tụ điện"
+        ]
+      },
+      "launch": {
+        "path": "/courses/capacitor-step.html",
+        "route": "/legacy/capacitor-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:earth-motion-step",
+      "slug": "earth-motion-step",
+      "title": "Hệ quả địa lý của các chuyển động của Trái Đất",
+      "subject": "geo",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Cùng một thời điểm, vì sao ở Bắc Kinh là giữa trưa, ở Niu Oóc là nửa đêm, và ban ngày mùa hạ lại dài hơn mùa đông?",
+      "steps": [
+        "Tự quay",
+        "Quanh Mặt Trời",
+        "Bán cầu ngày/đêm",
+        "Đường sáng, đường tối",
+        "Giờ địa phương",
+        "Múi giờ, đường chuyển ngày",
+        "Độ dài ngày đêm",
+        "Góc nhập xạ giữa trưa",
+        "Kiểm tra · Chênh lệch giờ"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/earth-motion-step.html",
+        "cover": "covers/earth-motion-step.webp",
+        "textbook": [
+          "Tự chọn bắt buộc 1 Cơ sở địa lý tự nhiên · Chương 1 Chuyển động của Trái Đất · Bài 2 Hệ quả địa lý của các chuyển động của Trái Đất",
+          "Tự chọn bắt buộc 1 Cơ sở địa lý tự nhiên · Chương 1 Chuyển động của Trái Đất · Bài 1 Chuyển động tự quay và chuyển động quanh Mặt Trời của Trái Đất"
+        ]
+      },
+      "launch": {
+        "path": "/courses/earth-motion-step.html",
+        "route": "/legacy/earth-motion-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:accel-force-step",
+      "slug": "accel-force-step",
+      "title": "Thí nghiệm: Tìm hiểu mối liên hệ giữa gia tốc với lực và khối lượng",
+      "subject": "phys",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Không đo trực tiếp lực, cũng không đo trực tiếp gia tốc – chỉ với một băng giấy và vài quả nặng móc, liệu có đo được mối liên hệ giữa a với F và m không?",
+      "steps": [
+        "Làm quen dụng cụ",
+        "Cân bằng ma sát",
+        "Gõ băng giấy",
+        "Tính gia tốc",
+        "a và F",
+        "a và m",
+        "Sai số",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/accel-force-step.html",
+        "cover": "covers/accel-force-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 1 · Chương 4 Mối liên hệ giữa chuyển động và lực · Bài 2 Thí nghiệm: Tìm hiểu mối liên hệ giữa gia tốc với lực và khối lượng"
+        ]
+      },
+      "launch": {
+        "path": "/courses/accel-force-step.html",
+        "route": "/legacy/accel-force-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:iron-step",
+      "slug": "iron-step",
+      "title": "Sắt và hợp chất: chuyển hoá giữa các số oxi hoá của sắt",
+      "subject": "chem",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Cùng là nguyên tố sắt, vì sao trong ống nghiệm lúc là +2, lúc là +3, và dựa vào đâu ta biết nó là loại nào?",
+      "steps": [
+        "Làm quen thí nghiệm",
+        "Kết tủa trắng",
+        "Cách li không khí",
+        "Nhận biết bằng KSCN",
+        "Hạ số oxi hoá",
+        "Nâng số oxi hoá",
+        "Nhìn vào trong",
+        "Trạm thử sắt",
+        "Kiểm tra · hạ về +2"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/iron-step.html",
+        "cover": "covers/iron-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 1 · Chương 3 Sắt, vật liệu kim loại · Bài 1 Sắt và hợp chất"
+        ]
+      },
+      "launch": {
+        "path": "/courses/iron-step.html",
+        "route": "/legacy/iron-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:plasmolysis-step",
+      "slug": "plasmolysis-step",
+      "title": "Sự hút nước và mất nước của tế bào thực vật",
+      "subject": "bio",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Rau ngâm trong nước sạch sẽ cứng giòn, rắc muối thì rỉ nước – tế bào thực vật hút nước và mất nước như thế nào?",
+      "steps": [
+        "Thẩm thấu",
+        "Lớp nguyên sinh chất",
+        "Mất nước",
+        "Nước đi đâu",
+        "Phản co",
+        "Glycerol",
+        "Đo nồng độ",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/plasmolysis-step.html",
+        "cover": "covers/plasmolysis-step.webp",
+        "textbook": [
+          "Bắt buộc 1 Phân tử và tế bào · Chương 4 Sự vận chuyển các chất vào và ra khỏi tế bào · Bài 1 Vận chuyển thụ động · Tìm hiểu · Thực hành: Tìm hiểu sự hút nước và mất nước của tế bào thực vật"
+        ]
+      },
+      "launch": {
+        "path": "/courses/plasmolysis-step.html",
+        "route": "/legacy/plasmolysis-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:electrolysis-step",
+      "slug": "electrolysis-step",
+      "title": "Nguyên lý điện phân: điện phân dung dịch copper(II) chloride và dung dịch muối ăn bão hoà",
+      "subject": "chem",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Cùng một nguồn điện một chiều, vì sao điện phân dung dịch copper(II) chloride thu được copper và chlorine, còn điện phân dung dịch muối ăn bão hoà lại thu được hydrogen, chlorine và sodium hydroxide?",
+      "steps": [
+        "Làm quen thí nghiệm",
+        "Nối nguồn điện",
+        "Điện phân lâu hơn",
+        "Nhìn vào trong",
+        "Đổi sang nước muối",
+        "Vùng cathode hoá hồng",
+        "Thứ tự phóng điện",
+        "Cu làm anode",
+        "Kiểm tra · thu 29.6 mg copper"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/electrolysis-step.html",
+        "cover": "covers/electrolysis-step.webp",
+        "textbook": [
+          "Tự chọn bắt buộc 1 Nguyên lý phản ứng hoá học · Chương 4 Phản ứng hoá học và điện năng · Bài 2 Bình điện phân · Điện phân dung dịch copper(II) chloride · Điện phân dung dịch muối ăn bão hoà"
+        ]
+      },
+      "launch": {
+        "path": "/courses/electrolysis-step.html",
+        "route": "/legacy/electrolysis-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:ammonia-step",
+      "slug": "ammonia-step",
+      "title": "Điều chế và tính chất của ammonia (gồm thí nghiệm “đài phun”)",
+      "subject": "chem",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Một bình khí ammonia, dựa vào đâu mà tự “hút” được nước trong cốc lên bình?",
+      "steps": [
+        "Toàn bộ thiết bị",
+        "Miệng ống hướng nào",
+        "Chọn chất làm khô",
+        "Thu thế nào",
+        "Thu bao lâu",
+        "Kiểm tra đầy và khói trắng",
+        "Làm đài phun",
+        "Nhìn vào trong",
+        "Kiểm tra · làm đài phun"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/ammonia-step.html",
+        "cover": "covers/ammonia-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 2 · Chương 5 Các nguyên tố phi kim quan trọng trong sản xuất hoá học · Bài 2 Nitrogen và hợp chất · Ammonia và muối ammonium"
+        ]
+      },
+      "launch": {
+        "path": "/courses/ammonia-step.html",
+        "route": "/legacy/ammonia-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:equilibrium-step",
+      "slug": "equilibrium-step",
+      "title": "Tìm hiểu các yếu tố ảnh hưởng đến chuyển dịch cân bằng hoá học",
+      "subject": "chem",
+      "type": "Nguyên lý và TN",
+      "question": "Thay đổi một điều kiện, dựa vào đâu mà nói cân bằng “chuyển dịch về phía nào”?",
+      "steps": [
+        "Làm quen bàn TN",
+        "Thêm chất ống Fe",
+        "Bột sắt bớt chất",
+        "Thêm kiềm vào ống Cr",
+        "Thêm acid vào ống Cr",
+        "Hai chậu nóng – lạnh",
+        "Nhìn vào trong",
+        "Sai số · số đọc",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/equilibrium-step.html",
+        "cover": "covers/equilibrium-step.webp",
+        "textbook": [
+          "Tự chọn bắt buộc 1 Nguyên lý phản ứng hoá học · Chương 2 Tốc độ phản ứng hoá học và cân bằng hoá học · Hoạt động thí nghiệm 1 Tìm hiểu các yếu tố ảnh hưởng đến chuyển dịch cân bằng hoá học"
+        ]
+      },
+      "launch": {
+        "path": "/courses/equilibrium-step.html",
+        "route": "/legacy/equilibrium-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:flame-step",
+      "slug": "flame-step",
+      "title": "Thử màu ngọn lửa và quang phổ nguyên tử",
+      "subject": "chem",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Vì sao mỗi kim loại cho ngọn lửa một màu riêng, và dựa vào đâu mà chút màu ấy có thể coi là “phiếu kết quả phân tích”?",
+      "steps": [
+        "Làm quen thí nghiệm",
+        "Rửa dây Pt",
+        "Vạch kép Na",
+        "K và kính cobalt",
+        "Năng lượng và bước sóng",
+        "Phát xạ và hấp thụ",
+        "Sáu kim loại",
+        "Kiểm tra · nhận biết K"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/flame-step.html",
+        "cover": "covers/flame-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 1 · Chương 2 Các nguyên tố quan trọng trong nước biển – sodium và chlorine · Bài 1 Sodium và hợp chất · Thử màu ngọn lửa",
+          "Tự chọn bắt buộc 2 Cấu trúc và tính chất của chất · Chương 1 Cấu trúc và tính chất của nguyên tử · Bài 1 Cấu trúc nguyên tử · Quang phổ nguyên tử"
+        ]
+      },
+      "launch": {
+        "path": "/courses/flame-step.html",
+        "route": "/legacy/flame-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:galvanic-step",
+      "slug": "galvanic-step",
+      "title": "Pin điện hoá: từ một dung dịch đến hai dung dịch",
+      "subject": "chem",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Trong một cốc sulfuric acid loãng đã có dòng điện rồi, vì sao còn phải đổi thành hai cốc và thêm một cầu muối?",
+      "steps": [
+        "Hai bộ pin",
+        "Nối dây dẫn",
+        "Cái gì đang chạy",
+        "Hạn chế pin 1 dd",
+        "Đổi sang hai dd",
+        "Rút cầu muối",
+        "Nhìn vào trong",
+        "Nồng độ",
+        "Kiểm tra · lắp pin"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/galvanic-step.html",
+        "cover": "covers/galvanic-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 2 · Chương 6 Phản ứng hoá học và năng lượng · Bài 1 Phản ứng hoá học và sự biến đổi năng lượng · Hoạt động thí nghiệm 6 Chuyển hoá năng lượng hoá học thành điện năng",
+          "Tự chọn bắt buộc 1 Nguyên lý phản ứng hoá học · Chương 4 Phản ứng hoá học và điện năng · Bài 1 Pin điện hoá"
+        ]
+      },
+      "launch": {
+        "path": "/courses/galvanic-step.html",
+        "route": "/legacy/galvanic-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:conductivity-step",
+      "slug": "conductivity-step",
+      "title": "Sự điện li của chất điện li, tính dẫn điện của dung dịch và bản chất của phản ứng ion",
+      "subject": "chem",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Tay khô hay tay ướt cũng là cùng một bàn tay, sao tay ướt lại dễ bị điện giật hơn?",
+      "steps": [
+        "Làm quen bàn TN",
+        "Khô và nóng chảy",
+        "Tan trong nước",
+        "Nước và sucrose",
+        "Mạnh và yếu",
+        "Nhỏ H₂SO₄ loãng",
+        "Nhìn vào trong",
+        "Đổi sai chất chuẩn độ",
+        "Kiểm tra · tìm điểm cuối"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/conductivity-step.html",
+        "cover": "covers/conductivity-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 1 · Chương 1 Chất và sự biến đổi của chất · Bài 2 Phản ứng ion",
+          "Tự chọn bắt buộc 1 Nguyên lý phản ứng hoá học · Chương 3 Phản ứng ion và cân bằng trong dung dịch nước · Bài 1 Cân bằng điện li · Chất điện li mạnh và chất điện li yếu"
+        ]
+      },
+      "launch": {
+        "path": "/courses/conductivity-step.html",
+        "route": "/legacy/conductivity-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:energy-step",
+      "slug": "energy-step",
+      "title": "Thí nghiệm: Kiểm chứng định luật bảo toàn cơ năng",
+      "subject": "phys",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Khi vật nặng rơi, thế năng trọng trường giảm đi có đúng bằng động năng tăng thêm không? Một băng giấy có đo được điều này không?",
+      "steps": [
+        "Làm quen dụng cụ",
+        "Bật điện rồi thả",
+        "Chọn điểm",
+        "Đo h, tính v",
+        "Ghi và vẽ đồ thị",
+        "Đổi vật nặng",
+        "Sai số",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/energy-step.html",
+        "cover": "covers/energy-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 2 · Chương 8 Định luật bảo toàn cơ năng · Bài 5 Thí nghiệm: Kiểm chứng định luật bảo toàn cơ năng"
+        ]
+      },
+      "launch": {
+        "path": "/courses/energy-step.html",
+        "route": "/legacy/energy-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:soil-step",
+      "slug": "soil-step",
+      "title": "Các nhân tố hình thành đất và quan sát phẫu diện đất",
+      "subject": "geo",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Đất ở Đông Bắc vừa đen vừa màu mỡ, vì sao đất ở phía nam tương đối nghèo dinh dưỡng?",
+      "steps": [
+        "Mặt cắt",
+        "Vật liệu mẹ",
+        "Sinh vật",
+        "Khí hậu",
+        "Địa hình",
+        "Thời gian",
+        "Con người",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/soil-step.html",
+        "cover": "covers/soil-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 1 · Chương 5 Thảm thực vật và đất · Bài 2 Đất"
+        ]
+      },
+      "launch": {
+        "path": "/courses/soil-step.html",
+        "route": "/legacy/soil-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:projectile-step",
+      "slug": "projectile-step",
+      "title": "Thí nghiệm: Tìm hiểu đặc điểm của chuyển động ném ngang",
+      "subject": "phys",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Chỉ với một máng nghiêng và một tấm chắn, liệu có thể tách chuyển động ném ngang thành hai chuyển động thành phần và đo được vận tốc ban đầu không?",
+      "steps": [
+        "Làm quen dụng cụ",
+        "Đứng trước",
+        "Đầu máng phải ngang",
+        "Vẽ bốn điểm",
+        "Định khoảng thời gian",
+        "Ngang là đều",
+        "Đổi vạch thả",
+        "Hai kiểu lệch lớn",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/projectile-step.html",
+        "cover": "covers/projectile-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 2 · Chương 5 Chuyển động ném · Bài 3 Thí nghiệm: Tìm hiểu đặc điểm của chuyển động ném ngang"
+        ]
+      },
+      "launch": {
+        "path": "/courses/projectile-step.html",
+        "route": "/legacy/projectile-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:transport-step",
+      "slug": "transport-step",
+      "title": "Vận chuyển qua màng",
+      "subject": "bio",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Cùng một màng tế bào, vì sao oxygen tự đi qua được, glucose cần nhiều protein giúp, còn K⁺ lại đi vào được ngược chiều nồng độ?",
+      "steps": [
+        "Khuếch tán đơn giản",
+        "Thấm chọn lọc",
+        "Khuếch tán tăng cường",
+        "Protein mang, kênh",
+        "Vận chuyển chủ động",
+        "Nhập bào, xuất bào",
+        "Tổng hợp",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/transport-step.html",
+        "cover": "covers/transport-step.webp",
+        "textbook": [
+          "Bắt buộc 1 Phân tử và tế bào · Chương 4 Sự vận chuyển các chất vào và ra khỏi tế bào"
+        ]
+      },
+      "launch": {
+        "path": "/courses/transport-step.html",
+        "route": "/legacy/transport-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:nitric-lab-step",
+      "slug": "nitric-lab-step",
+      "title": "Tính chất của nitric acid đặc, loãng và sự chuyển hoá các oxide của nitrogen",
+      "subject": "chem",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Cùng là đồng với nitric acid, vì sao một bình thoát khí màu nâu đỏ, bình kia lại không có màu gì?",
+      "steps": [
+        "Toàn bộ thiết bị",
+        "Cắm dây đồng",
+        "Đổi HNO₃ loãng",
+        "Đổi lá sắt",
+        "Khí thải đi đâu",
+        "Lí do của lọ nâu",
+        "Hút không khí",
+        "Lắc và nhìn vào",
+        "Kiểm tra · chuyển hoá NO"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/nitric-lab-step.html",
+        "cover": "covers/nitric-lab-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 2 · Chương 5 Các nguyên tố phi kim quan trọng trong sản xuất hoá học · Bài 2 Nitrogen và hợp chất · Nitrogen monoxide, nitrogen dioxide và nitric acid"
+        ]
+      },
+      "launch": {
+        "path": "/courses/nitric-lab-step.html",
+        "route": "/legacy/nitric-lab-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:centripetal-step",
+      "slug": "centripetal-step",
+      "title": "Tìm hiểu mối liên hệ giữa độ lớn lực hướng tâm với bán kính, tốc độ góc và khối lượng",
+      "subject": "phys",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Thiết bị quay tay này chỉ cho em số vạch trên hai thước chia vạch – liệu có dùng nó đo được mối liên hệ định lượng giữa F với m, r, ω không?",
+      "steps": [
+        "Làm quen thiết bị",
+        "Kiểm tra thiết bị",
+        "Theo khối lượng",
+        "Theo bán kính",
+        "Theo tốc độ góc",
+        "Gộp ba thành một công thức",
+        "Sai số và thao tác sai",
+        "Kiểm tra · ω là bình phương"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/centripetal-step.html",
+        "cover": "covers/centripetal-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 2 · Chương 6 Chuyển động tròn · Bài 2 Lực hướng tâm · Thí nghiệm: Tìm hiểu sự phụ thuộc của độ lớn lực hướng tâm vào bán kính, tốc độ góc và khối lượng"
+        ]
+      },
+      "launch": {
+        "path": "/courses/centripetal-step.html",
+        "route": "/legacy/centripetal-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:self-induction-step",
+      "slug": "self-induction-step",
+      "title": "Tự cảm và dòng Foucault",
+      "subject": "phys",
+      "type": "Nguyên lý và TN",
+      "question": "Cuộn dây chỉ là quấn thêm mấy vòng dây đồng, vì sao hai bóng đèn sáng khác nhau? Công tắc đã ngắt rồi, dựa vào đâu bóng đèn còn sáng lên một chút?",
+      "steps": [
+        "Làm quen dụng cụ",
+        "Tự cảm khi đóng mạch",
+        "Tự cảm khi ngắt mạch",
+        "Đường I-t",
+        "Đổi cuộn dây",
+        "Dụng cụ thực",
+        "Dòng Foucault",
+        "Hãm điện từ",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/self-induction-step.html",
+        "cover": "covers/self-induction-step.webp",
+        "textbook": [
+          "Tự chọn bắt buộc – Tập 2 · Chương 2 Cảm ứng điện từ · Bài 4 Hỗ cảm và tự cảm",
+          "Tự chọn bắt buộc – Tập 2 · Chương 2 Cảm ứng điện từ · Bài 3 Dòng điện Foucault, hãm điện từ và dẫn động điện từ"
+        ]
+      },
+      "launch": {
+        "path": "/courses/self-induction-step.html",
+        "route": "/legacy/self-induction-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:emf-step",
+      "slug": "emf-step",
+      "title": "Đo suất điện động và điện trở trong của nguồn điện",
+      "subject": "phys",
+      "type": "Nguyên lý và TN",
+      "question": "Suất điện động và điện trở trong của một pin khô cũ, làm sao “đo” ra bằng một vôn kế, một ampe kế và một biến trở con chạy? Đổi cách mắc khác, đo ra có còn như cũ không?",
+      "steps": [
+        "Làm quen cách mắc",
+        "Lớn nhất trước",
+        "Đo nhiều lần",
+        "Vẽ đồ thị U-I",
+        "Gốc trục tung",
+        "Chỉ đo hai lần",
+        "Đổi cách mắc",
+        "Phân tích sai số",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/emf-step.html",
+        "cover": "covers/emf-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 3 · Chương 12 Điện năng, định luật bảo toàn năng lượng · Bài 3 Thí nghiệm: Đo suất điện động và điện trở trong của pin"
+        ]
+      },
+      "launch": {
+        "path": "/courses/emf-step.html",
+        "route": "/legacy/emf-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:impulse-step",
+      "slug": "impulse-step",
+      "title": "Sự phát sinh và dẫn truyền xung thần kinh",
+      "subject": "bio",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Xuất phát trong vòng 0.1 s sau tiếng súng lệnh bị coi là xuất phát sớm (SGK tr. 27) – hưng phấn “chạy” trong cơ thể như thế nào?",
+      "steps": [
+        "Xung thần kinh",
+        "Điện thế nghỉ",
+        "Điện thế hoạt động",
+        "Dòng điện cục bộ",
+        "Synapse",
+        "Một chiều, chậm",
+        "Cocaine",
+        "Na⁺ ngoài màng",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/impulse-step.html",
+        "cover": "covers/impulse-step.webp",
+        "textbook": [
+          "Tự chọn bắt buộc 1 Cân bằng nội môi và điều hoà · Chương 2 Điều hoà thần kinh · Bài 3 Sự phát sinh và dẫn truyền xung thần kinh"
+        ]
+      },
+      "launch": {
+        "path": "/courses/impulse-step.html",
+        "route": "/legacy/impulse-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:bromine-step",
+      "slug": "bromine-step",
+      "title": "Tách bromine từ nước biển: phương pháp thổi khí",
+      "subject": "chem",
+      "type": "Quy trình công nghiệp",
+      "question": "Bromine trong nước biển chỉ có 65 mg/L, làm sao biến nó thành một bình bromine lỏng?",
+      "steps": [
+        "Toàn cảnh",
+        "Acid hoá",
+        "Oxi hoá",
+        "Thổi khí",
+        "Hấp thụ",
+        "Tinh chế",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/bromine-step.html",
+        "cover": "covers/bromine-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 2 · Chương 8 Hoá học và phát triển bền vững · Bài 1 Khai thác và sử dụng tài nguyên thiên nhiên · Khai thác và sử dụng tài nguyên nước biển"
+        ]
+      },
+      "launch": {
+        "path": "/courses/bromine-step.html",
+        "route": "/legacy/bromine-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:thermal-step",
+      "slug": "thermal-step",
+      "title": "Hoàn lưu nhiệt",
+      "subject": "geo",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Hướng gió hai bên eo biển Đài Loan vì sao trong một ngày lại đảo ngược?",
+      "steps": [
+        "Chênh nhiệt",
+        "Trên cao",
+        "Sát mặt đất",
+        "Khép vòng",
+        "Mạnh yếu",
+        "Gió biển",
+        "Gió đất",
+        "Đảo nhiệt",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/thermal-step.html",
+        "cover": "covers/thermal-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 1 · Chương 2 Khí quyển Trái Đất · Bài 2 Quá trình nhận nhiệt và chuyển động của khí quyển · Hoàn lưu nhiệt"
+        ]
+      },
+      "launch": {
+        "path": "/courses/thermal-step.html",
+        "route": "/legacy/thermal-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:mitosis-step",
+      "slug": "mitosis-step",
+      "title": "Quan sát nguyên phân ở tế bào mô phân sinh đầu rễ",
+      "subject": "bio",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Trên một đầu rễ hành, những tế bào nào đang phân chia? Mỗi kì của một lần phân chia kéo dài bao lâu?",
+      "steps": [
+        "Làm tiêu bản",
+        "Tìm vùng phân sinh",
+        "Kì đầu",
+        "Kì giữa",
+        "Kì sau",
+        "Kì cuối",
+        "Đếm",
+        "Tính thời gian",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/mitosis-step.html",
+        "cover": "covers/mitosis-step.webp",
+        "textbook": [
+          "Bắt buộc 1 Phân tử và tế bào · Chương 6 Chu trình sống của tế bào · Bài 1 Sự sinh sản của tế bào · Tìm hiểu · Thực hành: Quan sát nguyên phân ở tế bào mô phân sinh đầu rễ"
+        ]
+      },
+      "launch": {
+        "path": "/courses/mitosis-step.html",
+        "route": "/legacy/mitosis-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:sodium-step",
+      "slug": "sodium-step",
+      "title": "Tính chất của kim loại sodium (gồm cách dập cháy sodium)",
+      "subject": "chem",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Một mẩu kim loại nhỏ màu trắng bạc, vì sao phải ngâm trong dầu hoả, khi cháy đến nước cũng không được dội?",
+      "steps": [
+        "Làm quen thí nghiệm",
+        "Trắng bạc xỉn đi",
+        "Ngâm trong dầu hoả",
+        "Đun nóng – đốt cháy",
+        "Nổi chảy chạy kêu đỏ",
+        "Cỡ mẩu sodium",
+        "Nhìn vào trong",
+        "Dập cháy",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/sodium-step.html",
+        "cover": "covers/sodium-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 1 · Chương 2 Các nguyên tố quan trọng trong nước biển – sodium và chlorine · Bài 1 Sodium và hợp chất · Đơn chất kim loại hoạt động mạnh – sodium"
+        ]
+      },
+      "launch": {
+        "path": "/courses/sodium-step.html",
+        "route": "/legacy/sodium-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:sulfur-step",
+      "slug": "sulfur-step",
+      "title": "Tính chất của sulfur, sulfur dioxide, sulfuric acid đặc và sự chuyển hoá giữa các chất chứa sulfur có số oxi hoá khác nhau",
+      "subject": "chem",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Cùng là sulfur, vì sao có lúc nó là chất rắn màu vàng, có lúc làm fuchsin mất màu, có lúc lại đi vào bột sắt?",
+      "steps": [
+        "Toàn bộ thiết bị",
+        "Bột S + bột Fe",
+        "H₂SO₄ đặc và Cu",
+        "Đặc hay loãng",
+        "Đun → hồi màu",
+        "Ba ống kiểm tra và nút bông",
+        "Quy trung về 0",
+        "Nhìn vào trong · thang máy số oxi hoá",
+        "Kiểm tra · tẩy màu"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/sulfur-step.html",
+        "cover": "covers/sulfur-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 2 · Chương 5 Các nguyên tố phi kim quan trọng trong sản xuất hoá học · Bài 1 Sulfur và hợp chất",
+          "Bắt buộc – Tập 2 · Chương 5 Các nguyên tố phi kim quan trọng trong sản xuất hoá học · Hoạt động thí nghiệm 5 Chuyển hoá giữa các chất chứa sulfur có số oxi hoá khác nhau"
+        ]
+      },
+      "launch": {
+        "path": "/courses/sulfur-step.html",
+        "route": "/legacy/sulfur-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:wind-step",
+      "slug": "wind-step",
+      "title": "Chuyển động ngang của không khí – gió",
+      "subject": "geo",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Gió trên bản đồ thời tiết vì sao không thổi thẳng từ áp cao sang áp thấp?",
+      "steps": [
+        "Đường đẳng áp",
+        "Lực gradient",
+        "Lực Coriolis",
+        "Gió trên cao",
+        "Sát mặt đất",
+        "Bán cầu Nam",
+        "Dày thưa",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/wind-step.html",
+        "cover": "covers/wind-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 1 · Chương 2 Khí quyển Trái Đất · Bài 2 Quá trình nhận nhiệt và chuyển động của khí quyển · Chuyển động ngang của không khí – gió"
+        ]
+      },
+      "launch": {
+        "path": "/courses/wind-step.html",
+        "route": "/legacy/wind-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:corrosion-step",
+      "slug": "corrosion-step",
+      "title": "Ăn mòn hấp thụ oxygen và thiết kế miếng dán giữ nhiệt",
+      "subject": "chem",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Sắt gỉ chậm như vậy, dựa vào đâu mà làm được miếng dán giữ nhiệt trên 45 ℃? Và dựa vào đâu mà dùng ngược lại nó để bảo vệ sắt khỏi gỉ?",
+      "steps": [
+        "Bốn trạm trên bàn",
+        "Vì sao cột dâng",
+        "Vai trò bột carbon",
+        "Đổi sang acid",
+        "Nhìn vào trong",
+        "Miếng dán toả nhiệt",
+        "Cái giá của bịt kín",
+        "Để kẽm gỉ thay",
+        "Kiểm tra · thiết kế miếng dán"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/corrosion-step.html",
+        "cover": "covers/corrosion-step.webp",
+        "textbook": [
+          "Tự chọn bắt buộc 1 Nguyên lý phản ứng hoá học · Chương 4 Phản ứng hoá học và điện năng · Bài 3 Ăn mòn kim loại và chống ăn mòn · Nghiên cứu và thực hành: Thiết kế và chế tạo miếng dán giữ nhiệt"
+        ]
+      },
+      "launch": {
+        "path": "/courses/corrosion-step.html",
+        "route": "/legacy/corrosion-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:enzyme-step",
+      "slug": "enzyme-step",
+      "title": "Các điều kiện ảnh hưởng đến hoạt tính enzyme",
+      "subject": "bio",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Cùng một ống enzyme, vì sao cho vào nước sôi thì không cứu lại được nữa, còn cho vào nước đá lại có thể “tỉnh” lại?",
+      "steps": [
+        "Làm quen bàn TN",
+        "Nhiệt độ",
+        "pH",
+        "t° cao: không thuận nghịch",
+        "t° thấp: hồi phục được",
+        "Nhìn vào trong",
+        "Quá acid/base",
+        "Kiểm tra · Tự làm TN"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/enzyme-step.html",
+        "cover": "covers/enzyme-step.webp",
+        "textbook": [
+          "Bắt buộc 1 Phân tử và tế bào · Chương 5 Sự cung cấp và sử dụng năng lượng của tế bào · Bài 1 Enzyme làm giảm năng lượng hoạt hoá của phản ứng hoá học · Tìm hiểu · Thực hành: Các điều kiện ảnh hưởng đến hoạt tính enzyme"
+        ]
+      },
+      "launch": {
+        "path": "/courses/enzyme-step.html",
+        "route": "/legacy/enzyme-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:chlor-alkali-step",
+      "slug": "chlor-alkali-step",
+      "title": "Công nghiệp chlor-kiềm",
+      "subject": "chem",
+      "type": "Quy trình công nghiệp",
+      "question": "Cùng một lượng điện, làm sao thu được nhiều xút hơn, tốn ít điện hơn mà không xảy ra sự cố?",
+      "steps": [
+        "Ba sản phẩm",
+        "Rửa muối trước",
+        "Cắt bể",
+        "Nhìn vào màng",
+        "Tăng dòng",
+        "Chỉnh nhiệt bể",
+        "Bỏ màng",
+        "Kiểm tra ca trực"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/chlor-alkali-step.html",
+        "cover": "covers/chlor-alkali-step.webp",
+        "textbook": [
+          "Tự chọn bắt buộc 1 Nguyên lý phản ứng hoá học · Chương 4 Phản ứng hoá học và điện năng · Bài 2 Bình điện phân · Điện phân dung dịch muối ăn bão hoà"
+        ]
+      },
+      "launch": {
+        "path": "/courses/chlor-alkali-step.html",
+        "route": "/legacy/chlor-alkali-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:hou-soda-step",
+      "slug": "hou-soda-step",
+      "title": "Phương pháp Hầu Đức Bảng",
+      "subject": "chem",
+      "type": "Quy trình công nghiệp",
+      "question": "Làm thế nào dùng muối ăn và ammonia để sản xuất soda, lại thu thêm được phân đạm?",
+      "steps": [
+        "Từ muối đến soda",
+        "NH₃ trước CO₂ sau",
+        "Vì sao tự kết tinh",
+        "Nhiệt độ carbonate hoá",
+        "Lọc chia hai dòng",
+        "Nung thành soda",
+        "Nước cái và tuần hoàn",
+        "Em làm trưởng ca"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/hou-soda-step.html",
+        "cover": "covers/hou-soda-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 1 · Chương 2 Các nguyên tố quan trọng trong nước biển – sodium và chlorine · Bài 1 Sodium và hợp chất · Tư liệu tình huống: Phương pháp sản xuất soda Hầu Đức Bảng"
+        ]
+      },
+      "launch": {
+        "path": "/courses/hou-soda-step.html",
+        "route": "/legacy/hou-soda-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:current-field-step",
+      "slug": "current-field-step",
+      "title": "Từ trường của dòng điện",
+      "subject": "phys",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Từ trường không nhìn thấy, không sờ được, làm sao vẽ được nó, lại làm sao xác định chiều của nó?",
+      "steps": [
+        "Mạt sắt hiện hình",
+        "Các vòng đồng tâm",
+        "Nắm dây xác định chiều",
+        "Dày thưa = mạnh yếu",
+        "Xuyên qua rồi vòng lại",
+        "Nhiều vòng chồng chập",
+        "Suy giảm dọc trục",
+        "Bên trong đều",
+        "Kiểm tra · Tìm miệng ống"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/current-field-step.html",
+        "cover": "covers/current-field-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 3 · Chương 13 Cảm ứng điện từ và sóng điện từ (sơ lược) · Bài 1 Từ trường, đường sức từ"
+        ]
+      },
+      "launch": {
+        "path": "/courses/current-field-step.html",
+        "route": "/legacy/current-field-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:brownian-step",
+      "slug": "brownian-step",
+      "title": "Chuyển động Brown và sự khuếch tán",
+      "subject": "phys",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Phân tử thì không nhìn thấy, dựa vào đâu mà nói nó chuyển động hỗn loạn?",
+      "steps": [
+        "Thấy nó chuyển động",
+        "30 giây một điểm",
+        "Càng lâu càng xa",
+        "Hạt càng nhỏ càng rõ",
+        "Nhiệt độ càng cao càng mạnh",
+        "Do va chạm",
+        "Một lần ≠ thống kê",
+        "Khuếch tán: nồng độ lan ra",
+        "Kiểm tra · Chuyển động rõ hơn"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/brownian-step.html",
+        "cover": "covers/brownian-step.webp",
+        "textbook": [
+          "Tự chọn bắt buộc – Tập 3 · Chương 1 Thuyết động học phân tử · Bài 1 Nội dung cơ bản của thuyết động học phân tử"
+        ]
+      },
+      "launch": {
+        "path": "/courses/brownian-step.html",
+        "route": "/legacy/brownian-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:water-cycle-step",
+      "slug": "water-cycle-step",
+      "title": "Quá trình và ý nghĩa địa lý của vòng tuần hoàn nước",
+      "subject": "geo",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Sông ngòi không ngừng đổ ra biển, vì sao nước biển không tăng lên?",
+      "steps": [
+        "Toàn cảnh",
+        "Bốc hơi",
+        "Thoát hơi nước",
+        "Vận chuyển",
+        "Thấm",
+        "Ba loại",
+        "Ruộng phủ sỏi",
+        "Ý nghĩa",
+        "Kiểm tra"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/water-cycle-step.html",
+        "cover": "covers/water-cycle-step.webp",
+        "textbook": [
+          "Bắt buộc – Tập 1 · Chương 3 Nước trên Trái Đất · Bài 1 Vòng tuần hoàn nước"
+        ]
+      },
+      "launch": {
+        "path": "/courses/water-cycle-step.html",
+        "route": "/legacy/water-cycle-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:circulation-step",
+      "slug": "circulation-step",
+      "title": "Đai khí áp, đới gió và hoàn lưu ba vòng",
+      "subject": "geo",
+      "type": "Nguyên lý, hiện tượng",
+      "question": "Vì sao đoàn thuyền của Ma-gien-lăng có chặng gặp gió ngược, có chặng thuận gió, nhưng đến gần 30°S lại hầu như không nhích được bước nào?",
+      "steps": [
+        "Áp thấp xích đạo",
+        "30° giáng xuống",
+        "60° trượt lên",
+        "7 đai, 6 đới gió",
+        "Di chuyển theo mùa",
+        "Phân bố lục địa – đại dương",
+        "Kiểm tra · Ma-gien-lăng"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/circulation-step.html",
+        "cover": "covers/circulation-step.webp",
+        "textbook": [
+          "Tự chọn bắt buộc 1 Cơ sở địa lý tự nhiên · Chương 3 Chuyển động của khí quyển · Bài 2 Đai khí áp và đới gió"
+        ]
+      },
+      "launch": {
+        "path": "/courses/circulation-step.html",
+        "route": "/legacy/circulation-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "needs-book-page-mapping",
+        "sourceBooks": [],
+        "note": "Legacy catalog references are retained as hints; verify chapter and page against SGK PDFs before presenting as the Vietnamese curriculum source of truth."
+      }
+    },
+    {
+      "id": "legacy:cell-plant-step",
+      "slug": "cell-plant-step",
+      "title": "Cấu trúc tế bào thực vật",
+      "subject": "bio",
+      "type": "Cấu trúc 3D & Bào quan",
+      "question": "Nhờ những bào quan đặc trưng nào mà thực vật có thể đứng thẳng vững chắc không cần khung xương và tự tổng hợp chất hữu cơ từ ánh sáng mặt trời?",
+      "steps": [
+        "Sa bàn 3D tế bào thực vật",
+        "Thành tế bào cellulose",
+        "Không bào trung tâm lớn",
+        "Lục lạp quang hợp",
+        "Cầu sinh chất liên kết",
+        "So sánh Động vật – Thực vật",
+        "Kiểm tra · Đặc trưng thực vật"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/cell-plant-step.html",
+        "cover": "covers/cell-plant-step.png",
+        "textbook": [
+          "Sinh học 10 (KNTT) · Chương 2 Cấu trúc tế bào · Bài 8 Tế bào nhân thực",
+          "Sinh học 10 (Cánh Diều) · Chủ đề 6 Cấu tạo tế bào · Bài 7 Tế bào nhân thực"
+        ]
+      },
+      "launch": {
+        "path": "/courses/cell-plant-step.html",
+        "route": "/legacy/cell-plant-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "verified-curriculum",
+        "sourceBooks": ["sinh-hoc-10"],
+        "note": "Sinh học 10 (KNTT) Chương 2 Bài 8 Tế bào nhân thực. Mô hình GLB tương tác."
+      }
+    },
+    {
+      "id": "legacy:cell-animal-step",
+      "slug": "cell-animal-step",
+      "title": "Cấu trúc tế bào động vật",
+      "subject": "bio",
+      "type": "Cấu trúc 3D & Bào quan",
+      "question": "Không có thành tế bào nâng đỡ, tế bào động vật duy trì hình thái và tổ chức hàng triệu phản ứng chuyển hóa bên trong các bào quan chuyên biệt như thế nào?",
+      "steps": [
+        "Hình thái tổng thể tế bào",
+        "Màng sinh chất lipid kép",
+        "Nhân tế bào & màng nhân",
+        "Ti thể – Nhà máy ATP",
+        "Lưới nội chất & Golgi",
+        "Lysosome & Khung xương",
+        "Kiểm tra · Nhận diện bào quan"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/cell-animal-step.html",
+        "cover": "covers/cell-animal-step.png",
+        "textbook": [
+          "Sinh học 10 (KNTT) · Chương 2 Cấu trúc tế bào · Bài 8 Tế bào nhân thực",
+          "Sinh học 10 (Cánh Diều) · Chủ đề 6 Cấu tạo tế bào · Bài 7 Tế bào nhân thực"
+        ]
+      },
+      "launch": {
+        "path": "/courses/cell-animal-step.html",
+        "route": "/legacy/cell-animal-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "verified-curriculum",
+        "sourceBooks": ["sinh-hoc-10"],
+        "note": "Sinh học 10 (KNTT) Chương 2 Bài 8 Tế bào nhân thực. Mô hình GLB tương tác."
+      }
+    },
+    {
+      "id": "legacy:cell-bacteria-step",
+      "slug": "cell-bacteria-step",
+      "title": "Cấu trúc tế bào vi khuẩn (Tế bào nhân sơ)",
+      "subject": "bio",
+      "type": "Cấu trúc 3D & Bào quan",
+      "question": "Với cấu tạo tối giản không có màng nhân và bào quan có màng, vi khuẩn đã làm thế nào để thích nghi sinh tồn và nhân đôi thần tốc ở khắp mọi nơi?",
+      "steps": [
+        "Kích thước & tỉ lệ S/V",
+        "Thành peptidoglycan & vỏ nhầy",
+        "Màng sinh chất vi khuẩn",
+        "Vùng nhân ADN vòng & Plasmid",
+        "Ribosome 70S",
+        "Lông pili & Roi flagellum",
+        "Kiểm tra · Phân biệt nhân sơ"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/cell-bacteria-step.html",
+        "cover": "covers/cell-bacteria-step.png",
+        "textbook": [
+          "Sinh học 10 (KNTT) · Chương 2 Cấu trúc tế bào · Bài 7 Tế bào nhân sơ",
+          "Sinh học 10 (Cánh Diều) · Chủ đề 6 Cấu tạo tế bào · Bài 6 Tế bào nhân sơ"
+        ]
+      },
+      "launch": {
+        "path": "/courses/cell-bacteria-step.html",
+        "route": "/legacy/cell-bacteria-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "verified-curriculum",
+        "sourceBooks": ["sinh-hoc-10"],
+        "note": "Sinh học 10 (KNTT) Chương 2 Bài 7 Tế bào nhân sơ. Mô hình GLB tương tác."
+      }
+    },
+    {
+      "id": "legacy:cell-neuron-step",
+      "slug": "cell-neuron-step",
+      "title": "Cấu trúc tế bào thần kinh (Neuron)",
+      "subject": "bio",
+      "type": "Cấu trúc 3D & Bào quan",
+      "question": "Làm thế nào một tế bào có sợi trục dài tới cả mét có thể tiếp nhận thông tin từ các giác quan và phát tín hiệu điều khiển cơ thể chỉ trong một cái chớp mắt?",
+      "steps": [
+        "Toàn cảnh siêu vi neuron",
+        "Thân neuron (Soma) & nhân",
+        "Sợi nhánh nhận tín hiệu",
+        "Sợi trục & bao Myelin",
+        "Eo Ranvier & dẫn truyền nhảy cóc",
+        "Cúc synapse & chất truyền tin",
+        "Kiểm tra · Cung phản xạ"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/cell-neuron-step.html",
+        "cover": "covers/cell-neuron-step.png",
+        "textbook": [
+          "Sinh học 11 (KNTT) · Chương 2 Cảm ứng ở sinh vật · Bài 17 Cảm ứng ở động vật",
+          "Sinh học 11 (Cánh Diều) · Chủ đề 2 Cảm ứng ở sinh vật · Bài 13 Cảm ứng ở động vật"
+        ]
+      },
+      "launch": {
+        "path": "/courses/cell-neuron-step.html",
+        "route": "/legacy/cell-neuron-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "verified-curriculum",
+        "sourceBooks": ["sinh-hoc-11"],
+        "note": "Sinh học 11 (KNTT) Chương 2 Bài 17 Cảm ứng ở động vật. Mô hình GLB tương tác."
+      }
+    },
+    {
+      "id": "legacy:cell-whiteblood-step",
+      "slug": "cell-whiteblood-step",
+      "title": "Tế bào bạch cầu và cơ chế thực bào miễn dịch",
+      "subject": "bio",
+      "type": "Cấu trúc 3D & Bào quan",
+      "question": "Khi vi khuẩn xâm nhập vào mô cơ thể, tế bào bạch cầu thay đổi hình dạng ra sao để luồn lách qua thành mạch và nuốt trọn kẻ thù?",
+      "steps": [
+        "Các loại bạch cầu",
+        "Nhân phân thùy linh hoạt",
+        "Lysosome & enzyme thủy phân",
+        "Màng tế bào vươn chân giả",
+        "Thực bào & tiêu hóa vi khuẩn",
+        "Trình diện kháng nguyên",
+        "Kiểm tra ca trực miễn dịch"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/cell-whiteblood-step.html",
+        "cover": "covers/cell-white-blood-step.png",
+        "textbook": [
+          "Sinh học 11 (KNTT) · Chương 1 Trao đổi chất và năng lượng · Bài 12 Miễn dịch ở động vật",
+          "Sinh học 11 (Cánh Diều) · Chủ đề 1 · Bài 11 Miễn dịch ở người và động vật"
+        ]
+      },
+      "launch": {
+        "path": "/courses/cell-whiteblood-step.html",
+        "route": "/legacy/cell-whiteblood-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "verified-curriculum",
+        "sourceBooks": ["sinh-hoc-11"],
+        "note": "Sinh học 11 (KNTT) Chương 1 Bài 12 Miễn dịch ở động vật. Mô hình GLB tương tác."
+      }
+    },
+    {
+      "id": "legacy:cell-muscle-step",
+      "slug": "cell-muscle-step",
+      "title": "Cấu trúc sợi cơ và cơ chế trượt tơ co cơ",
+      "subject": "bio",
+      "type": "Cấu trúc 3D & Bào quan",
+      "question": "Sức mạnh kéo của cơ bắp xuất phát từ cấu trúc phân tử nào, và làm thế nào hàng triệu vi sợi actin và myosin trượt lên nhau để sinh lực cơ học?",
+      "steps": [
+        "Bó cơ & sợi cơ đa nhân",
+        "Màng sợi cơ & hệ thống ống T",
+        "Mạng lưới trơn & ion Canxi",
+        "Vi sợi Actin & Myosin",
+        "Đơn vị co cơ Sarcomere & vạch Z",
+        "Chu trình cầu nối & trượt tơ cơ",
+        "Kiểm tra · Cơ chế co cơ"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/cell-muscle-step.html",
+        "cover": "covers/cell-muscle-step.png",
+        "textbook": [
+          "Sinh học 11 (KNTT) · Chương 2 Cảm ứng ở sinh vật · Bài 17 Cảm ứng ở động vật",
+          "Sinh học 10 (KNTT) · Chương 2 Cấu trúc tế bào · Bài 8 Tế bào nhân thực"
+        ]
+      },
+      "launch": {
+        "path": "/courses/cell-muscle-step.html",
+        "route": "/legacy/cell-muscle-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "verified-curriculum",
+        "sourceBooks": ["sinh-hoc-11"],
+        "note": "Sinh học 11 (KNTT) Bài 17. Mô hình 3D thủ tục: sarcomere, tơ actin/myosin."
+      }
+    },
+    {
+      "id": "legacy:cell-epithelial-step",
+      "slug": "cell-epithelial-step",
+      "title": "Tế bào biểu mô: Cấu trúc phân cực và chức năng hàng rào",
+      "subject": "bio",
+      "type": "Cấu trúc 3D & Bào quan",
+      "question": "Bằng cách nào các tế bào biểu mô ruột vừa tạo nên một bức tường rào ngăn chặn độc chất rò rỉ, vừa hấp thu tối đa dưỡng chất nuôi cơ thể?",
+      "steps": [
+        "Tính phân cực đỉnh – đáy",
+        "Vi nhung mao (Microvilli)",
+        "Mối nối vòng bịt (Tight junction)",
+        "Mối nối bám & Desmosome",
+        "Màng đáy nâng đỡ",
+        "Hấp thu dưỡng chất qua biểu mô",
+        "Kiểm tra · Hàng rào bảo vệ"
+      ],
+      "source": {
+        "catalogFile": "catalog.json",
+        "htmlFile": "courses/cell-epithelial-step.html",
+        "cover": "covers/cell-epithelial-step.png",
+        "textbook": [
+          "Sinh học 11 (KNTT) · Chương 1 Trao đổi chất và năng lượng · Bài 8 Dinh dưỡng và tiêu hóa ở động vật",
+          "Sinh học 10 (KNTT) · Chương 2 Cấu trúc tế bào · Bài 8 Tế bào nhân thực"
+        ]
+      },
+      "launch": {
+        "path": "/courses/cell-epithelial-step.html",
+        "route": "/legacy/cell-epithelial-step",
+        "mode": "iframe"
+      },
+      "curriculum": {
+        "status": "verified-curriculum",
+        "sourceBooks": ["sinh-hoc-11", "sinh-hoc-10"],
+        "note": "Sinh học 11 Bài 8 Tiêu hóa và Sinh học 10 Bài 8 Tế bào nhân thực. Mô hình 3D thủ tục."
+      }
+    }
+  ]
+}

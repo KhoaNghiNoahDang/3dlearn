@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-31",
+  "purpose": "High-confidence additive Biology naming overlay for Phase 2 and cell lessons",
+  "catalogMutation": false,
+  "applyMode": "overlay-only",
+  "confidencePolicy": {
+    "accepted": "high",
+    "basis": [
+      "The official title is visible in the rendered Kết nối tri thức table of contents evidence.",
+      "The concept matches the existing course title, steps, and local cell/phase implementation.",
+      "No Cánh Diều page number is inferred from the Kết nối tri thức source."
+    ],
+    "ocrCaveat": "EasyOCR weights were unavailable; these are high-confidence manual visual transcriptions pending a future EasyOCR rerun."
+  },
+  "overwrites": [
+    {
+      "id": "phase2-bio-mitosis",
+      "displayName": "Chu kì tế bào và nguyên phân",
+      "grade": 10,
+      "officialRelatedPractice": "Thực hành: Làm và quan sát tiêu bản quá trình nguyên phân và giảm phân",
+      "existingCourseSlugs": ["mitosis-step"],
+      "phase2Path": "/courses/phase2-bio-mitosis.html",
+      "viewerPath": "/courses/cell-viewer.html?phase=mitosis",
+      "confidence": "high",
+      "sourceEvidence": "docs/ocr/biology-final/sinh10-toc.png",
+      "coverageBoundary": "The implementation covers mitosis only; meiosis remains separate and missing."
+    },
+    {
+      "id": "phase2-bio-osmosis",
+      "displayName": "Trao đổi chất qua màng tế bào",
+      "grade": 10,
+      "officialRelatedPractice": "Thực hành: Thí nghiệm co và phản co nguyên sinh",
+      "existingCourseSlugs": ["transport-step", "plasmolysis-step"],
+      "phase2Path": "/courses/phase2-bio-osmosis.html",
+      "viewerPath": "/courses/cell-viewer.html?phase=osmosis",
+      "confidence": "high",
+      "sourceEvidence": "docs/ocr/biology-final/sinh10-toc.png",
+      "coverageBoundary": "The current state is qualitative and does not claim numeric water potential or concentration measurement."
+    },
+    {
+      "id": "cell-plant-step",
+      "displayName": "Cấu trúc tế bào thực vật",
+      "grade": 10,
+      "officialReference": "Tế bào nhân thực",
+      "existingCourseSlugs": ["cell-plant-step"],
+      "viewerPath": "/courses/cell-viewer.html?cell=plant",
+      "asset": "cell/public/models/plant-cell-first001.glb",
+      "confidence": "high",
+      "sourceEvidence": "docs/ocr/biology-final/sinh10-toc.png"
+    },
+    {
+      "id": "cell-animal-step",
+      "displayName": "Cấu trúc tế bào động vật",
+      "grade": 10,
+      "officialReference": "Tế bào nhân thực",
+      "existingCourseSlugs": ["cell-animal-step"],
+      "viewerPath": "/courses/cell-viewer.html?cell=animal",
+      "asset": "cell/public/models/animal-cell-nih.glb",
+      "confidence": "high",
+      "sourceEvidence": "docs/ocr/biology-final/sinh10-toc.png"
+    },
+    {
+      "id": "cell-bacteria-step",
+      "displayName": "Cấu trúc tế bào vi khuẩn (Tế bào nhân sơ)",
+      "grade": 10,
+      "officialReference": "Tế bào nhân sơ",
+      "existingCourseSlugs": ["cell-bacteria-step"],
+      "viewerPath": "/courses/cell-viewer.html?cell=bacteria",
+      "asset": "cell/public/models/bacteria-wall-nih.glb",
+      "confidence": "high",
+      "sourceEvidence": "docs/ocr/biology-final/sinh10-toc.png"
+    },
+    {
+      "id": "cell-neuron-step",
+      "displayName": "Cấu trúc tế bào thần kinh (Neuron)",
+      "grade": 11,
+      "officialReference": "Cảm ứng ở động vật",
+      "existingCourseSlugs": ["cell-neuron-step", "impulse-step"],
+      "viewerPath": "/courses/cell-viewer.html?cell=neuron",
+      "asset": "cell/public/models/neuron-nih.glb",
+      "confidence": "high",
+      "sourceEvidence": "docs/ocr/biology-final/sinh11-toc.png",
+      "coverageBoundary": "The GLB covers structure; impulse process remains owned by impulse-step."
+    },
+    {
+      "id": "cell-whiteblood-step",
+      "displayName": "Tế bào bạch cầu và cơ chế thực bào miễn dịch",
+      "grade": 11,
+      "officialReference": "Miễn dịch ở người và động vật",
+      "existingCourseSlugs": ["cell-whiteblood-step"],
+      "viewerPath": "/courses/cell-viewer.html?cell=whiteBlood",
+      "asset": "cell/public/models/white-blood-cell-user.glb",
+      "confidence": "high",
+      "sourceEvidence": "docs/ocr/biology-final/sinh11-toc.png",
+      "coverageBoundary": "Structure and phagocytosis context are covered; full immune response is not claimed."
+    },
+    {
+      "id": "cell-muscle-step",
+      "displayName": "Cấu trúc sợi cơ và cơ chế trượt tơ co cơ",
+      "grade": 11,
+      "officialReference": "Cảm ứng ở động vật",
+      "existingCourseSlugs": ["cell-muscle-step"],
+      "viewerPath": "/courses/cell-viewer.html?cell=muscle",
+      "asset": "procedural:cell/src/components/CellScene.tsx#MuscleModel",
+      "confidence": "high",
+      "sourceEvidence": "docs/ocr/biology-final/sinh11-toc.png",
+      "coverageBoundary": "Procedural sarcomere context exists; actin-myosin animation needs a separate verified pass."
+    },
+    {
+      "id": "cell-epithelial-step",
+      "displayName": "Tế bào biểu mô: Cấu trúc phân cực và chức năng hàng rào",
+      "grade": 11,
+      "officialReference": "Dinh dưỡng và tiêu hoá ở động vật",
+      "existingCourseSlugs": ["cell-epithelial-step"],
+      "viewerPath": "/courses/cell-viewer.html?cell=epithelial",
+      "asset": "procedural:cell/src/components/CellScene.tsx#EpithelialModel",
+      "confidence": "high",
+      "sourceEvidence": "docs/ocr/biology-final/sinh11-toc.png",
+      "coverageBoundary": "Microvilli/junction structure exists; full absorption process is not claimed."
+    }
+  ],
+  "excludedFromOverwrite": [
+    {"concept": "giam-phan", "reason": "No implemented meiosis state machine or dedicated viewer phase."},
+    {"concept": "sinh12", "reason": "EasyOCR was not completed and no Biology 12 catalog implementation exists."},
+    {"concept": "enzyme", "reason": "The official title is high-confidence, but the existing procedural lesson is not a cell-viewer implementation."}
+  ],
+  "validation": {
+    "catalogChanged": false,
+    "modelsDeleted": false,
+    "externalAssetsAdded": false,
+    "phaseViewerChecked": true
+  }
+}

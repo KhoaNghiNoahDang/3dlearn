@@ -1,0 +1,147 @@
+{
+  "schemaVersion": "0.1.0",
+  "phase": "phase2",
+  "subject": "geo",
+  "sourceBook": {
+    "id": "dia-li-10-ket-noi-tri-thuc",
+    "title": "Địa lí 10 – Kết nối tri thức với cuộc sống",
+    "file": "SGK/SGK Địa lí 10-mau.pdf",
+    "lessons": [
+      {
+        "lesson": 3,
+        "title": "Sử dụng bản đồ trong học tập và đời sống, một số ứng dụng của GPS và bản đồ số trong đời sống",
+        "printedPage": 12
+      },
+      {
+        "lesson": 8,
+        "title": "Thực hành: Sự phân bố các vành đai động đất, núi lửa",
+        "printedPage": 27
+      },
+      {
+        "lesson": 13,
+        "title": "Thực hành: Phân tích chế độ nước của sông Hồng",
+        "printedPage": 44
+      }
+    ]
+  },
+  "catalogMutation": false,
+  "status": "phase2-draft",
+  "bridge": {
+    "protocol": "3dlearn:legacy-bridge",
+    "version": 1,
+    "providedBy": "scripts/bridge/legacy-bridge.js",
+    "stepSelector": "[data-step-index]",
+    "commands": ["setMode", "reset", "setStep", "requestState"],
+    "events": ["ready", "stepChanged", "modeChanged", "state", "ack"]
+  },
+  "simulations": [
+    {
+      "id": "phase2-geo-gps-step",
+      "courseFile": "courses/phase2-geo-gps-step.html",
+      "title": "GPS và bản đồ số",
+      "priority": "P0",
+      "sgkLesson": 3,
+      "type": "procedural-threejs",
+      "steps": [
+        "Mở bản đồ số",
+        "Bật lớp dữ liệu",
+        "Ba vệ tinh định vị",
+        "Giao nhau khoảng cách",
+        "Đo và dẫn đường",
+        "Tự kiểm tra"
+      ],
+      "interactions": [
+        "OrbitControls xoay/pan/zoom",
+        "bật tắt lưới kinh - vĩ tuyến",
+        "điều chỉnh mật độ điểm dữ liệu",
+        "điều chỉnh số vệ tinh quan sát",
+        "chuyển bước bằng nút, phím mũi tên hoặc bridge"
+      ],
+      "illustrationCoverage": [
+        "quả địa cầu và lưới kinh - vĩ tuyến",
+        "lớp điểm địa danh",
+        "vệ tinh và đường truyền tín hiệu",
+        "giao nhau các khoảng cách",
+        "tuyến Hà Nội – Đà Nẵng – Thành phố Hồ Chí Minh"
+      ]
+    },
+    {
+      "id": "phase2-geo-earthquake-volcano-step",
+      "courseFile": "courses/phase2-geo-earthquake-volcano-step.html",
+      "title": "Vành đai động đất và núi lửa",
+      "priority": "P0",
+      "sgkLesson": 8,
+      "type": "procedural-threejs",
+      "steps": [
+        "Quan sát toàn cầu",
+        "Ranh giới mảng",
+        "Kiểu chuyển động",
+        "Động đất theo độ sâu",
+        "Vành đai núi lửa",
+        "Tự kiểm tra"
+      ],
+      "interactions": [
+        "OrbitControls xoay/pan/zoom",
+        "bật tắt ranh giới mảng",
+        "lọc động đất theo độ sâu",
+        "bật tắt lớp núi lửa",
+        "chuyển bước bằng nút, phím mũi tên hoặc bridge"
+      ],
+      "illustrationCoverage": [
+        "quả địa cầu và các dải ranh giới mảng",
+        "mũi tên kiểu chuyển động tương đối",
+        "điểm động đất phân theo độ sâu",
+        "nón núi lửa procedural",
+        "vành đai Thái Bình Dương và các cụm hoạt động"
+      ]
+    },
+    {
+      "id": "phase2-geo-red-river-regime-step",
+      "courseFile": "courses/phase2-geo-red-river-regime-step.html",
+      "title": "Thực hành: Phân tích chế độ nước của sông Hồng",
+      "priority": "P0",
+      "sgkLesson": 13,
+      "type": "procedural-threejs-data-chart",
+      "steps": [
+        "Đọc bảng số liệu",
+        "Tính trung bình",
+        "Xác định mùa lũ",
+        "Xác định mùa cạn",
+        "Đọc biểu đồ",
+        "Tự kiểm tra"
+      ],
+      "interactions": [
+        "OrbitControls xoay/pan/zoom",
+        "chọn tháng để đọc lưu lượng",
+        "bật tắt đường trung bình",
+        "bật tắt lớp màu mùa lũ/mùa cạn",
+        "bật tắt dòng chảy procedural",
+        "chuyển bước bằng nút, phím mũi tên hoặc bridge"
+      ],
+      "data": {
+        "station": "Trạm Hà Nội",
+        "unit": "m³/s",
+        "monthlyMeanDischarge": [1455, 1343, 1215, 1522, 2403, 4214, 7300, 7266, 5181, 3507, 2240, 1517],
+        "annualMean": 3263.58,
+        "floodMonths": [6, 7, 8, 9, 10],
+        "dryMonths": [11, 12, 1, 2, 3, 4, 5]
+      },
+      "illustrationCoverage": [
+        "mô hình lưu vực và dòng sông Hồng procedural",
+        "biểu đồ cột 12 tháng theo số liệu Bảng 13",
+        "đường lưu lượng trung bình năm",
+        "tô phân kỳ mùa lũ VI–X và mùa cạn XI–V",
+        "chọn tháng và đọc trị số trực tiếp"
+      ]
+    }
+  ],
+  "verification": {
+    "sourceStatus": "easyocr-selected-pages-plus-manual-check",
+    "scopeNote": "Ba mô phỏng là bản procedural minh họa theo mục tiêu bài học; mô phỏng sông Hồng dùng số liệu Bảng 13 được EasyOCR đọc từ trang PDF 45, không tuyên bố sao chép hoặc thay thế hình SGK.",
+    "nextChecks": [
+      "kiểm tra trực tiếp ba route dưới Vite",
+      "xác nhận ready/stepChanged khi iframe chạy trong LessonShell",
+      "đối chiếu toàn bộ hình và thuật ngữ với bản SGK đầy đủ trước khi đưa vào catalog"
+    ]
+  }
+}

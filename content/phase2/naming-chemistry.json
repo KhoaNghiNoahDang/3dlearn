@@ -1,0 +1,355 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-10-31",
+  "purpose": "OCR-backed chemistry naming and SGK mapping for existing chemistry courses. Additive only; catalog.json and content/course-mapping.json are unchanged.",
+  "series": "Kết nối tri thức với cuộc sống",
+  "sources": [
+    {
+      "bookId": "hoa-hoc-11",
+      "title": "Hóa học 11",
+      "file": "SGK/SGK Hóa học 11-mau.pdf",
+      "pdfPagesUsed": [4, 6, 7],
+      "printedPagesUsed": [2, 4, 5],
+      "evidence": "OCR of the guide and table-of-contents pages; the table of contents provides lesson start pages 6–155."
+    },
+    {
+      "bookId": "hoa-hoc-12",
+      "title": "Hóa học 12",
+      "file": "SGK/SGK Hóa học 12-mau.pdf",
+      "pdfPagesUsed": [4, 6, 7],
+      "printedPagesUsed": [2, 4, 5],
+      "evidence": "OCR of the guide and table-of-contents pages; the table of contents provides lesson start pages 6–142."
+    },
+    {
+      "bookId": "hoa-hoc-10",
+      "title": "Hóa học 10",
+      "file": null,
+      "availableInWorkspace": false,
+      "evidence": "No SGK Hóa học 10 PDF was found in SGK/ during this audit."
+    }
+  ],
+  "fieldNotes": {
+    "displayTitle": "Normalized UI/activity title; not claimed to be the official lesson title.",
+    "textbookTitle": "Official lesson title copied from the visible table of contents when the course can be mapped; an array means more than one related lesson and is deliberately not collapsed into a single guessed lesson.",
+    "chapter": "Official chapter label from the table of contents; an array means the activity crosses chapters.",
+    "lesson": "Official lesson label from the table of contents; an array means multiple related lessons.",
+    "page": "Lesson start page from the table of contents, not an asserted page for the exact experiment. pdf is the physical PDF page index and printed is the page number printed in the book. null means no safe page mapping.",
+    "confidence": "high = direct lesson/topic alignment and visible table-of-contents evidence; medium = related lesson(s) but not a one-to-one lesson; low = only a topic relation or a candidate source; unverified = no safe Hóa 11/12 mapping.",
+    "noGuessing": "A missing Hóa 10 source or an activity absent from the Hóa 11/12 table of contents is left unmapped rather than inferred."
+  },
+  "mappings": [
+    {
+      "slug": "haber-step",
+      "legacyTitle": "Tổng hợp ammonia",
+      "displayTitle": "Quy trình Haber-Bosch: tổng hợp ammonia",
+      "textbookTitle": "Ammonia - Muối ammonium",
+      "bookId": "hoa-hoc-11",
+      "chapter": "Chương 2. Nitrogen - sulfur",
+      "lesson": "Bài 5. Ammonia - Muối ammonium",
+      "page": { "pdf": 35, "printed": 33, "basis": "toc-lesson-start" },
+      "confidence": "high",
+      "note": "The course models the industrial Haber-Bosch context; it is kept distinct from the laboratory ammonia course even though both sit in Bài 5."
+    },
+    {
+      "slug": "rate-step",
+      "legacyTitle": "Các yếu tố ảnh hưởng đến tốc độ phản ứng hoá học",
+      "displayTitle": "Các yếu tố ảnh hưởng đến tốc độ phản ứng hóa học",
+      "textbookTitle": null,
+      "bookId": null,
+      "chapter": null,
+      "lesson": null,
+      "page": null,
+      "confidence": "unverified",
+      "note": "No one-to-one lesson was found in the Hóa học 11/12 tables of contents. The existing candidate points to a missing Hóa học 10 or another source; Hóa học 10 is not present in SGK/."
+    },
+    {
+      "slug": "ball-stick-step",
+      "legacyTitle": "Lắp mô hình rỗng (quả cầu – que) tìm hiểu cấu trúc phân tử hợp chất hữu cơ",
+      "displayTitle": "Lắp mô hình phân tử hợp chất hữu cơ",
+      "textbookTitle": ["Hợp chất hữu cơ và hóa học hữu cơ", "Cấu tạo hóa học hợp chất hữu cơ"],
+      "bookId": "hoa-hoc-11",
+      "chapter": "Chương 3. Đại cương về hóa học hữu cơ",
+      "lesson": ["Bài 10. Hợp chất hữu cơ và hóa học hữu cơ", "Bài 13. Cấu tạo hóa học hợp chất hữu cơ"],
+      "page": [
+        { "pdf": 59, "printed": 57, "basis": "toc-lesson-start" },
+        { "pdf": 76, "printed": 74, "basis": "toc-lesson-start" }
+      ],
+      "confidence": "medium",
+      "note": "The table of contents supports both the organic-chemistry introduction and chemical-structure lessons, but the available scan does not prove which one is the single primary activity location."
+    },
+    {
+      "slug": "titration-step",
+      "legacyTitle": "Chuẩn độ acid mạnh bằng base mạnh",
+      "displayTitle": "Chuẩn độ acid-base: xác định điểm tương đương",
+      "textbookTitle": "Cân bằng trong dung dịch nước",
+      "bookId": "hoa-hoc-11",
+      "chapter": "Chương 1. Cân bằng hóa học",
+      "lesson": "Bài 2. Cân bằng trong dung dịch nước",
+      "page": { "pdf": 18, "printed": 16, "basis": "toc-lesson-start" },
+      "confidence": "high",
+      "note": "Mapped to the water-solution equilibrium lesson; the experiment is an activity within the lesson, not a separate official lesson title."
+    },
+    {
+      "slug": "chlorine-step",
+      "legacyTitle": "Điều chế và tính chất của chlorine",
+      "displayTitle": "Điều chế và tính chất của chlorine",
+      "textbookTitle": null,
+      "bookId": null,
+      "chapter": null,
+      "lesson": null,
+      "page": null,
+      "confidence": "unverified",
+      "note": "No chlorine lesson appears in the checked Hóa học 11/12 table of contents. The existing candidate likely needs Hóa học 10 or another textbook; Hóa học 10 source is missing."
+    },
+    {
+      "slug": "blast-furnace-step",
+      "legacyTitle": "Luyện gang lò cao",
+      "displayTitle": "Luyện gang trong lò cao",
+      "textbookTitle": "Kim loại trong tự nhiên và phương pháp tách kim loại",
+      "bookId": "hoa-hoc-12",
+      "chapter": "Chương 6. Đại cương về kim loại",
+      "lesson": "Bài 20. Kim loại trong tự nhiên và phương pháp tách kim loại",
+      "page": { "pdf": 96, "printed": 94, "basis": "toc-lesson-start" },
+      "confidence": "high",
+      "note": "The lesson title is the official SGK anchor; 'luyện gang trong lò cao' is the normalized experiment/process title."
+    },
+    {
+      "slug": "smelting-step",
+      "legacyTitle": "Luyện kim: điện phân muối nóng chảy + nhiệt nhôm",
+      "displayTitle": "Luyện kim: điện phân nóng chảy và nhiệt luyện",
+      "textbookTitle": ["Điện phân", "Kim loại trong tự nhiên và phương pháp tách kim loại"],
+      "bookId": ["hoa-hoc-12", "hoa-hoc-12"],
+      "chapter": ["Chương 5. Pin điện và điện phân", "Chương 6. Đại cương về kim loại"],
+      "lesson": ["Bài 16. Điện phân", "Bài 20. Kim loại trong tự nhiên và phương pháp tách kim loại"],
+      "page": [
+        { "pdf": 80, "printed": 78, "basis": "toc-lesson-start" },
+        { "pdf": 96, "printed": 94, "basis": "toc-lesson-start" }
+      ],
+      "confidence": "high",
+      "note": "This is intentionally a cross-lesson process mapping; it must not be presented as one official lesson."
+    },
+    {
+      "slug": "coal-gas-step",
+      "legacyTitle": "Sử dụng tổng hợp than đá: lấy khí hoá than làm mạch chính",
+      "displayTitle": "Khí hóa than và sử dụng tổng hợp than đá",
+      "textbookTitle": null,
+      "bookId": null,
+      "chapter": null,
+      "lesson": null,
+      "page": null,
+      "confidence": "unverified",
+      "note": "No matching lesson title was found in the checked Hóa học 12 table of contents. Keep as an extension/industry topic until the exact source book is supplied."
+    },
+    {
+      "slug": "sulfuric-step",
+      "legacyTitle": "Điều chế H₂SO₄ (PP tiếp xúc)",
+      "displayTitle": "Sản xuất sulfuric acid theo phương pháp tiếp xúc",
+      "textbookTitle": "Sulfuric acid và muối sulfate",
+      "bookId": "hoa-hoc-11",
+      "chapter": "Chương 2. Nitrogen - sulfur",
+      "lesson": "Bài 8. Sulfuric acid và muối sulfate",
+      "page": { "pdf": 50, "printed": 48, "basis": "toc-lesson-start" },
+      "confidence": "high",
+      "note": "Normalized from the process name; the official lesson title is the SGK anchor."
+    },
+    {
+      "slug": "hydrolysis-step",
+      "legacyTitle": "Sự thuỷ phân của muối và ứng dụng",
+      "displayTitle": "Sự thủy phân của muối",
+      "textbookTitle": "Cân bằng trong dung dịch nước",
+      "bookId": "hoa-hoc-11",
+      "chapter": "Chương 1. Cân bằng hóa học",
+      "lesson": "Bài 2. Cân bằng trong dung dịch nước",
+      "page": { "pdf": 18, "printed": 16, "basis": "toc-lesson-start" },
+      "confidence": "high",
+      "note": "Keep separate from conductivity and acid-base titration as three different activities within the water-solution equilibrium strand."
+    },
+    {
+      "slug": "cement-step",
+      "legacyTitle": "Sản xuất xi măng",
+      "displayTitle": "Sản xuất xi măng",
+      "textbookTitle": null,
+      "bookId": null,
+      "chapter": null,
+      "lesson": null,
+      "page": null,
+      "confidence": "unverified",
+      "note": "No matching lesson title was found in the checked Hóa học 11/12 tables of contents. Do not attach it to Bài 20 without page-level evidence."
+    },
+    {
+      "slug": "iron-step",
+      "legacyTitle": "Sắt và hợp chất: chuyển hoá giữa các số oxi hoá của sắt",
+      "displayTitle": "Sắt và hợp chất của sắt",
+      "textbookTitle": ["Tính chất vật lí và tính chất hóa học của kim loại", "Kim loại trong tự nhiên và phương pháp tách kim loại", "Đại cương về kim loại chuyển tiếp dãy thứ nhất"],
+      "bookId": "hoa-hoc-12",
+      "chapter": ["Chương 6. Đại cương về kim loại", "Chương 8. Sơ lược về dãy kim loại chuyển tiếp thứ nhất và phức chất"],
+      "lesson": ["Bài 19. Tính chất vật lí và tính chất hóa học của kim loại", "Bài 20. Kim loại trong tự nhiên và phương pháp tách kim loại", "Bài 27. Đại cương về kim loại chuyển tiếp dãy thứ nhất"],
+      "page": [
+        { "pdf": 91, "printed": 89, "basis": "toc-lesson-start" },
+        { "pdf": 96, "printed": 94, "basis": "toc-lesson-start" },
+        { "pdf": 130, "printed": 128, "basis": "toc-lesson-start" }
+      ],
+      "confidence": "medium",
+      "note": "The scan supports several related SGK anchors but not a single official lesson named 'Sắt và hợp chất'; keep the mapping multi-lesson until page-level review."
+    },
+    {
+      "slug": "electrolysis-step",
+      "legacyTitle": "Nguyên lý điện phân: điện phân dung dịch copper(II) chloride và dung dịch muối ăn bão hoà",
+      "displayTitle": "Điện phân dung dịch và ứng dụng",
+      "textbookTitle": "Điện phân",
+      "bookId": "hoa-hoc-12",
+      "chapter": "Chương 5. Pin điện và điện phân",
+      "lesson": "Bài 16. Điện phân",
+      "page": { "pdf": 80, "printed": 78, "basis": "toc-lesson-start" },
+      "confidence": "high",
+      "note": "The copper(II) chloride and brine demonstrations are kept in the lesson description, not in the short display title."
+    },
+    {
+      "slug": "ammonia-step",
+      "legacyTitle": "Điều chế và tính chất của ammonia (gồm thí nghiệm “đài phun”)",
+      "displayTitle": "Ammonia và muối ammonium: điều chế và tính chất",
+      "textbookTitle": "Ammonia - Muối ammonium",
+      "bookId": "hoa-hoc-11",
+      "chapter": "Chương 2. Nitrogen - sulfur",
+      "lesson": "Bài 5. Ammonia - Muối ammonium",
+      "page": { "pdf": 35, "printed": 33, "basis": "toc-lesson-start" },
+      "confidence": "high",
+      "note": "The fountain experiment belongs to the laboratory/ammonia activity; it is kept distinct from the Haber-Bosch process course."
+    },
+    {
+      "slug": "equilibrium-step",
+      "legacyTitle": "Tìm hiểu các yếu tố ảnh hưởng đến chuyển dịch cân bằng hoá học",
+      "displayTitle": "Các yếu tố ảnh hưởng đến chuyển dịch cân bằng hóa học",
+      "textbookTitle": "Khái niệm về cân bằng hóa học",
+      "bookId": "hoa-hoc-11",
+      "chapter": "Chương 1. Cân bằng hóa học",
+      "lesson": "Bài 1. Khái niệm về cân bằng hóa học",
+      "page": { "pdf": 8, "printed": 6, "basis": "toc-lesson-start" },
+      "confidence": "high",
+      "note": "The table of contents and the lesson opening identify the equilibrium-shift experiments as part of Bài 1."
+    },
+    {
+      "slug": "flame-step",
+      "legacyTitle": "Thử màu ngọn lửa và quang phổ nguyên tử",
+      "displayTitle": "Thử màu ngọn lửa và quang phổ nguyên tử",
+      "textbookTitle": null,
+      "bookId": null,
+      "chapter": null,
+      "lesson": null,
+      "page": null,
+      "confidence": "unverified",
+      "note": "The checked Hóa học 11/12 tables of contents do not contain this combined activity. A Hóa học 10 source may be required, but no Hóa học 10 PDF exists in SGK/."
+    },
+    {
+      "slug": "galvanic-step",
+      "legacyTitle": "Pin điện hoá: từ một dung dịch đến hai dung dịch",
+      "displayTitle": "Pin điện hóa và nguồn điện hóa học",
+      "textbookTitle": "Thế điện cực và nguồn điện hóa học",
+      "bookId": "hoa-hoc-12",
+      "chapter": "Chương 5. Pin điện và điện phân",
+      "lesson": "Bài 15. Thế điện cực và nguồn điện hóa học",
+      "page": { "pdf": 69, "printed": 67, "basis": "toc-lesson-start" },
+      "confidence": "high",
+      "note": "The one-solution-to-two-solution sequence is normalized under the official electrochemical-source lesson."
+    },
+    {
+      "slug": "conductivity-step",
+      "legacyTitle": "Sự điện li của chất điện li, tính dẫn điện của dung dịch và bản chất của phản ứng ion",
+      "displayTitle": "Chất điện li và tính dẫn điện của dung dịch",
+      "textbookTitle": "Cân bằng trong dung dịch nước",
+      "bookId": "hoa-hoc-11",
+      "chapter": "Chương 1. Cân bằng hóa học",
+      "lesson": "Bài 2. Cân bằng trong dung dịch nước",
+      "page": { "pdf": 18, "printed": 16, "basis": "toc-lesson-start" },
+      "confidence": "high",
+      "note": "The short title avoids conflating conductivity with salt hydrolysis or acid-base titration."
+    },
+    {
+      "slug": "nitric-lab-step",
+      "legacyTitle": "Tính chất của nitric acid đặc, loãng và sự chuyển hoá các oxide của nitrogen",
+      "displayTitle": "Nitrogen oxide và nitric acid",
+      "textbookTitle": "Một số hợp chất của nitrogen với oxygen",
+      "bookId": "hoa-hoc-11",
+      "chapter": "Chương 2. Nitrogen - sulfur",
+      "lesson": "Bài 6. Một số hợp chất của nitrogen với oxygen",
+      "page": { "pdf": 40, "printed": 38, "basis": "toc-lesson-start" },
+      "confidence": "high",
+      "note": "The display title is shortened; the nitric-acid and nitrogen-oxide details remain in the lesson content."
+    },
+    {
+      "slug": "bromine-step",
+      "legacyTitle": "Tách bromine từ nước biển: phương pháp thổi khí",
+      "displayTitle": "Tách bromine từ nước biển",
+      "textbookTitle": null,
+      "bookId": null,
+      "chapter": null,
+      "lesson": null,
+      "page": null,
+      "confidence": "unverified",
+      "note": "No matching bromine lesson appears in the checked Hóa học 11/12 tables of contents. Do not infer a Hóa học 10 mapping without the missing source PDF."
+    },
+    {
+      "slug": "sodium-step",
+      "legacyTitle": "Tính chất của kim loại sodium (gồm cách dập cháy sodium)",
+      "displayTitle": "Nguyên tố nhóm IA: sodium và hợp chất",
+      "textbookTitle": "Nguyên tố nhóm IA",
+      "bookId": "hoa-hoc-12",
+      "chapter": "Chương 7. Nguyên tố nhóm IA và nhóm IIA",
+      "lesson": "Bài 24. Nguyên tố nhóm IA",
+      "page": { "pdf": 110, "printed": 108, "basis": "toc-lesson-start" },
+      "confidence": "high",
+      "note": "Corrected from the legacy water-sea/sodium-chlorine chapter reference to the Hóa học 12 Group IA lesson."
+    },
+    {
+      "slug": "sulfur-step",
+      "legacyTitle": "Tính chất của sulfur, sulfur dioxide, sulfuric acid đặc và sự chuyển hoá giữa các chất chứa sulfur có số oxi hoá khác nhau",
+      "displayTitle": "Sulfur, sulfur dioxide và sulfuric acid: tính chất và chuyển hóa",
+      "textbookTitle": ["Sulfur và sulfur dioxide", "Sulfuric acid và muối sulfate"],
+      "bookId": "hoa-hoc-11",
+      "chapter": "Chương 2. Nitrogen - sulfur",
+      "lesson": ["Bài 7. Sulfur và sulfur dioxide", "Bài 8. Sulfuric acid và muối sulfate"],
+      "page": [
+        { "pdf": 44, "printed": 42, "basis": "toc-lesson-start" },
+        { "pdf": 50, "printed": 48, "basis": "toc-lesson-start" }
+      ],
+      "confidence": "high",
+      "note": "The course crosses the adjacent sulfur and sulfuric-acid lessons; it is not collapsed into Bài 8 alone."
+    },
+    {
+      "slug": "corrosion-step",
+      "legacyTitle": "Ăn mòn hấp thụ oxygen và thiết kế miếng dán giữ nhiệt",
+      "displayTitle": "Ăn mòn kim loại và thiết kế miếng dán giữ nhiệt",
+      "textbookTitle": "Sự ăn mòn kim loại",
+      "bookId": "hoa-hoc-12",
+      "chapter": "Chương 6. Đại cương về kim loại",
+      "lesson": "Bài 22. Sự ăn mòn kim loại",
+      "page": { "pdf": 104, "printed": 102, "basis": "toc-lesson-start" },
+      "confidence": "high",
+      "note": "The heat-pack design is treated as an extension activity under the corrosion lesson."
+    },
+    {
+      "slug": "chlor-alkali-step",
+      "legacyTitle": "Công nghiệp chlor-kiềm",
+      "displayTitle": "Điện phân dung dịch NaCl và công nghiệp chlor-kiềm",
+      "textbookTitle": "Điện phân",
+      "bookId": "hoa-hoc-12",
+      "chapter": "Chương 5. Pin điện và điện phân",
+      "lesson": "Bài 16. Điện phân",
+      "page": { "pdf": 80, "printed": 78, "basis": "toc-lesson-start" },
+      "confidence": "high",
+      "note": "Kept separate from chlorine laboratory preparation; this course is an electrolysis/process application."
+    },
+    {
+      "slug": "hou-soda-step",
+      "legacyTitle": "Phương pháp Hầu Đức Bảng",
+      "displayTitle": "Sản xuất sodium carbonate (soda) theo quy trình công nghiệp",
+      "textbookTitle": "Nguyên tố nhóm IA",
+      "bookId": "hoa-hoc-12",
+      "chapter": "Chương 7. Nguyên tố nhóm IA và nhóm IIA",
+      "lesson": "Bài 24. Nguyên tố nhóm IA",
+      "page": { "pdf": 110, "printed": 108, "basis": "toc-lesson-start" },
+      "confidence": "low",
+      "note": "Only a topic-level relation to Group IA is supported here. The exact soda process is not visible in the checked table of contents, so this is not an exact page claim."
+    }
+  ]
+}

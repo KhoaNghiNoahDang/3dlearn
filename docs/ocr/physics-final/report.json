@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "runId": "20261031161955",
+  "generatedAt": "2026-10-31T16:20:19.119Z",
+  "subject": "Vật lí",
+  "readOnly": true,
+  "inputDirectory": "SGK",
+  "outputDirectory": "docs/ocr/physics-final",
+  "tools": {
+    "pdfinfo": "C:\\Users\\Admin\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdfinfo.exe",
+    "pdftoppm": "C:\\Users\\Admin\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.exe",
+    "tesseract": null,
+    "python": "C:\\Program Files\\Python313\\python.exe",
+    "pythonModules": {
+      "fitz": true,
+      "pytesseract": false,
+      "easyocr": false,
+      "rapidocr": false
+    },
+    "ocrAvailable": false
+  },
+  "books": [
+    {
+      "sourceBookId": "vat-li-10",
+      "file": "SGK Vật lí 10-mau.pdf",
+      "path": "SGK/SGK Vật lí 10-mau.pdf",
+      "pageCount": 72,
+      "pdfInfo": {
+        "pages": 72,
+        "error": null
+      },
+      "render": {
+        "available": true,
+        "rendered": true,
+        "error": null
+      },
+      "ocrStatus": "unavailable",
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "sourceBookId": "vat-li-11",
+      "file": "SGK Vật Lí 11-mau.pdf",
+      "path": "SGK/SGK Vật Lí 11-mau.pdf",
+      "pageCount": 61,
+      "pdfInfo": {
+        "pages": 61,
+        "error": null
+      },
+      "render": {
+        "available": true,
+        "rendered": true,
+        "error": null
+      },
+      "ocrStatus": "unavailable",
+      "reviewStatus": "needs-human-review"
+    },
+    {
+      "sourceBookId": "vat-li-12",
+      "file": "SGK Vật lí 12-mau.pdf",
+      "path": "SGK/SGK Vật lí 12-mau.pdf",
+      "pageCount": 65,
+      "pdfInfo": {
+        "pages": 65,
+        "error": null
+      },
+      "render": {
+        "available": true,
+        "rendered": true,
+        "error": null
+      },
+      "ocrStatus": "unavailable",
+      "reviewStatus": "needs-human-review"
+    }
+  ],
+  "mappingFile": "mapping.json",
+  "mappingCount": 10,
+  "namingPatch": null,
+  "notes": [
+    "PDFs are scanned/image-only sources in the current workspace; no official SGK name was inferred.",
+    "The mapping table intentionally leaves chapter, lesson and printedPage null until OCR/human review supplies direct evidence.",
+    "Rendered page indexes are physical PDF pages; printedPage is a separate field and remains null.",
+    "No catalog.json or content/course-mapping.json file was modified."
+  ]
+}

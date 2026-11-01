@@ -1,0 +1,251 @@
+{
+  "schemaVersion": "0.1.0",
+  "generatedAt": "2026-10-31",
+  "purpose": "Write scope dữ liệu SGK Việt Nam và mapping sơ bộ tới 54 mô phỏng hiện có.",
+  "sourceOfTruth": {
+    "catalog": "catalog.json",
+    "simulations": "courses/*.html",
+    "textbooks": "SGK/*.pdf"
+  },
+  "constraints": [
+    "Chỉ là write scope dữ liệu; chưa OCR, chưa gán số trang/chương chính thức.",
+    "Không sửa package/app hoặc courses/*.html.",
+    "Mọi mapping nội dung phải được xác minh lại sau OCR vì PDF là scan ảnh."
+  ],
+  "books": [
+    {
+      "id": "dia-li-10",
+      "subject": "Địa lí",
+      "grade": 10,
+      "title": "SGK Địa lí 10",
+      "file": "SGK Địa lí 10-mau.pdf",
+      "pages": 60,
+      "sourcePath": "SGK/SGK Địa lí 10-mau.pdf",
+      "status": "scan-needs-ocr"
+    },
+    {
+      "id": "hoa-hoc-11",
+      "subject": "Hóa học",
+      "grade": 11,
+      "title": "SGK Hóa học 11",
+      "file": "SGK Hóa học 11-mau.pdf",
+      "pages": 81,
+      "sourcePath": "SGK/SGK Hóa học 11-mau.pdf",
+      "status": "scan-needs-ocr"
+    },
+    {
+      "id": "hoa-hoc-12",
+      "subject": "Hóa học",
+      "grade": 12,
+      "title": "SGK Hóa học 12",
+      "file": "SGK Hóa học 12-mau.pdf",
+      "pages": 75,
+      "sourcePath": "SGK/SGK Hóa học 12-mau.pdf",
+      "status": "scan-needs-ocr"
+    },
+    {
+      "id": "sinh-hoc-10",
+      "subject": "Sinh học",
+      "grade": 10,
+      "title": "SGK Sinh học 10",
+      "file": "SGK Sinh học 10-mau.pdf",
+      "pages": 82,
+      "sourcePath": "SGK/SGK Sinh học 10-mau.pdf",
+      "status": "scan-needs-ocr"
+    },
+    {
+      "id": "sinh-hoc-11",
+      "subject": "Sinh học",
+      "grade": 11,
+      "title": "SGK Sinh học 11",
+      "file": "SGK Sinh học 11-mau.pdf",
+      "pages": 97,
+      "sourcePath": "SGK/SGK Sinh học 11-mau.pdf",
+      "status": "scan-needs-ocr"
+    },
+    {
+      "id": "sinh-hoc-12",
+      "subject": "Sinh học",
+      "grade": 12,
+      "title": "SGK Sinh học 12",
+      "file": "SGK Sinh học 12-mau.pdf",
+      "pages": 86,
+      "sourcePath": "SGK/SGK Sinh học 12-mau.pdf",
+      "status": "scan-needs-ocr"
+    },
+    {
+      "id": "vat-li-10",
+      "subject": "Vật lí",
+      "grade": 10,
+      "title": "SGK Vật lí 10",
+      "file": "SGK Vật lí 10-mau.pdf",
+      "pages": 72,
+      "sourcePath": "SGK/SGK Vật lí 10-mau.pdf",
+      "status": "scan-needs-ocr"
+    },
+    {
+      "id": "vat-li-11",
+      "subject": "Vật lí",
+      "grade": 11,
+      "title": "SGK Vật lí 11",
+      "file": "SGK Vật Lí 11-mau.pdf",
+      "pages": 61,
+      "sourcePath": "SGK/SGK Vật Lí 11-mau.pdf",
+      "status": "scan-needs-ocr"
+    },
+    {
+      "id": "vat-li-12",
+      "subject": "Vật lí",
+      "grade": 12,
+      "title": "SGK Vật lí 12",
+      "file": "SGK Vật lí 12-mau.pdf",
+      "pages": 65,
+      "sourcePath": "SGK/SGK Vật lí 12-mau.pdf",
+      "status": "scan-needs-ocr"
+    }
+  ],
+  "scanAudit": [
+    {
+      "bookId": "dia-li-10",
+      "file": "SGK Địa lí 10-mau.pdf",
+      "sourcePath": "SGK/SGK Địa lí 10-mau.pdf",
+      "pageCount": 60,
+      "extraction": {
+        "tool": "PyMuPDF",
+        "textPages": 0,
+        "imageObjects": 60,
+        "textRatio": 0,
+        "classification": "image-only-scan",
+        "ocrRequired": true
+      },
+      "verificationStatus": "needs-ocr-and-manual-check"
+    },
+    {
+      "bookId": "hoa-hoc-11",
+      "file": "SGK Hóa học 11-mau.pdf",
+      "sourcePath": "SGK/SGK Hóa học 11-mau.pdf",
+      "pageCount": 81,
+      "extraction": {
+        "tool": "PyMuPDF",
+        "textPages": 0,
+        "imageObjects": 81,
+        "textRatio": 0,
+        "classification": "image-only-scan",
+        "ocrRequired": true
+      },
+      "verificationStatus": "needs-ocr-and-manual-check"
+    },
+    {
+      "bookId": "hoa-hoc-12",
+      "file": "SGK Hóa học 12-mau.pdf",
+      "sourcePath": "SGK/SGK Hóa học 12-mau.pdf",
+      "pageCount": 75,
+      "extraction": {
+        "tool": "PyMuPDF",
+        "textPages": 0,
+        "imageObjects": 75,
+        "textRatio": 0,
+        "classification": "image-only-scan",
+        "ocrRequired": true
+      },
+      "verificationStatus": "needs-ocr-and-manual-check"
+    },
+    {
+      "bookId": "sinh-hoc-10",
+      "file": "SGK Sinh học 10-mau.pdf",
+      "sourcePath": "SGK/SGK Sinh học 10-mau.pdf",
+      "pageCount": 82,
+      "extraction": {
+        "tool": "PyMuPDF",
+        "textPages": 0,
+        "imageObjects": 82,
+        "textRatio": 0,
+        "classification": "image-only-scan",
+        "ocrRequired": true
+      },
+      "verificationStatus": "needs-ocr-and-manual-check"
+    },
+    {
+      "bookId": "sinh-hoc-11",
+      "file": "SGK Sinh học 11-mau.pdf",
+      "sourcePath": "SGK/SGK Sinh học 11-mau.pdf",
+      "pageCount": 97,
+      "extraction": {
+        "tool": "PyMuPDF",
+        "textPages": 0,
+        "imageObjects": 97,
+        "textRatio": 0,
+        "classification": "image-only-scan",
+        "ocrRequired": true
+      },
+      "verificationStatus": "needs-ocr-and-manual-check"
+    },
+    {
+      "bookId": "sinh-hoc-12",
+      "file": "SGK Sinh học 12-mau.pdf",
+      "sourcePath": "SGK/SGK Sinh học 12-mau.pdf",
+      "pageCount": 86,
+      "extraction": {
+        "tool": "PyMuPDF",
+        "textPages": 0,
+        "imageObjects": 86,
+        "textRatio": 0,
+        "classification": "image-only-scan",
+        "ocrRequired": true
+      },
+      "verificationStatus": "needs-ocr-and-manual-check"
+    },
+    {
+      "bookId": "vat-li-10",
+      "file": "SGK Vật lí 10-mau.pdf",
+      "sourcePath": "SGK/SGK Vật lí 10-mau.pdf",
+      "pageCount": 72,
+      "extraction": {
+        "tool": "PyMuPDF",
+        "textPages": 0,
+        "imageObjects": 72,
+        "textRatio": 0,
+        "classification": "image-only-scan",
+        "ocrRequired": true
+      },
+      "verificationStatus": "needs-ocr-and-manual-check"
+    },
+    {
+      "bookId": "vat-li-11",
+      "file": "SGK Vật Lí 11-mau.pdf",
+      "sourcePath": "SGK/SGK Vật Lí 11-mau.pdf",
+      "pageCount": 61,
+      "extraction": {
+        "tool": "PyMuPDF",
+        "textPages": 0,
+        "imageObjects": 61,
+        "textRatio": 0,
+        "classification": "image-only-scan",
+        "ocrRequired": true
+      },
+      "verificationStatus": "needs-ocr-and-manual-check"
+    },
+    {
+      "bookId": "vat-li-12",
+      "file": "SGK Vật lí 12-mau.pdf",
+      "sourcePath": "SGK/SGK Vật lí 12-mau.pdf",
+      "pageCount": 65,
+      "extraction": {
+        "tool": "PyMuPDF",
+        "textPages": 0,
+        "imageObjects": 65,
+        "textRatio": 0,
+        "classification": "image-only-scan",
+        "ocrRequired": true
+      },
+      "verificationStatus": "needs-ocr-and-manual-check"
+    }
+  ],
+  "mappingFile": "content/course-mapping.json",
+  "verificationPlan": [
+    "OCR theo từng PDF, lưu text và confidence ngoài write scope này hoặc trong content/ocr/ khi được phép.",
+    "Đối chiếu mục lục, tiêu đề chương/bài, số trang in trên sách; không dùng số thứ tự PDF làm số trang sách nếu chưa kiểm tra.",
+    "Kiểm duyệt công thức, ký hiệu hóa học, tên riêng địa lí và chú thích hình.",
+    "Đổi mappingStatus thành verified chỉ sau khi có trang/chương đã kiểm chứng thủ công."
+  ]
+}

@@ -1,0 +1,29 @@
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: infra/docker/Dockerfile.static
+    image: 3dlearn-static:local
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "--quiet", "http://127.0.0.1:8080/healthz"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+
+    # Do not mount SGK/ here by default. Full textbook PDFs are private/source
+    # material and should be served only after rights/access policy is decided.
+    # If an approved internal deployment needs them, mount a dedicated,
+    # read-only storage directory to /usr/share/nginx/html/SGK explicitly.

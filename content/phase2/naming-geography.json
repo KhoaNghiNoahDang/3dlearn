@@ -1,0 +1,204 @@
+{
+  "schemaVersion": "0.1.0",
+  "purpose": "Naming-only mapping for SGK Địa lí 10; kept outside catalog.json.",
+  "canonical": {
+    "bookId": "dia-li-10-ket-noi-tri-thuc",
+    "title": "Địa lí 10 – Kết nối tri thức với cuộc sống",
+    "subjectKey": "geo",
+    "grade": 10,
+    "publisher": "Nhà xuất bản Giáo dục Việt Nam",
+    "isbn": "978-604-0-31083-5",
+    "file": "SGK/SGK Địa lí 10-mau.pdf"
+  },
+  "aliases": {
+    "Địa lí 10": "dia-li-10-ket-noi-tri-thuc",
+    "Địa lý 10": "dia-li-10-ket-noi-tri-thuc",
+    "SGK Địa lí 10": "dia-li-10-ket-noi-tri-thuc",
+    "Địa lí 10 KNTT": "dia-li-10-ket-noi-tri-thuc",
+    "Kết nối tri thức với cuộc sống - Địa lí 10": "dia-li-10-ket-noi-tri-thuc"
+  },
+  "normalization": {
+    "preferredSpelling": [
+      "Địa lí",
+      "thuỷ quyển",
+      "thuỷ sản",
+      "đô thị hoá",
+      "vỏ địa lí",
+      "Mặt Trời",
+      "Trái Đất"
+    ],
+    "avoidAsCanonical": [
+      "Địa lý 10",
+      "SGK Địa lí 10 (không ghi bộ sách)",
+      "Địa lí 10 KNTT (chỉ dùng làm alias tìm kiếm)"
+    ]
+  },
+  "sourceAudit": {
+    "pdfPages": 60,
+    "textPages": 0,
+    "classification": "image-only-scan",
+    "ocrStatus": "not-completed",
+    "ocrAttempt": {
+      "textExtraction": "PyMuPDF returned zero text pages",
+      "availableLocalOcr": false,
+      "fallback": "visual/manual transcription of rendered table-of-contents pages"
+    },
+    "visuallyCheckedPdfPages": [4, 5],
+    "visuallyCheckedPrintedPages": [3, 4],
+    "confidence": "medium for book/chapter/lesson names; low for unverified figure captions"
+  },
+  "chapters": [
+    {
+      "part": "Phần một. Một số vấn đề chung",
+      "chapterNo": 1,
+      "chapter": "Sử dụng bản đồ",
+      "printedPage": 7,
+      "lessons": [
+        {"lessonNo": 1, "title": "Môn Địa lí với định hướng nghề nghiệp", "printedPage": 5},
+        {"lessonNo": 2, "title": "Một số phương pháp biểu hiện các đối tượng địa lí trên bản đồ", "printedPage": 7},
+        {"lessonNo": 3, "title": "Sử dụng bản đồ trong học tập và đời sống, một số ứng dụng của GPS và bản đồ số trong đời sống", "printedPage": 12}
+      ]
+    },
+    {
+      "part": "Phần hai. Địa lí tự nhiên",
+      "chapterNo": 2,
+      "chapter": "Trái Đất",
+      "printedPage": 15,
+      "lessons": [
+        {"lessonNo": 4, "title": "Sự hình thành Trái Đất, vỏ Trái Đất và vật liệu cấu tạo vỏ Trái Đất", "printedPage": 15},
+        {"lessonNo": 5, "title": "Hệ quả địa lí các chuyển động của Trái Đất", "printedPage": 17}
+      ]
+    },
+    {
+      "part": "Phần hai. Địa lí tự nhiên",
+      "chapterNo": 3,
+      "chapter": "Thạch quyển",
+      "printedPage": 21,
+      "lessons": [
+        {"lessonNo": 6, "title": "Thạch quyển, thuyết kiến tạo mảng", "printedPage": 21},
+        {"lessonNo": 7, "title": "Nội lực và ngoại lực", "printedPage": 24},
+        {"lessonNo": 8, "title": "Thực hành: Sự phân bố các vành đai động đất, núi lửa", "printedPage": 27}
+      ]
+    },
+    {
+      "part": "Phần hai. Địa lí tự nhiên",
+      "chapterNo": 4,
+      "chapter": "Khí quyển",
+      "printedPage": 28,
+      "lessons": [
+        {"lessonNo": 9, "title": "Khí quyển, các yếu tố khí hậu", "printedPage": 28},
+        {"lessonNo": 10, "title": "Thực hành: Đọc bản đồ các đới và các kiểu khí hậu trên Trái Đất, phân tích biểu đồ một số kiểu khí hậu", "printedPage": 35}
+      ]
+    },
+    {
+      "part": "Phần hai. Địa lí tự nhiên",
+      "chapterNo": 5,
+      "chapter": "Thuỷ quyển",
+      "printedPage": 37,
+      "lessons": [
+        {"lessonNo": 11, "title": "Thuỷ quyển, nước trên lục địa", "printedPage": 37},
+        {"lessonNo": 12, "title": "Nước biển và đại dương", "printedPage": 41},
+        {"lessonNo": 13, "title": "Thực hành: Phân tích chế độ nước của sông Hồng", "printedPage": 44}
+      ]
+    },
+    {
+      "part": "Phần hai. Địa lí tự nhiên",
+      "chapterNo": 6,
+      "chapter": "Sinh quyển",
+      "printedPage": 45,
+      "lessons": [
+        {"lessonNo": 14, "title": "Đất trên Trái Đất", "printedPage": 45},
+        {"lessonNo": 15, "title": "Sinh quyển", "printedPage": 47},
+        {"lessonNo": 16, "title": "Thực hành: Tìm hiểu sự phân bố đất và sinh vật trên Trái Đất", "printedPage": 49}
+      ]
+    },
+    {
+      "part": "Phần hai. Địa lí tự nhiên",
+      "chapterNo": 7,
+      "chapter": "Một số quy luật của vỏ địa lí",
+      "printedPage": 51,
+      "lessons": [
+        {"lessonNo": 17, "title": "Vỏ địa lí, quy luật thống nhất và hoàn chỉnh của vỏ địa lí", "printedPage": 51},
+        {"lessonNo": 18, "title": "Quy luật địa đới và quy luật phi địa đới", "printedPage": 53}
+      ]
+    },
+    {
+      "part": "Phần ba. Địa lí kinh tế – xã hội",
+      "chapterNo": 8,
+      "chapter": "Địa lí dân cư",
+      "printedPage": 55,
+      "lessons": [
+        {"lessonNo": 19, "title": "Quy mô dân số, gia tăng dân số và cơ cấu dân số thế giới", "printedPage": 55},
+        {"lessonNo": 20, "title": "Phân bố dân cư và đô thị hoá trên thế giới", "printedPage": 60}
+      ]
+    },
+    {
+      "part": "Phần ba. Địa lí kinh tế – xã hội",
+      "chapterNo": 9,
+      "chapter": "Các nguồn lực, một số tiêu chí đánh giá sự phát triển kinh tế",
+      "printedPage": 63,
+      "lessons": [
+        {"lessonNo": 21, "title": "Các nguồn lực phát triển kinh tế", "printedPage": 63},
+        {"lessonNo": 22, "title": "Cơ cấu kinh tế, tổng sản phẩm trong nước và tổng thu nhập quốc gia", "printedPage": 65}
+      ]
+    },
+    {
+      "part": "Phần ba. Địa lí kinh tế – xã hội",
+      "chapterNo": 10,
+      "chapter": "Địa lí ngành nông nghiệp, lâm nghiệp, thuỷ sản",
+      "printedPage": 67,
+      "lessons": [
+        {"lessonNo": 23, "title": "Vai trò, đặc điểm, các nhân tố ảnh hưởng tới sự phát triển và phân bố nông nghiệp, lâm nghiệp, thuỷ sản", "printedPage": 67},
+        {"lessonNo": 24, "title": "Địa lí ngành nông nghiệp", "printedPage": 69},
+        {"lessonNo": 25, "title": "Địa lí ngành lâm nghiệp và ngành thuỷ sản", "printedPage": 73},
+        {"lessonNo": 26, "title": "Tổ chức lãnh thổ nông nghiệp, một số vấn đề phát triển nông nghiệp hiện đại trên thế giới và định hướng phát triển nông nghiệp trong tương lai", "printedPage": 76},
+        {"lessonNo": 27, "title": "Thực hành: Vẽ và nhận xét biểu đồ về sản lượng lương thực của thế giới", "printedPage": 78}
+      ]
+    },
+    {
+      "part": "Phần ba. Địa lí kinh tế – xã hội",
+      "chapterNo": 11,
+      "chapter": "Địa lí ngành công nghiệp",
+      "printedPage": 79,
+      "lessons": [
+        {"lessonNo": 28, "title": "Vai trò, đặc điểm, cơ cấu ngành công nghiệp, các nhân tố ảnh hưởng tới sự phát triển và phân bố công nghiệp", "printedPage": 79},
+        {"lessonNo": 29, "title": "Địa lí một số ngành công nghiệp", "printedPage": 81},
+        {"lessonNo": 30, "title": "Tổ chức lãnh thổ công nghiệp", "printedPage": 86},
+        {"lessonNo": 31, "title": "Tác động của công nghiệp đối với môi trường, phát triển năng lượng tái tạo, định hướng phát triển công nghiệp trong tương lai", "printedPage": 88},
+        {"lessonNo": 32, "title": "Thực hành: Viết báo cáo tìm hiểu một vấn đề về công nghiệp", "printedPage": 90}
+      ]
+    },
+    {
+      "part": "Phần ba. Địa lí kinh tế – xã hội",
+      "chapterNo": 12,
+      "chapter": "Địa lí ngành dịch vụ",
+      "printedPage": 91,
+      "lessons": [
+        {"lessonNo": 33, "title": "Cơ cấu, vai trò, đặc điểm, các nhân tố ảnh hưởng tới sự phát triển và phân bố dịch vụ", "printedPage": 91},
+        {"lessonNo": 34, "title": "Địa lí ngành giao thông vận tải", "printedPage": 93},
+        {"lessonNo": 35, "title": "Địa lí ngành bưu chính viễn thông", "printedPage": 98},
+        {"lessonNo": 36, "title": "Địa lí ngành du lịch", "printedPage": 101},
+        {"lessonNo": 37, "title": "Địa lí ngành thương mại và ngành tài chính ngân hàng", "printedPage": 103},
+        {"lessonNo": 38, "title": "Thực hành: Viết báo cáo tìm hiểu về một ngành dịch vụ", "printedPage": 107}
+      ]
+    },
+    {
+      "part": "Phần ba. Địa lí kinh tế – xã hội",
+      "chapterNo": 13,
+      "chapter": "Phát triển bền vững và tăng trưởng xanh",
+      "printedPage": 108,
+      "lessons": [
+        {"lessonNo": 39, "title": "Môi trường và tài nguyên thiên nhiên", "printedPage": 108},
+        {"lessonNo": 40, "title": "Phát triển bền vững và tăng trưởng xanh", "printedPage": 111}
+      ]
+    }
+  ],
+  "figureNamingPolicy": {
+    "status": "pending-full-ocr",
+    "rule": "Không gán số Hình hoặc chú thích hình vào mapping naming trước khi OCR/đối chiếu từng trang nội dung.",
+    "phase2Links": [
+      {"lessonNo": 3, "phase2Id": "phase2-geo-gps-step", "slug": "phase2-geo-gps-step"},
+      {"lessonNo": 8, "phase2Id": "phase2-geo-earthquake-volcano-step", "slug": "phase2-geo-earthquake-volcano-step"}
+    ]
+  }
+}

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GPS và bản đồ số · Địa lí 10</title>
+<style>
+  :root{--geo-ink:#123047;--geo-muted:#5d7485;--geo-blue:#1769aa;--geo-cyan:#20b7c8;--geo-green:#49a979;--geo-sky:#eaf7fb;--geo-line:#d6e8ee;--geo-shadow:0 18px 48px rgba(23,74,101,.15)}
+  *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dff2f6;color:var(--geo-ink);font-family:Inter,"Be Vietnam Pro",system-ui,sans-serif}button{font:inherit}button:focus-visible{outline:3px solid #f0ad3d;outline-offset:2px}
+  #gl{position:fixed;inset:0;width:100%;height:100%;display:block;background:linear-gradient(160deg,#bfe8f0,#ecf8fa 58%,#d6eef3)}
+  .geo-shell{position:fixed;inset:0;display:grid;grid-template-columns:minmax(250px,310px) minmax(0,1fr) minmax(230px,290px);grid-template-rows:auto minmax(0,1fr) auto;gap:14px;padding:14px;pointer-events:none}
+  .geo-top,.geo-panel,.geo-footer,.geo-float{pointer-events:auto;background:rgba(255,255,255,.91);border:1px solid rgba(255,255,255,.85);box-shadow:var(--geo-shadow);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+  .geo-top{grid-column:1/-1;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:18px;min-height:70px}.brand-dot{width:38px;height:38px;border-radius:13px;background:linear-gradient(145deg,var(--geo-blue),var(--geo-cyan));display:grid;place-items:center;color:#fff;font-size:20px;font-weight:900}.geo-kicker{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--geo-blue);font-weight:800}.geo-top h1{margin:2px 0 0;font-size:clamp(17px,2vw,25px);line-height:1.15}.geo-top p{margin:3px 0 0;color:var(--geo-muted);font-size:12px}.geo-top-spacer{flex:1}.geo-live{display:flex;align-items:center;gap:7px;color:#197751;font-size:12px;font-weight:800;white-space:nowrap}.geo-live i{width:9px;height:9px;border-radius:50%;background:#3abd83;box-shadow:0 0 0 5px #dff7eb}
+  .geo-panel{min-height:0;border-radius:18px;overflow:hidden;display:flex;flex-direction:column}.geo-panel-head{padding:15px 16px 11px;border-bottom:1px solid var(--geo-line);background:linear-gradient(180deg,#fff,#f6fbfc)}.geo-panel-head h2{margin:0;font-size:15px}.geo-panel-head p{margin:5px 0 0;color:var(--geo-muted);font-size:12px;line-height:1.45}.geo-scroll{padding:12px;overflow:auto;min-height:0}.step-list{display:grid;gap:8px}.step-button{border:1px solid var(--geo-line);background:#fff;border-radius:13px;padding:10px 11px;display:grid;grid-template-columns:30px minmax(0,1fr);gap:9px;text-align:left;color:var(--geo-ink);cursor:pointer;transition:.18s ease}.step-button:hover{transform:translateY(-1px);border-color:#86cfd8;box-shadow:0 6px 16px rgba(26,111,145,.1)}.step-button.is-active{border-color:var(--geo-cyan);background:#eafaff;box-shadow:0 6px 18px rgba(32,183,200,.17)}.step-number{width:28px;height:28px;border-radius:9px;background:#edf4f6;color:var(--geo-blue);display:grid;place-items:center;font-size:12px;font-weight:900}.is-active .step-number{background:var(--geo-blue);color:#fff}.step-name{font-weight:800;font-size:12px;line-height:1.25}.step-goal{display:block;color:var(--geo-muted);font-weight:500;font-size:11px;line-height:1.35;margin-top:3px;overflow-wrap:anywhere}
+  .geo-stage{position:relative;min-width:0;min-height:0;border-radius:22px;overflow:hidden;background:radial-gradient(circle at 48% 42%,rgba(255,255,255,.72),rgba(191,231,238,.2) 36%,rgba(127,190,204,.27));border:1px solid rgba(255,255,255,.72);box-shadow:var(--geo-shadow);pointer-events:auto}.geo-stage:before{content:"";position:absolute;inset:0;background:linear-gradient(145deg,rgba(255,255,255,.32),transparent 45%),radial-gradient(ellipse at 50% 95%,rgba(34,113,146,.2),transparent 54%);pointer-events:none}.stage-label{position:absolute;left:18px;top:18px;z-index:2;max-width:min(480px,calc(100% - 36px));padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.84);border:1px solid rgba(255,255,255,.9);box-shadow:0 10px 28px rgba(27,92,113,.12)}.stage-label strong{display:block;font-size:14px}.stage-label span{display:block;margin-top:4px;color:var(--geo-muted);font-size:12px;line-height:1.4;overflow-wrap:anywhere}.geo-float{position:absolute;z-index:3;border-radius:15px;padding:9px;display:flex;gap:7px;left:18px;bottom:18px}.tool-button{border:1px solid var(--geo-line);background:#fff;color:var(--geo-blue);border-radius:10px;padding:8px 10px;font-size:12px;font-weight:800;cursor:pointer}.tool-button:hover{background:#edfaff}.tool-button.is-active{background:var(--geo-blue);color:#fff;border-color:var(--geo-blue)}
+  .control-stack{display:grid;gap:13px}.control-card{border:1px solid var(--geo-line);border-radius:14px;padding:12px;background:#fff}.control-card h3{margin:0;font-size:12px}.control-card p{margin:5px 0 0;color:var(--geo-muted);font-size:11px;line-height:1.45;overflow-wrap:anywhere}.control-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px}.control-row label{font-size:11px;color:var(--geo-muted);font-weight:700}.control-row output{font-size:12px;font-weight:900;color:var(--geo-blue)}input[type=range]{width:100%;accent-color:var(--geo-blue);margin-top:8px}.legend{display:grid;gap:7px;margin-top:10px}.legend-row{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--geo-muted)}.legend-dot{width:10px;height:10px;border-radius:50%;background:var(--geo-cyan)}.legend-dot.green{background:var(--geo-green)}.legend-dot.orange{background:#ec9b3f}.hint{padding:10px;border-radius:11px;background:#f2fbf7;color:#267355;font-size:11px;line-height:1.45;overflow-wrap:anywhere}.geo-footer{grid-column:1/-1;border-radius:17px;padding:10px 13px;display:flex;align-items:center;gap:12px;min-height:58px}.footer-copy{min-width:0;flex:1}.footer-copy strong{display:block;font-size:13px}.footer-copy span{display:block;color:var(--geo-muted);font-size:11px;line-height:1.35;overflow-wrap:anywhere}.footer-actions{display:flex;gap:8px}.nav-button{border:0;border-radius:11px;padding:10px 14px;background:#edf4f6;color:var(--geo-blue);font-weight:900;cursor:pointer;white-space:nowrap}.nav-button.primary{background:linear-gradient(120deg,var(--geo-blue),var(--geo-cyan));color:#fff}.nav-button:disabled{opacity:.4;cursor:not-allowed}.bridge-note{font-size:10px;color:#6c8490;white-space:nowrap}
+  @media(max-width:1050px){.geo-shell{grid-template-columns:220px minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto}.geo-right{display:none}.geo-footer{grid-column:1/-1}.geo-top{grid-column:1/-1}}
+  @media(max-width:700px){html,body{overflow:auto}.geo-shell{position:relative;min-height:100%;grid-template-columns:1fr;grid-template-rows:auto auto minmax(390px,58vh) auto;padding:9px}.geo-top{grid-column:1;padding:10px 12px}.geo-live{display:none}.geo-panel.geo-left{grid-row:2;max-height:210px}.geo-stage{grid-row:3;min-height:390px}.geo-footer{grid-row:4;display:grid;grid-template-columns:1fr}.footer-actions{justify-content:space-between}.bridge-note{display:none}.geo-float{left:10px;bottom:10px}.stage-label{left:10px;top:10px}.geo-scroll{padding:9px}.step-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:420px){.step-list{grid-template-columns:1fr}.brand-dot{width:32px;height:32px}.geo-top h1{font-size:17px}.footer-actions .nav-button{padding:9px 10px;font-size:11px}}
+</style>
+<script type="importmap">{"imports":{"three":"https://esm.sh/three@0.170.0","three/addons/":"https://esm.sh/three@0.170.0/examples/jsm/"}}</script>
+</head>
+<body>
+<canvas id="gl" tabindex="0" aria-label="Mô hình địa cầu GPS và bản đồ số"></canvas>
+<main class="geo-shell">
+  <header class="geo-top">
+    <div class="brand-dot">⌖</div>
+    <div><div class="geo-kicker">Địa lí 10 · P0</div><h1>GPS và bản đồ số</h1><p>Đi từ lớp bản đồ đến một phép đo vị trí trên quả địa cầu 3D.</p></div>
+    <div class="geo-top-spacer"></div><div class="geo-live"><i></i>Bridge sẵn sàng</div>
+  </header>
+  <aside class="geo-panel geo-left">
+    <div class="geo-panel-head"><h2>Tiến trình khám phá</h2><p>Chọn từng bước hoặc dùng Bước tiếp theo. Nội dung dài tự xuống dòng.</p></div>
+    <div class="geo-scroll"><div class="step-list" id="steps">
+      <button class="step-button is-active active chip" data-step-index="0"><span class="step-number">1</span><span><b class="step-name">Mở bản đồ số</b><small class="step-goal">Nhìn Trái Đất bằng lưới kinh - vĩ tuyến.</small></span></button>
+      <button class="step-button chip" data-step-index="1"><span class="step-number">2</span><span><b class="step-name">Bật lớp dữ liệu</b><small class="step-goal">Thêm điểm địa danh và chú giải bản đồ.</small></span></button>
+      <button class="step-button chip" data-step-index="2"><span class="step-number">3</span><span><b class="step-name">Ba vệ tinh định vị</b><small class="step-goal">Hiểu vì sao cần nhiều vệ tinh để xác định vị trí.</small></span></button>
+      <button class="step-button chip" data-step-index="3"><span class="step-number">4</span><span><b class="step-name">Giao nhau khoảng cách</b><small class="step-goal">Các mặt cầu khoảng cách gặp nhau tại mục tiêu.</small></span></button>
+      <button class="step-button chip" data-step-index="4"><span class="step-number">5</span><span><b class="step-name">Đo và dẫn đường</b><small class="step-goal">Đo tuyến và đọc quãng đường trên bản đồ số.</small></span></button>
+      <button class="step-button chip" data-step-index="5"><span class="step-number">6</span><span><b class="step-name">Tự kiểm tra</b><small class="step-goal">Tắt lớp, xoay mô hình và giải thích quy trình.</small></span></button>
+    </div></div>
+  </aside>
+  <section class="geo-stage" aria-label="Vùng mô phỏng 3D">
+    <div class="stage-label"><strong id="stage-title">Bước 1 · Mở bản đồ số</strong><span id="stage-copy">Xoay quả địa cầu để quan sát lưới kinh tuyến, vĩ tuyến và điểm mục tiêu ở Việt Nam.</span></div>
+    <div class="geo-float"><button class="tool-button is-active" id="spin-btn">Tự xoay</button><button class="tool-button" id="grid-btn">Lưới kinh - vĩ</button><button class="tool-button" id="reset-btn">Đặt lại</button></div>
+  </section>
+  <aside class="geo-panel geo-right">
+    <div class="geo-panel-head"><h2>Bảng điều khiển</h2><p>Thao tác thay đổi trực tiếp lớp hiển thị của mô hình.</p></div>
+    <div class="geo-scroll"><div class="control-stack">
+      <section class="control-card"><h3>Lớp dữ liệu bản đồ</h3><p>Hiện các địa danh mẫu để nối bản đồ với thông tin không gian.</p><div class="control-row"><label for="layer-range">Mật độ điểm</label><output id="layer-output">60%</output></div><input id="layer-range" type="range" min="0" max="100" value="60"></section>
+      <section class="control-card"><h3>Tín hiệu GPS</h3><p>Thu hẹp sai số tượng trưng khi thêm vệ tinh quan sát.</p><div class="control-row"><label for="signal-range">Độ chính xác</label><output id="signal-output">3 vệ tinh</output></div><input id="signal-range" type="range" min="1" max="3" step="1" value="3"></section>
+      <section class="control-card"><h3>Chú giải</h3><div class="legend"><div class="legend-row"><i class="legend-dot"></i>Điểm địa danh</div><div class="legend-row"><i class="legend-dot green"></i>Tuyến đo</div><div class="legend-row"><i class="legend-dot orange"></i>Vệ tinh GPS</div></div></section>
+      <div class="hint" id="hint-box">Gợi ý: kéo quả địa cầu để xoay, cuộn để phóng to; hãy quan sát trước khi bật lớp dữ liệu.</div>
+    </div></div>
+  </aside>
+  <footer class="geo-footer"><div class="footer-copy"><strong id="footer-title">Mục tiêu bước 1</strong><span id="footer-copy">Nhận biết kinh tuyến, vĩ tuyến và cách bản đồ số đặt một điểm lên bề mặt Trái Đất.</span></div><span class="bridge-note">← → chuyển bước · R đặt lại</span><div class="footer-actions"><button class="nav-button" id="prev-btn" disabled>‹ Trước</button><button class="nav-button primary" id="next-btn">Tiếp theo ›</button></div></footer>
+</main>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const canvas=document.querySelector('#gl');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(innerWidth,innerHeight,false); renderer.outputColorSpace=THREE.SRGBColorSpace;
+const scene=new THREE.Scene(); scene.fog=new THREE.Fog(0xdff2f6,8,15);
+const camera=new THREE.PerspectiveCamera(42,innerWidth/innerHeight,.1,50); camera.position.set(0,1.2,5.6);
+const controls=new OrbitControls(camera,canvas); controls.enableDamping=true; controls.dampingFactor=.07; controls.minDistance=3.5; controls.maxDistance=10; controls.target.set(0,.1,0);
+scene.add(new THREE.HemisphereLight(0xffffff,0x6aa8b8,2.2)); const key=new THREE.DirectionalLight(0xffffff,2.8); key.position.set(4,5,5); scene.add(key);
+const world=new THREE.Group(); scene.add(world);
+const earth=new THREE.Group(); world.add(earth);
+const globe=new THREE.Mesh(new THREE.SphereGeometry(1.52,48,32),new THREE.MeshStandardMaterial({color:0x3d9cc4,roughness:.68,metalness:.03})); earth.add(globe);
+const atmosphere=new THREE.Mesh(new THREE.SphereGeometry(1.6,40,28),new THREE.MeshBasicMaterial({color:0x8ce3ee,transparent:true,opacity:.18,side:THREE.BackSide})); earth.add(atmosphere);
+const grid=new THREE.Group(); earth.add(grid);
+function latLon(lat,lon,r=1.545){const p=(90-lat)*Math.PI/180,t=(lon+180)*Math.PI/180;return new THREE.Vector3(-r*Math.sin(p)*Math.cos(t),r*Math.cos(p),r*Math.sin(p)*Math.sin(t))}
+function line(points,color,opacity=.7){const g=new THREE.BufferGeometry().setFromPoints(points);const m=new THREE.LineBasicMaterial({color,transparent:true,opacity});return new THREE.Line(g,m)}
+for(let lat=-75;lat<=75;lat+=15){const pts=[];for(let lon=-180;lon<=180;lon+=5)pts.push(latLon(lat,lon));grid.add(line(pts,0xb8f2f2,.38))}
+for(let lon=-180;lon<180;lon+=15){const pts=[];for(let lat=-90;lat<=90;lat+=5)pts.push(latLon(lat,lon));grid.add(line(pts,0xb8f2f2,.38))}
+const dataLayer=new THREE.Group(); earth.add(dataLayer);
+const places=[['Hà Nội',21.03,105.85],['Đà Nẵng',16.05,108.2],['TP. Hồ Chí Minh',10.82,106.63],['Tokyo',35.68,139.69],['Paris',48.85,2.35],['Nairobi',-1.28,36.82],['New York',40.71,-74.0]];
+places.forEach(([name,lat,lon],i)=>{const p=latLon(lat,lon,1.59);const dot=new THREE.Mesh(new THREE.SphereGeometry(.035+(i<3?.012:0),12,8),new THREE.MeshBasicMaterial({color:i<3?0x20b7c8:0x49a979}));dot.position.copy(p);dot.userData.name=name;dataLayer.add(dot)});
+const target=latLon(21.03,105.85,1.65);const targetDot=new THREE.Mesh(new THREE.SphereGeometry(.085,18,12),new THREE.MeshBasicMaterial({color:0xf19b3d}));targetDot.position.copy(target);dataLayer.add(targetDot);
+const satellites=new THREE.Group(); world.add(satellites); const satellitePoints=[new THREE.Vector3(-2.05,1.45,.65),new THREE.Vector3(1.9,1.75,.55),new THREE.Vector3(.15,-1.55,1.72)];
+satellitePoints.forEach((p,i)=>{const s=new THREE.Group();const body=new THREE.Mesh(new THREE.BoxGeometry(.16,.12,.12),new THREE.MeshStandardMaterial({color:0xec9b3f,emissive:0x5b2f08,emissiveIntensity:.25}));s.add(body);const panel=new THREE.Mesh(new THREE.BoxGeometry(.45,.02,.13),new THREE.MeshStandardMaterial({color:0x284e83,metalness:.35,roughness:.35}));panel.position.x=.28;s.add(panel);s.position.copy(p);satellites.add(s);const beam=line([p,target],0xec9b3f,.5);satellites.add(beam)});
+const ranges=new THREE.Group();world.add(ranges);[.65,.92,1.2].forEach((r,i)=>{const ring=new THREE.Mesh(new THREE.SphereGeometry(r,32,18),new THREE.MeshBasicMaterial({color:[0xf19b3d,0x20b7c8,0x1769aa][i],wireframe:true,transparent:true,opacity:.2}));ring.position.copy(target).multiplyScalar(.32);ranges.add(ring)});
+const route=new THREE.Group();world.add(route);const routePoints=[latLon(21.03,105.85,1.66),latLon(16.05,108.2,1.66),latLon(10.82,106.63,1.66)];route.add(line(routePoints,0x49a979,.95));routePoints.forEach(p=>{const d=new THREE.Mesh(new THREE.SphereGeometry(.045,12,8),new THREE.MeshBasicMaterial({color:0x49a979}));d.position.copy(p);route.add(d)});
+const titleEl=document.querySelector('#stage-title'),copyEl=document.querySelector('#stage-copy'),footerTitle=document.querySelector('#footer-title'),footerCopy=document.querySelector('#footer-copy'),hint=document.querySelector('#hint-box');
+const stepInfo=[
+ {title:'Bước 1 · Mở bản đồ số',copy:'Xoay quả địa cầu để quan sát lưới kinh tuyến, vĩ tuyến và điểm mục tiêu ở Việt Nam.',goal:'Nhận biết kinh tuyến, vĩ tuyến và cách bản đồ số đặt một điểm lên bề mặt Trái Đất.',hint:'Gợi ý: kéo quả địa cầu để xoay, cuộn để phóng to; hãy quan sát trước khi bật lớp dữ liệu.'},
+ {title:'Bước 2 · Bật lớp dữ liệu',copy:'Mỗi điểm trên bản đồ là một địa danh có tọa độ. Điều chỉnh mật độ điểm ở bảng bên phải.',goal:'Biết bản đồ số có thể bật/tắt nhiều lớp thông tin trên cùng một nền bản đồ.',hint:'Hãy kéo Mật độ điểm để thấy dữ liệu không gian xuất hiện dần trên địa cầu.'},
+ {title:'Bước 3 · Ba vệ tinh định vị',copy:'Các vệ tinh màu cam phát tín hiệu đến điểm mục tiêu. Thêm nhiều vệ tinh giúp giảm mơ hồ về vị trí.',goal:'Giải thích vì sao GPS cần nhiều vệ tinh và phép đo khoảng cách.',hint:'Thanh Độ chính xác cho phép mô phỏng từ một đến ba vệ tinh quan sát.'},
+ {title:'Bước 4 · Giao nhau khoảng cách',copy:'Các mặt cầu khoảng cách thu hẹp vùng có thể chứa điểm thu. Giao nhau cho ta vị trí gần đúng.',goal:'Mô tả ý tưởng giao nhau của các khoảng cách trong định vị GPS.',hint:'Quan sát ba mặt cầu trong suốt và điểm màu cam ở tâm vùng giao nhau.'},
+ {title:'Bước 5 · Đo và dẫn đường',copy:'Tuyến xanh nối Hà Nội – Đà Nẵng – Thành phố Hồ Chí Minh. Bản đồ số biến vị trí thành một hành trình.',goal:'Đọc tuyến, điểm trung gian và quãng đường trên bản đồ số.',hint:'Bật/tắt Lớp dữ liệu và xoay mô hình để quan sát tuyến từ nhiều phía.'},
+ {title:'Bước 6 · Tự kiểm tra',copy:'Hãy tự giải thích: vệ tinh, khoảng cách, điểm giao và lớp bản đồ liên hệ với nhau như thế nào?',goal:'Tóm tắt quy trình định vị và vai trò của GPS trong đời sống.',hint:'Không cần thuộc công thức; hãy chỉ ra đúng bốn thành phần của quy trình.'}
+];
+let step=0,spin=true,gridOn=true;
+function showStep(next){step=Math.max(0,Math.min(stepInfo.length-1,next));const info=stepInfo[step];document.querySelectorAll('.step-button').forEach((b,i)=>{b.classList.toggle('is-active',i===step);b.classList.toggle('active',i===step)});titleEl.textContent=info.title;copyEl.textContent=info.copy;footerTitle.textContent='Mục tiêu '+info.title.replace(/^Bước \d+ · /,'');footerCopy.textContent=info.goal;hint.textContent=info.hint;document.querySelector('#prev-btn').disabled=step===0;document.querySelector('#next-btn').disabled=step===stepInfo.length-1;dataLayer.visible=step>=1;satellites.visible=step>=2;ranges.visible=step>=3;route.visible=step>=4;targetDot.visible=step>=3;}
+document.querySelectorAll('.step-button').forEach((b,i)=>b.addEventListener('click',()=>showStep(i)));
+document.querySelector('#prev-btn').addEventListener('click',()=>showStep(step-1));document.querySelector('#next-btn').addEventListener('click',()=>showStep(step+1));
+document.querySelector('#spin-btn').addEventListener('click',e=>{spin=!spin;e.currentTarget.classList.toggle('is-active',spin)});
+document.querySelector('#grid-btn').addEventListener('click',e=>{gridOn=!gridOn;grid.visible=gridOn;e.currentTarget.classList.toggle('is-active',gridOn)});
+document.querySelector('#reset-btn').addEventListener('click',()=>{camera.position.set(0,1.2,5.6);controls.target.set(0,.1,0);controls.reset();showStep(0);grid.visible=true;gridOn=true;spin=true;document.querySelector('#grid-btn').classList.add('is-active');document.querySelector('#spin-btn').classList.add('is-active');document.querySelector('#signal-range').value=3;document.querySelector('#signal-output').textContent='3 vệ tinh';satellites.children.forEach((o,i)=>{o.visible=i<6})});
+document.querySelector('#layer-range').addEventListener('input',e=>{const v=Number(e.target.value);document.querySelector('#layer-output').textContent=v+'%';dataLayer.children.forEach((o,i)=>{if(o===targetDot)return;o.visible=step>=1&&((i/Math.max(1,dataLayer.children.length-1))*100<=v)})});
+document.querySelector('#signal-range').addEventListener('input',e=>{const v=Number(e.target.value);document.querySelector('#signal-output').textContent=v+' vệ tinh';satellites.children.forEach((o,i)=>o.visible=i<v*2)});
+addEventListener('keydown',e=>{if(e.target.matches('input,textarea,button'))return;if(e.key==='ArrowRight')showStep(step+1);if(e.key==='ArrowLeft')showStep(step-1);if(e.key.toLowerCase()==='r')document.querySelector('#reset-btn').click()});
+addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight,false)});
+showStep(0);
+const clock=new THREE.Clock();function animate(){requestAnimationFrame(animate);const d=clock.getDelta();if(spin)earth.rotation.y+=d*.08;earth.rotation.y+=0;satellites.rotation.y+=d*.025;controls.update();renderer.render(scene,camera)}animate();
+</script>
+</body>
+</html>

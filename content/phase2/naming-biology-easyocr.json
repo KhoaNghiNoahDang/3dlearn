@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-31",
+  "scope": "EasyOCR-backed Biology SGK naming and cell capability mapping",
+  "catalogMutation": false,
+  "ocr": {
+    "engine": "EasyOCR",
+    "installed": true,
+    "languagesRequested": ["vi", "en"],
+    "gpu": false,
+    "localWeights": false,
+    "offlineAttempt": "failed: craft_mlt_25k.pth is missing",
+    "downloadAttempt": "started but did not complete in the available run window",
+    "status": "needs-review",
+    "fallbackEvidence": "Manual visual transcription from rendered SGK table-of-contents pages; not an EasyOCR result.",
+    "evidence": [
+      {"book": "Sinh học 10", "source": "SGK/SGK Sinh học 10-mau.pdf", "pdfPage": 5, "printedPage": 4, "render": "docs/ocr/biology-final/sinh10-toc.png"},
+      {"book": "Sinh học 11", "source": "SGK/SGK Sinh học 11-mau.pdf", "pdfPage": 6, "printedPage": 4, "render": "docs/ocr/biology-final/sinh11-toc.png"},
+      {"book": "Sinh học 12", "source": "SGK/SGK Sinh học 12-mau.pdf", "pdfPage": 6, "printedPage": 4, "render": "docs/ocr/biology-final/sinh12-toc.png"}
+    ],
+    "reviewRequired": [
+      "Install/cache EasyOCR detector and Vietnamese recognition weights, then rerun OCR on the evidence renders.",
+      "Confirm exact punctuation and page numbers against the Kết nối tri thức edition before making this canonical curriculum data.",
+      "Cánh Diều lesson numbering is not inferred from Kết nối tri thức pages."
+    ]
+  },
+  "officialNamesForP0": [
+    {"grade": 10, "officialTitle": "Chu kì tế bào và nguyên phân", "relatedPractice": "Thực hành: Làm và quan sát tiêu bản quá trình nguyên phân và giảm phân", "sourceEvidence": "sinh10-toc.png"},
+    {"grade": 10, "officialTitle": "Trao đổi chất qua màng tế bào", "relatedPractice": "Thực hành: Thí nghiệm co và phản co nguyên sinh", "sourceEvidence": "sinh10-toc.png"},
+    {"grade": 10, "officialTitle": "Các điều kiện ảnh hưởng đến hoạt tính của enzyme", "relatedPractice": "Thực hành: Thí nghiệm phân tích ảnh hưởng của một số yếu tố đến hoạt tính của enzyme và kiểm tra hoạt tính của enzyme amylase", "sourceEvidence": "sinh10-toc.png"},
+    {"grade": 11, "officialTitle": "Cảm ứng ở động vật", "relatedPractice": null, "sourceEvidence": "sinh11-toc.png"},
+    {"grade": 11, "officialTitle": "Dinh dưỡng và tiêu hoá ở động vật", "relatedPractice": null, "sourceEvidence": "sinh11-toc.png"},
+    {"grade": 11, "officialTitle": "Miễn dịch ở người và động vật", "relatedPractice": null, "sourceEvidence": "sinh11-toc.png"}
+  ],
+  "cellCapabilityMap": [
+    {
+      "concept": "nguyen-phan",
+      "officialNames": ["Chu kì tế bào và nguyên phân", "Thực hành: Làm và quan sát tiêu bản quá trình nguyên phân và giảm phân"],
+      "viewer": "courses/cell-viewer.html?phase=mitosis",
+      "phase2": "phase2-bio-mitosis",
+      "model": {"primary": "cell/public/models/plant-cell-first001.glb", "fallback": "procedural plant cell", "logic": ["nucleus focus", "procedural chromosome proxies", "procedural spindle poles"]},
+      "status": "implemented-p0",
+      "coverageLimit": "The current P0 visualizes mitosis only; it does not claim meiosis coverage."
+    },
+    {
+      "concept": "giam-phan",
+      "officialNames": ["Giảm phân", "Thực hành: Làm và quan sát tiêu bản quá trình nguyên phân và giảm phân"],
+      "viewer": null,
+      "phase2": null,
+      "model": {"primary": "none", "fallback": "none", "logic": ["could reuse chromosome proxies after a separate meiosis state machine"]},
+      "status": "missing",
+      "coverageLimit": "Do not label the mitosis P0 as meiosis."
+    },
+    {
+      "concept": "mang-te-bao-va-tham-thau",
+      "officialNames": ["Trao đổi chất qua màng tế bào", "Thực hành: Thí nghiệm co và phản co nguyên sinh"],
+      "viewer": "courses/cell-viewer.html?phase=osmosis",
+      "phase2": "phase2-bio-osmosis",
+      "model": {"primary": "cell/public/models/plant-cell-first001.glb", "fallback": "procedural plant cell", "logic": ["procedural vacuole proxy scaling", "procedural membrane shell scaling", "vacuole/cell-wall focus"]},
+      "status": "implemented-p0",
+      "coverageLimit": "The overlay is qualitative; it does not yet expose numeric concentration, turgor, or measured water potential."
+    },
+    {
+      "concept": "van-chuyen-qua-mang",
+      "officialNames": ["Trao đổi chất qua màng tế bào"],
+      "viewer": null,
+      "phase2": null,
+      "model": {"primary": "cell/public/models/animal-cell-nih.glb or plant-cell-first001.glb", "fallback": "procedural membrane context", "logic": ["existing transport-step remains the experiment owner", "cell viewer can provide membrane context"]},
+      "status": "partial",
+      "coverageLimit": "Passive, facilitated, active, endocytosis, and exocytosis need an explicit process state machine."
+    },
+    {
+      "concept": "enzyme",
+      "officialNames": ["Các điều kiện ảnh hưởng đến hoạt tính của enzyme"],
+      "viewer": null,
+      "phase2": null,
+      "model": {"primary": "none", "fallback": "existing procedural chemistry scene", "logic": ["existing enzyme-step controls and scene", "cell models are context only"]},
+      "status": "partial",
+      "coverageLimit": "No cell GLB should be used as a substitute for substrate, active-site, pH, temperature, and amylase logic."
+    },
+    {
+      "concept": "neuron",
+      "officialNames": ["Cấu trúc tế bào thần kinh (Neuron)", "Cảm ứng ở động vật"],
+      "viewer": "courses/cell-viewer.html?cell=neuron",
+      "phase2": null,
+      "model": {"primary": "cell/public/models/neuron-nih.glb", "fallback": "procedural neuron", "logic": ["soma/axon/synapse focus", "OrbitControls", "bridge step state"]},
+      "status": "covered-structure-partial-process",
+      "coverageLimit": "Impulse animation is owned by impulse-step and is not yet synchronized with neuron GLB focus."
+    },
+    {
+      "concept": "co",
+      "officialNames": ["Cấu trúc sợi cơ và cơ chế trượt tơ co cơ"],
+      "viewer": "courses/cell-viewer.html?cell=muscle",
+      "phase2": null,
+      "model": {"primary": "none", "fallback": "procedural muscle/sarcomere", "logic": ["myofibril", "sarcolemma", "mitochondria focus"]},
+      "status": "covered-structure-partial-process",
+      "coverageLimit": "Actin-myosin sliding and Ca2+ cycle are described but need verified animation/state changes."
+    },
+    {
+      "concept": "bieu-mo",
+      "officialNames": ["Dinh dưỡng và tiêu hoá ở động vật", "Tế bào biểu mô: Cấu trúc phân cực và chức năng hàng rào"],
+      "viewer": "courses/cell-viewer.html?cell=epithelial",
+      "phase2": null,
+      "model": {"primary": "none", "fallback": "procedural epithelial", "logic": ["microvilli", "tight junctions", "basal nucleus", "cross-section control"]},
+      "status": "covered-structure-partial-process",
+      "coverageLimit": "Absorption flow and tissue-level barrier failure are not yet a full experiment."
+    }
+  ],
+  "modelInventory": [
+    {"path": "cell/public/models/plant-cell-first001.glb", "sizeBytes": 59277640, "usedBy": ["plant", "phase2-bio-mitosis", "phase2-bio-osmosis"]},
+    {"path": "cell/public/models/white-blood-cell-user.glb", "sizeBytes": 56559372, "usedBy": ["whiteBlood"]},
+    {"path": "cell/public/models/neuron-nih.glb", "sizeBytes": 2885524, "usedBy": ["neuron"]},
+    {"path": "cell/public/models/animal-cell-nih.glb", "sizeBytes": 1526232, "usedBy": ["animal"]},
+    {"path": "cell/public/models/bacteria-wall-nih.glb", "sizeBytes": 482424, "usedBy": ["bacteria"]}
+  ],
+  "sourceScan": {
+    "cellSource": ["cell/src/components/CellScene.tsx", "cell/src/components/Stage.tsx", "cell/src/data/cells.ts"],
+    "legacyViewer": "courses/cell-viewer.html",
+    "phaseAdapters": ["courses/phase2-bio-mitosis.html", "courses/phase2-bio-osmosis.html"],
+    "external3DModelsAdded": false
+  }
+}

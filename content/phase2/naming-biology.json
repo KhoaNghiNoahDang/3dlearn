@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-31",
+  "scope": "Official Biology 10-12 lesson naming and Phase 2/cell coverage",
+  "catalogMutation": false,
+  "ocr": {
+    "tesseract": "unavailable",
+    "pdftotext": "unavailable",
+    "method": "Rendered PDF table-of-contents pages with pdftoppm and transcribed visually",
+    "confidence": "medium",
+    "reviewRequired": true,
+    "evidence": [
+      {
+        "file": "SGK/SGK Sinh học 10-mau.pdf",
+        "pdfPage": 5,
+        "printedPage": 4,
+        "renderedEvidence": "docs/ocr/biology-final/sinh10-toc.png"
+      },
+      {
+        "file": "SGK/SGK Sinh học 11-mau.pdf",
+        "pdfPage": 6,
+        "printedPage": 4,
+        "renderedEvidence": "docs/ocr/biology-final/sinh11-toc.png"
+      },
+      {
+        "file": "SGK/SGK Sinh học 12-mau.pdf",
+        "pdfPage": 6,
+        "printedPage": 4,
+        "renderedEvidence": "docs/ocr/biology-final/sinh12-toc.png"
+      }
+    ],
+    "reviewNotes": [
+      "Confirm spelling, punctuation, edition, and printed page numbers against the source PDF before exposing this as canonical curriculum metadata.",
+      "The local files are Kết nối tri thức với cuộc sống editions; Cánh Diều numbering may differ.",
+      "This file is a naming/coverage overlay only and is not consumed by the shared catalog yet."
+    ]
+  },
+  "officialOutlines": {
+    "sinh10": {
+      "bookTitle": "Sinh học 10",
+      "chapters": [
+        {"number": 1, "title": "Thành phần hoá học của tế bào", "lessons": ["Các nguyên tố hoá học và nước", "Các phân tử sinh học", "Thực hành: Nhận biết một số phân tử sinh học"]},
+        {"number": 2, "title": "Cấu trúc tế bào", "lessons": ["Tế bào nhân sơ", "Tế bào nhân thực", "Thực hành: Quan sát tế bào"]},
+        {"number": 3, "title": "Trao đổi chất qua màng và truyền tin tế bào", "lessons": ["Trao đổi chất qua màng tế bào", "Thực hành: Thí nghiệm co và phản co nguyên sinh", "Truyền tin tế bào"]},
+        {"number": 4, "title": "Chuyển hoá năng lượng trong tế bào", "lessons": ["Khái quát về chuyển hoá vật chất và năng lượng", "Phân giải và tổng hợp các chất trong tế bào", "Thực hành: Thí nghiệm phân tích ảnh hưởng của một số yếu tố đến hoạt tính của enzyme và kiểm tra hoạt tính của enzyme amylase"]},
+        {"number": 5, "title": "Chu kì tế bào và phân bào", "lessons": ["Chu kì tế bào và nguyên phân", "Giảm phân", "Thực hành: Làm và quan sát tiêu bản quá trình nguyên phân và giảm phân", "Công nghệ tế bào"]},
+        {"number": 6, "title": "Sinh học vi sinh vật", "lessons": ["Sự đa dạng và phương pháp nghiên cứu vi sinh vật", "Trao đổi chất, sinh trưởng và sinh sản ở vi sinh vật", "Vai trò và ứng dụng của vi sinh vật", "Thực hành: Một số phương pháp nghiên cứu vi sinh vật thông dụng, tìm hiểu về các sản phẩm công nghệ vi sinh vật và làm một số sản phẩm lên men từ vi sinh vật"]},
+        {"number": 7, "title": "Virus", "lessons": ["Khái quát về virus", "Một số bệnh do virus và các thành tựu nghiên cứu ứng dụng virus", "Thực hành: Điều tra một số bệnh do virus và tuyên truyền phòng chống bệnh"]}
+      ]
+    },
+    "sinh11": {
+      "bookTitle": "Sinh học 11",
+      "chapters": [
+        {"number": 1, "title": "Trao đổi chất và chuyển hoá năng lượng ở sinh vật", "lessons": ["Khái quát về trao đổi chất và chuyển hoá năng lượng", "Trao đổi nước và khoáng ở thực vật", "Thực hành: Trao đổi nước và khoáng ở thực vật", "Quang hợp ở thực vật", "Thực hành: Quang hợp ở thực vật", "Hô hấp ở thực vật", "Thực hành: Hô hấp ở thực vật", "Dinh dưỡng và tiêu hoá ở động vật", "Hô hấp ở động vật", "Tuần hoàn ở động vật", "Thực hành: Một số thí nghiệm về hệ tuần hoàn", "Miễn dịch ở người và động vật", "Bài tiết và cân bằng nội môi"]},
+        {"number": 2, "title": "Cảm ứng ở sinh vật", "lessons": ["Khái quát về cảm ứng ở sinh vật", "Cảm ứng ở thực vật", "Thực hành: Cảm ứng ở thực vật", "Cảm ứng ở động vật", "Tập tính ở động vật"]},
+        {"number": 3, "title": "Sinh trưởng và phát triển ở sinh vật", "lessons": ["Khái quát về sinh trưởng và phát triển ở sinh vật", "Sinh trưởng và phát triển ở thực vật", "Thực hành: Bấm ngọn, tỉa cành; xử lí kích thích tố và tính tuổi cây", "Sinh trưởng và phát triển ở động vật", "Thực hành: Quan sát quá trình biến thái ở động vật"]},
+        {"number": 4, "title": "Sinh sản ở sinh vật", "lessons": ["Khái quát về sinh sản ở sinh vật", "Sinh sản ở thực vật", "Thực hành: Nhân giống vô tính và thụ phấn cho cây", "Sinh sản ở động vật"]},
+        {"number": 5, "title": "Mối quan hệ giữa các quá trình sinh lí trong cơ thể sinh vật và một số ngành nghề liên quan đến sinh học cơ thể", "lessons": ["Mối quan hệ giữa các quá trình sinh lí trong cơ thể sinh vật", "Một số ngành nghề liên quan đến sinh học cơ thể"]}
+      ]
+    },
+    "sinh12": {
+      "bookTitle": "Sinh học 12",
+      "chapters": [
+        {"number": 1, "title": "Di truyền phân tử", "lessons": ["DNA và cơ chế tái bản DNA", "Gene, hệ gene và quá trình truyền đạt thông tin di truyền", "Điều hoà biểu hiện gene", "Đột biến gene", "Công nghệ gene", "Thực hành: Tách chiết DNA"]},
+        {"number": 2, "title": "Di truyền nhiễm sắc thể", "lessons": ["Cấu trúc và chức năng của nhiễm sắc thể", "Học thuyết di truyền Mendel", "Mở rộng học thuyết Mendel", "Di truyền giới tính và di truyền liên kết với giới tính", "Liên kết gene và hoán vị gene", "Đột biến nhiễm sắc thể", "Di truyền học người và di truyền y học", "Thực hành: Quan sát một số dạng đột biến nhiễm sắc thể"]},
+        {"number": 3, "title": "Mở rộng học thuyết di truyền nhiễm sắc thể", "lessons": ["Di truyền gene ngoài nhân", "Tương tác giữa kiểu gene với môi trường và thành tựu chọn giống", "Thực hành: Thí nghiệm về thường biến ở cây trồng"]},
+        {"number": 4, "title": "Di truyền quần thể", "lessons": ["Di truyền học quần thể"]},
+        {"number": 5, "title": "Tiến hoá", "lessons": ["Các bằng chứng tiến hoá", "Quan niệm của Darwin về chọn lọc tự nhiên và hình thành loài", "Học thuyết tiến hoá tổng hợp hiện đại", "Tiến hoá lớn và quá trình phát sinh chủng loại"]},
+        {"number": 6, "title": "Môi trường và sinh thái học quần thể", "lessons": ["Môi trường và các nhân tố sinh thái", "Sinh thái học quần thể", "Thực hành: Xác định một số đặc trưng của quần thể"]},
+        {"number": 7, "title": "Sinh thái học quần xã", "lessons": ["Quần xã sinh vật", "Thực hành: Tìm hiểu cấu trúc dinh dưỡng của quần xã trong tự nhiên", "Hệ sinh thái", "Trao đổi vật chất và chuyển hoá năng lượng trong hệ sinh thái", "Diễn thế sinh thái", "Sinh quyển, khu sinh học và chu trình sinh - địa - hoá", "Thực hành: Thiết kế một hệ sinh thái nhân tạo"]},
+        {"number": 8, "title": "Sinh thái học phục hồi, bảo tồn và phát triển bền vững", "lessons": ["Sinh thái học phục hồi và bảo tồn đa dạng sinh vật", "Phát triển bền vững", "Dự án: Tìm hiểu thực trạng bảo tồn hệ sinh thái tại địa phương và đề xuất giải pháp bảo tồn"]}
+      ]
+    }
+  },
+  "mapping": [
+    {"officialTitle": "Tế bào nhân sơ", "grade": 10, "currentSlugs": ["cell-bacteria-step"], "phase2": null, "reuse": ["cell-viewer", "bacteria-wall-nih.glb"], "status": "covered", "review": "needs-edition-page-review"},
+    {"officialTitle": "Tế bào nhân thực", "grade": 10, "currentSlugs": ["cell-plant-step", "cell-animal-step"], "phase2": null, "reuse": ["cell-viewer", "plant-cell-first001.glb", "animal-cell-nih.glb"], "status": "covered", "review": "needs-edition-page-review"},
+    {"officialTitle": "Trao đổi chất qua màng tế bào", "grade": 10, "currentSlugs": ["transport-step"], "phase2": "phase2-bio-osmosis", "reuse": ["plant-cell-first001.glb", "procedural-membrane-context"], "status": "covered-plus-phase2", "review": "needs-teacher-review"},
+    {"officialTitle": "Thực hành: Thí nghiệm co và phản co nguyên sinh", "grade": 10, "currentSlugs": ["plasmolysis-step"], "phase2": "phase2-bio-osmosis", "reuse": ["plant-cell-first001.glb", "vacuole-and-cell-wall-focus"], "status": "covered-plus-phase2", "review": "needs-teacher-review"},
+    {"officialTitle": "Thực hành: Thí nghiệm phân tích ảnh hưởng của một số yếu tố đến hoạt tính của enzyme và kiểm tra hoạt tính của enzyme amylase", "grade": 10, "currentSlugs": ["enzyme-step"], "phase2": null, "reuse": ["existing-procedural-three"], "status": "covered-procedural", "review": "needs-exact-title-review"},
+    {"officialTitle": "Chu kì tế bào và nguyên phân", "grade": 10, "currentSlugs": ["mitosis-step"], "phase2": "phase2-bio-mitosis", "reuse": ["plant-cell-first001.glb", "nucleus-focus", "procedural-phase-overlay"], "status": "covered-plus-phase2", "review": "needs-teacher-review"},
+    {"officialTitle": "Thực hành: Làm và quan sát tiêu bản quá trình nguyên phân và giảm phân", "grade": 10, "currentSlugs": [], "phase2": "phase2-bio-mitosis", "reuse": ["plant-cell-first001.glb", "procedural-phase-overlay"], "status": "partial", "review": "phase2 currently models mitosis only; meiosis is missing"},
+    {"officialTitle": "Miễn dịch ở người và động vật", "grade": 11, "currentSlugs": ["cell-whiteblood-step"], "phase2": null, "reuse": ["cell-viewer", "white-blood-cell-user.glb"], "status": "partial", "review": "cell structure/phagocytosis focus; full immune response is missing"},
+    {"officialTitle": "Cảm ứng ở động vật", "grade": 11, "currentSlugs": ["cell-neuron-step", "impulse-step"], "phase2": null, "reuse": ["cell-viewer", "neuron-nih.glb", "procedural-impulse"], "status": "covered-plus-procedural", "review": "needs-edition-page-review"},
+    {"officialTitle": "Dinh dưỡng và tiêu hoá ở động vật", "grade": 11, "currentSlugs": ["cell-epithelial-step"], "phase2": null, "reuse": ["procedural-epithelial", "microvilli-and-tight-junctions"], "status": "partial", "review": "cell barrier is covered; complete digestion process is missing"},
+    {"officialTitle": "Sinh học 12: DNA và cơ chế tái bản DNA", "grade": 12, "currentSlugs": [], "phase2": null, "reuse": ["existing-procedural-three", "ball-stick-technique-candidate"], "status": "missing", "review": "requires a dedicated molecular lesson"},
+    {"officialTitle": "Sinh học 12: Gene, hệ gene và quá trình truyền đạt thông tin di truyền", "grade": 12, "currentSlugs": [], "phase2": null, "reuse": ["none-direct"], "status": "missing", "review": "cell-viewer is not sufficient"},
+    {"officialTitle": "Sinh học 12: Đột biến gene", "grade": 12, "currentSlugs": [], "phase2": null, "reuse": ["none-direct"], "status": "missing", "review": "requires molecular and data simulation"},
+    {"officialTitle": "Sinh học 12: Di truyền học quần thể", "grade": 12, "currentSlugs": [], "phase2": null, "reuse": ["none-direct"], "status": "missing", "review": "requires population simulation"},
+    {"officialTitle": "Sinh học 12: Tiến hoá", "grade": 12, "currentSlugs": [], "phase2": null, "reuse": ["none-direct"], "status": "missing", "review": "requires evidence/timeline/tree visualizations"},
+    {"officialTitle": "Sinh học 12: Hệ sinh thái", "grade": 12, "currentSlugs": [], "phase2": null, "reuse": ["none-direct"], "status": "missing", "review": "requires ecosystem simulation"}
+  ],
+  "missingSummary": {
+    "grade10": [
+      "Thực hành: Nhận biết một số phân tử sinh học",
+      "Truyền tin tế bào",
+      "Giảm phân",
+      "Thực hành: Làm và quan sát tiêu bản quá trình nguyên phân và giảm phân",
+      "Công nghệ tế bào",
+      "Sinh học vi sinh vật",
+      "Virus"
+    ],
+    "grade11": [
+      "Trao đổi nước và khoáng ở thực vật",
+      "Quang hợp ở thực vật",
+      "Hô hấp ở thực vật",
+      "Hô hấp, tuần hoàn, bài tiết và cân bằng nội môi ở động vật",
+      "Cảm ứng ở thực vật",
+      "Sinh trưởng và phát triển ở sinh vật",
+      "Sinh sản ở sinh vật",
+      "Mối quan hệ giữa các quá trình sinh lí trong cơ thể sinh vật"
+    ],
+    "grade12": [
+      "Toàn bộ 35 bài chưa có slug catalog chính thức",
+      "Ưu tiên bổ sung: DNA/tái bản, gene và biểu hiện gene, đột biến, di truyền nhiễm sắc thể",
+      "Giai đoạn sau: di truyền quần thể, tiến hoá, sinh thái học quần thể/quần xã/hệ sinh thái, bảo tồn và phát triển bền vững"
+    ]
+  },
+  "phase2Recommendations": [
+    {"phase2": "phase2-bio-mitosis", "officialNames": ["Chu kì tế bào và nguyên phân", "Thực hành: Làm và quan sát tiêu bản quá trình nguyên phân và giảm phân"], "note": "Current Phase 2 covers the mitosis part; do not label it as meiosis coverage."},
+    {"phase2": "phase2-bio-osmosis", "officialNames": ["Trao đổi chất qua màng tế bào", "Thực hành: Thí nghiệm co và phản co nguyên sinh"], "note": "Current Phase 2 is a visual cell context plus step explanation; it does not replace a quantitative osmotic experiment."}
+  ]
+}

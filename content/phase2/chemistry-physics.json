@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "0.1.0",
+  "phase": "phase2-p0",
+  "generatedAt": "2026-10-31",
+  "purpose": "Independent P0 simulations proposed from the chemistry and physics coverage reports. This file is additive and does not alter catalog.json.",
+  "sourceReports": [
+    "docs/coverage/chemistry.md",
+    "docs/coverage/physics.md"
+  ],
+  "simulations": [
+    {
+      "slug": "phase2-chem-acid-base-titration",
+      "file": "courses/phase2-chem-acid-base-titration.html",
+      "subject": "chem",
+      "grade": 11,
+      "title": "Chuẩn độ acid-base",
+      "displayTitle": "Chuẩn độ acid-base: xác định điểm tương đương",
+      "bookId": "hoa-hoc-11",
+      "bookSeries": "Kết nối tri thức với cuộc sống",
+      "chapterProposal": "Chương 1. Cân bằng hóa học",
+      "lessonProposal": "Bài 2. Cân bằng trong dung dịch nước",
+      "activityType": "laboratory",
+      "priority": "P0",
+      "status": "independent-prototype",
+      "steps": [
+        "Chuẩn bị dung dịch và chỉ thị",
+        "Đọc burette",
+        "Nhỏ từng giọt",
+        "Tiến gần điểm tương đương",
+        "Quan sát đổi màu",
+        "Tính và kết luận"
+      ],
+      "interactions": [
+        "Điều chỉnh thể tích base bằng slider",
+        "Nhỏ 1 mL hoặc 0.1 mL",
+        "Theo dõi pH, màu chỉ thị và V_eq",
+        "Xoay, pan, zoom mô hình",
+        "Bridge setMode, setStep, reset, requestState"
+      ],
+      "evidence": {
+        "coverageReport": "docs/coverage/chemistry.md",
+        "courseFamily": [
+          "courses/titration-step.html",
+          "courses/hydrolysis-step.html"
+        ],
+        "note": "Đây là bài thực hành độc lập trong mạch cân bằng dung dịch nước; không gộp với thủy phân muối hoặc điện li. Số trang SGK cần xác minh tiếp theo OCR/manual page audit."
+      }
+    },
+    {
+      "slug": "phase2-phys-free-fall",
+      "file": "courses/phase2-phys-free-fall.html",
+      "subject": "phys",
+      "grade": 10,
+      "title": "Đo gia tốc rơi tự do",
+      "displayTitle": "Thực hành: đo gia tốc rơi tự do",
+      "bookId": "vat-li-10",
+      "bookSeries": "Kết nối tri thức với cuộc sống",
+      "chapterProposal": "Chuyển động",
+      "lessonProposal": "Bài thực hành đo gia tốc rơi tự do - cần xác minh số bài/trang từ bản SGK đầy đủ",
+      "activityType": "laboratory",
+      "priority": "P0",
+      "status": "independent-prototype",
+      "steps": [
+        "Lắp giá và cổng quang",
+        "Đặt độ cao h",
+        "Kiểm tra cảm biến",
+        "Thả vật",
+        "Ghi thời gian t",
+        "Tính g = 2h/t²"
+      ],
+      "interactions": [
+        "Điều chỉnh độ cao h",
+        "Điều chỉnh g mô phỏng để kiểm thử sai số",
+        "Thả vật và xem hoạt ảnh rơi theo phương trình",
+        "Ghi nhiều lần đo",
+        "Xoay, pan, zoom mô hình",
+        "Bridge setMode, setStep, reset, requestState"
+      ],
+      "evidence": {
+        "coverageReport": "docs/coverage/physics.md",
+        "courseFamily": [
+          "courses/accel-force-step.html",
+          "courses/projectile-step.html"
+        ],
+        "note": "Ưu tiên bài thực hành có thể thao tác thật. Báo cáo Vật lí ghi nhận bài đo gia tốc rơi tự do còn thiếu trong phần scan quan sát được; số bài/trang chính thức cần xác minh bằng bản SGK đầy đủ."
+      }
+    }
+  ]
+}

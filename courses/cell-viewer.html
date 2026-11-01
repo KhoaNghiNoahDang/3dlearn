@@ -1,0 +1,1268 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mô phỏng 3D Cấu trúc Tế bào · 3D Lab</title>
+<style>
+  :root {
+    --bg: #070d18;
+    --glass: rgba(11, 19, 35, 0.78);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --accent: #41c98a;
+    --accent-soft: rgba(65, 201, 138, 0.15);
+    --text: #f0f4fa;
+    --text-muted: #8c9cb8;
+    --font: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg); font-family: var(--font); color: var(--text); user-select: none; }
+  
+  #canvas-container { position: absolute; inset: 0; z-index: 1; }
+  canvas { display: block; width: 100%; height: 100%; outline: none; }
+
+  /* Top Bar */
+  .cell-top {
+    position: absolute; top: 16px; left: 16px; z-index: 10;
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 18px; border-radius: 14px;
+    background: var(--glass); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  }
+  .cell-badge {
+    padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    background: var(--accent-soft); color: var(--accent);
+  }
+  .cell-title h2 { font-size: 16px; font-weight: 700; color: #fff; line-height: 1.2; }
+  .cell-title p { font-size: 12px; color: var(--text-muted); }
+
+  /* Left Panel: Organelles */
+  .cell-left {
+    position: absolute; top: 86px; left: 16px; bottom: 84px; width: min(340px, calc(100vw - 32px));
+    z-index: 10; display: flex; flex-direction: column; gap: 12px;
+    pointer-events: none;
+  }
+  .organelle-card {
+    pointer-events: auto;
+    padding: 18px; border-radius: 16px;
+    background: var(--glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 14px 40px rgba(0,0,0,0.4);
+    display: flex; flex-direction: column; gap: 10px;
+    animation: fadeSlide 0.3s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  @keyframes fadeSlide { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .organelle-header { display: flex; justify-content: space-between; align-items: flex-start; }
+  .organelle-header h3 { font-size: 15px; font-weight: 700; color: #fff; }
+  .organelle-header span { font-size: 11px; color: var(--accent); font-weight: 600; }
+  .organelle-desc { font-size: 13px; line-height: 1.6; color: #cbd5e1; }
+  .organelle-attrs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px; }
+  .attr-box { padding: 6px 10px; border-radius: 8px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.05); }
+  .attr-box small { display: block; font-size: 10px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+  .attr-box strong { font-size: 12px; color: #f1f5f9; }
+  .organelle-fact {
+    padding: 8px 12px; border-radius: 10px; font-size: 11px; line-height: 1.5;
+    background: rgba(255,255,255,0.03); border-left: 3px solid var(--accent); color: #94a3b8;
+  }
+
+  /* Organelle chips rail */
+  .organelle-chips {
+    pointer-events: auto;
+    display: flex; flex-wrap: wrap; gap: 6px;
+    max-height: 140px; overflow-y: auto;
+    padding: 4px;
+    scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.15) transparent;
+  }
+  .chip-btn {
+    padding: 6px 12px; border-radius: 99px; border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(10px);
+    color: var(--text-muted); font-size: 12px; font-weight: 600; cursor: pointer;
+    transition: all 0.18s;
+  }
+  .chip-btn:hover { background: rgba(255,255,255,0.12); color: #fff; transform: translateY(-1px); }
+  .chip-btn.active {
+    background: var(--accent); color: #04100c; font-weight: 700; border-color: var(--accent);
+    box-shadow: 0 4px 14px var(--accent-soft);
+  }
+
+  /* Right Tools Toolbar */
+  .cell-tools {
+    position: absolute; top: 16px; right: 16px; z-index: 10;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .tool-btn {
+    display: flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 12px;
+    background: var(--glass); backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border); color: var(--text-muted);
+    cursor: pointer; transition: all 0.18s;
+  }
+  .tool-btn:hover { background: rgba(255,255,255,0.14); color: #fff; transform: scale(1.05); }
+  .tool-btn.active { background: var(--accent); color: #04100c; border-color: var(--accent); }
+  .tool-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Bottom Steps Bar */
+  .cell-bottom {
+    position: absolute; bottom: 16px; left: 16px; right: 16px; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between; gap: 14px;
+    padding: 10px 18px; border-radius: 16px;
+    background: var(--glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
+  .steps-track { display: flex; align-items: center; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+  .steps-track::-webkit-scrollbar { display: none; }
+  .step-node {
+    display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 10px;
+    font-size: 12px; font-weight: 600; color: var(--text-muted); cursor: pointer;
+    background: transparent; border: 1px solid transparent; transition: all 0.2s; white-space: nowrap;
+  }
+  .step-node i { display: grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: rgba(255,255,255,0.08); font-style: normal; font-size: 11px; }
+  .step-node:hover { background: rgba(255,255,255,0.06); color: #fff; }
+  .step-node.active { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+  .step-node.active i { background: var(--accent); color: #04100c; font-weight: 800; }
+  .nav-btn {
+    display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 10px;
+    border: 1px solid var(--glass-border); background: rgba(255,255,255,0.06);
+    color: #fff; font-size: 12px; font-weight: 700; cursor: pointer; transition: all 0.18s;
+  }
+  .nav-btn:hover:not(:disabled) { background: rgba(255,255,255,0.14); }
+  .nav-btn:disabled { opacity: 0.35; cursor: default; }
+
+  /* Loading State */
+  .cell-loading {
+    position: absolute; inset: 0; z-index: 20;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+    background: radial-gradient(circle at center, rgba(16,28,48,0.92), rgba(6,11,20,0.98));
+    transition: opacity 0.5s;
+  }
+  .spinner {
+    width: 44px; height: 44px; border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.12); border-top-color: var(--accent);
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .cell-loading strong { font-size: 15px; color: #fff; }
+  .cell-loading small { font-size: 12px; color: var(--text-muted); }
+
+  @media (max-width: 768px) {
+    .cell-left { width: calc(100vw - 32px); bottom: 130px; }
+    .organelle-card { padding: 14px; }
+    .cell-bottom { flex-direction: column; align-items: stretch; gap: 10px; }
+    .steps-track { justify-content: flex-start; }
+    .nav-buttons { display: flex; justify-content: space-between; }
+  }
+</style>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://esm.sh/three@0.170.0",
+    "three/addons/": "https://esm.sh/three@0.170.0/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+
+<div id="canvas-container"></div>
+
+<!-- Top Title Bar -->
+<header class="cell-top">
+  <span class="cell-badge" id="cell-type-badge">Tế bào</span>
+  <div class="cell-title">
+    <h2 id="cell-name-title">Đang tải cấu trúc 3D…</h2>
+    <p id="cell-context-sub">Mô hình giải phẫu sinh học phân tử</p>
+  </div>
+</header>
+
+<!-- Left Organelles Info -->
+<div class="cell-left">
+  <div class="organelle-chips" id="chips-container"></div>
+  <div class="organelle-card" id="organelle-card">
+    <div class="organelle-header">
+      <h3 id="org-name">Bào quan</h3>
+      <span id="org-subtitle">Chức năng</span>
+    </div>
+    <p class="organelle-desc" id="org-desc">Mô tả chi tiết bào quan…</p>
+    <div class="organelle-attrs" id="org-attrs"></div>
+    <div class="organelle-fact" id="org-fact">💡 Điểm thú vị</div>
+  </div>
+</div>
+
+<!-- Right Viewport Tools -->
+<aside class="cell-tools">
+  <button class="tool-btn" id="btn-rotate" title="Tự động xoay (Space)">
+    <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>
+  </button>
+  <button class="tool-btn" id="btn-cutaway" title="Chế độ cắt lớp (C)">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 0 0 20z"/></svg>
+  </button>
+  <button class="tool-btn" id="btn-reset" title="Đặt lại góc nhìn (R)">
+    <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+  </button>
+</aside>
+
+<!-- Bottom Steps Bar -->
+<footer class="cell-bottom">
+  <nav class="steps-track" id="steps-track"></nav>
+  <div class="nav-buttons" style="display:flex;gap:8px;">
+    <button class="nav-btn" id="btn-prev" disabled>← Bước trước</button>
+    <button class="nav-btn" id="btn-next">Bước tiếp theo →</button>
+  </div>
+</footer>
+
+<!-- Loading Screen -->
+<div class="cell-loading" id="loading-overlay">
+  <div class="spinner"></div>
+  <strong id="loading-title">Đang dựng mô hình 3D…</strong>
+  <small id="loading-detail">Tải cấu trúc tế bào từ thư viện</small>
+</div>
+
+<script>
+// This viewer owns its bridge because its step rail is generated dynamically
+// and is not compatible with the generic legacy lesson selectors.
+window.__THREE_D_LEARN_CELL_VIEWER__ = true;
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+// ── Cell Data Catalog ────────────────────────────────────────────────────────
+const CELL_CONFIGS = {
+  plant: {
+    id: "plant",
+    name: "Tế bào thực vật",
+    type: "Tế bào nhân thực (Eukaryote)",
+    badge: "Thực vật · Lớp 10",
+    color: "#4f8a3f",
+    accent: "#81b64b",
+    modelUrl: "/cell/public/models/plant-cell-first001.glb",
+    scale: 2.2,
+    rotation: [0.1, -1.4, 0],
+    position: [0, -0.2, 0],
+    context: "Cấu trúc tế bào thành cellulose, chứa lục lạp quang hợp và không bào trung tâm lớn.",
+    steps: [
+      { id: "overview", title: "Tổng quan", organelle: "cellWall", text: "Tế bào thực vật có hình đa giác cố định nhờ thành tế bào vững chắc." },
+      { id: "wall", title: "Thành & Màng", organelle: "cellWall", text: "Thành tế bào cấu tạo từ vi sợi cellulose bảo vệ và duy trì hình dạng tế bào." },
+      { id: "nucleus", title: "Nhân tế bào", organelle: "nucleus", text: "Nhân mang chất nhiễm sắc chứa DNA, chỉ huy mọi hoạt động sống của tế bào." },
+      { id: "chloroplast", title: "Lục lạp", organelle: "chloroplast", text: "Bào quan quang hợp hấp thụ ánh sáng mặt trời biến CO₂ và nước thành glucose." },
+      { id: "vacuole", title: "Không bào", organelle: "vacuole", text: "Không bào trung tâm chiếm đến 90% thể tích, tạo áp suất trương nước giúp cây đứng vững." }
+    ],
+    organelles: [
+      {
+        id: "cellWall", name: "Thành tế bào", subtitle: "Khung nâng đỡ vững chắc",
+        desc: "Thành tế bào bằng cellulose bao bọc bên ngoài màng sinh chất, tạo hình khối ổn định và bảo vệ tế bào khỏi áp suất thẩm thấu.",
+        attrs: [{ label: "Cấu tạo", value: "Cellulose & Pectin" }, { label: "Vị trí", value: "Lớp ngoài cùng" }],
+        fact: "Nhờ có thành tế bào cellulose, thực vật có thể mọc thẳng đứng mà không cần khung xương nâng đỡ."
+      },
+      {
+        id: "nucleus", name: "Nhân tế bào", subtitle: "Trung tâm điều khiển",
+        desc: "Được bao bọc bởi màng kép có lỗ nhân. Chứa vật chất di truyền (DNA) quy định mọi đặc tính và điều khiển trao đổi chất.",
+        attrs: [{ label: "Đường kính", value: "5 – 10 µm" }, { label: "Cấu trúc", value: "Màng kép có lỗ" }],
+        fact: "Nhân là một trong những cấu trúc đầu tiên được nhìn thấy dưới kính hiển vi quang học thế kỉ 19."
+      },
+      {
+        id: "chloroplast", name: "Lục lạp", subtitle: "Nhà máy quang hợp",
+        desc: "Chứa sắc tố diệp lục (chlorophyll). Bào quan này biến đổi quang năng thành hóa năng trong các hợp chất hữu cơ.",
+        attrs: [{ label: "Chức năng", value: "Quang hợp" }, { label: "Sắc tố", value: "Diệp lục a, b" }],
+        fact: "Một tế bào thịt lá có thể chứa từ 20 đến 100 lục lạp hoạt động liên tục dưới ánh sáng."
+      },
+      {
+        id: "vacuole", name: "Không bào trung tâm", subtitle: "Túi dự trữ & trương nước",
+        desc: "Chứa dịch không bào giàu nước, muối khoáng, đường và sắc tố. Đóng vai trò quyết định trong hiện tượng co và phản co nguyên sinh.",
+        attrs: [{ label: "Thể tích", value: "Lên tới 90%" }, { label: "Nhiệm vụ", value: "Tạo sức trương" }],
+        fact: "Khi cây bị héo là do không bào mất nước; tưới nước vào, không bào căng phồng làm cây tươi trở lại."
+      }
+    ]
+  },
+
+  animal: {
+    id: "animal",
+    name: "Tế bào động vật",
+    type: "Tế bào nhân thực (Eukaryote)",
+    badge: "Động vật · Lớp 10",
+    color: "#9b74b7",
+    accent: "#b58cd6",
+    modelUrl: "/cell/public/models/animal-cell-nih.glb",
+    scale: 2.5,
+    rotation: [0.1, -0.4, 0],
+    position: [0, 0, 0],
+    context: "Không có thành tế bào và lục lạp, cấu trúc màng linh hoạt hỗ trợ nhập bào và bài tiết.",
+    steps: [
+      { id: "overview", title: "Tổng quan", organelle: "membrane", text: "Tế bào động vật có màng linh hoạt, hình dạng thay đổi tùy loại mô." },
+      { id: "membrane", title: "Màng sinh chất", organelle: "membrane", text: "Lớp kép phospholipid khảm động kiểm soát sự vận chuyển chất ra vào." },
+      { id: "nucleus", title: "Nhân tế bào", organelle: "nucleus", text: "Nhân chứa nhiễm sắc thể, hạch nhân điều khiển quá trình tổng hợp protein." },
+      { id: "mitochondria", title: "Ti thể", organelle: "mitochondria", text: "Nhà máy năng lượng tổng hợp ATP thông qua quá trình hô hấp tế bào." },
+      { id: "golgi", title: "Bộ máy Golgi", organelle: "golgi", text: "Chế biến, đóng gói và phân phối protein tới các vị trí nội bào hoặc xuất bào." }
+    ],
+    organelles: [
+      {
+        id: "membrane", name: "Màng sinh chất", subtitle: "Mô hình khảm động",
+        desc: "Lớp kép phospholipid với protein xuyên màng và glycoprotein, tiếp nhận tín hiệu và điều hòa thẩm thấu.",
+        attrs: [{ label: "Chiều dày", value: "7.5 – 10 nm" }, { label: "Tính chất", value: "Thấm chọn lọc" }],
+        fact: "Màng tế bào luôn chuyển động mềm dẻo như một mặt hồ dầu lỏng chứa các 'tảng băng' protein."
+      },
+      {
+        id: "nucleus", name: "Nhân tế bào", subtitle: "Trung tâm chỉ huy",
+        desc: "Lưu giữ thông tin di truyền, sao chép DNA và phiên mã RNA để hướng dẫn tổng hợp protein.",
+        attrs: [{ label: "Vị trí", value: "Trung tâm" }, { label: "Chứa", value: "Chất nhiễm sắc" }],
+        fact: "Nếu duỗi thẳng toàn bộ DNA trong một nhân tế bào người, chiều dài lên tới gần 2 mét!"
+      },
+      {
+        id: "mitochondria", name: "Ti thể", subtitle: "Nhà máy năng lượng ATP",
+        desc: "Màng trong gấp nếp thành các mào cristae chứa chuỗi chuyền electron hô hấp giải phóng năng lượng ATP.",
+        attrs: [{ label: "Nhiệm vụ", value: "Tạo năng lượng" }, { label: "Số lượng", value: "100 - 2000" }],
+        fact: "Ti thể có hệ DNA và ribosome riêng, minh chứng cho thuyết nội cộng sinh trong tiến hóa sinh học."
+      },
+      {
+        id: "golgi", name: "Bộ máy Golgi", subtitle: "Trạm phân phối phân tử",
+        desc: "Các túi dẹp xếp chồng lên nhau, gắn gốc đường vào protein (glycosyl hóa) rồi tạo túi tiết chuyển đi.",
+        attrs: [{ label: "Cấu trúc", value: "Chồng túi dẹp" }, { label: "Chức năng", value: "Đóng gói & tiết" }],
+        fact: "Tế bào tuyến tụy sản xuất insulin có bộ máy Golgi cực kì phát triển để liên tục bài tiết hoóc-môn."
+      }
+    ]
+  },
+
+  bacteria: {
+    id: "bacteria",
+    name: "Tế bào vi khuẩn",
+    type: "Tế bào nhân sơ (Prokaryote)",
+    badge: "Nhân sơ · Lớp 10",
+    color: "#55aa89",
+    accent: "#6dd2a8",
+    modelUrl: "/cell/public/models/bacteria-wall-nih.glb",
+    scale: 0.0028,
+    rotation: [0.1, -0.4, 0],
+    position: [0, 0, 0],
+    context: "Chưa có màng nhân, kích thước nhỏ 1-5 µm, chuyển hóa vật chất và sinh sản vô cùng nhanh chóng.",
+    steps: [
+      { id: "overview", title: "Tổng quan", organelle: "wall", text: "Vi khuẩn đại diện cho sinh vật nhân sơ cổ xưa, phân bố khắp sinh quyển." },
+      { id: "wall", title: "Thành Peptidoglycan", organelle: "wall", text: "Phân biệt vi khuẩn Gram dương và Gram âm dựa vào độ dày thành này." },
+      { id: "nucleoid", title: "Vùng nhân", organelle: "nucleoid", text: "Chỉ gồm 1 phân tử DNA trần dạng vòng, không có màng nhân bao bọc." },
+      { id: "flagellum", title: "Roi bơi (Flagella)", organelle: "flagellum", text: "Động cơ phân tử quay tròn giúp vi khuẩn bơi nhanh trong môi trường lỏng." }
+    ],
+    organelles: [
+      {
+        id: "wall", name: "Thành Peptidoglycan", subtitle: "Vỏ giáp kháng áp",
+        desc: "Mạng lưới polysaccharide liên kết chéo với peptide ngắn. Kháng sinh penicillin tiêu diệt vi khuẩn bằng cách ức chế tạo thành này.",
+        attrs: [{ label: "Vật liệu", value: "Peptidoglycan" }, { label: "Nhuộm Gram", value: "Dương/Âm" }],
+        fact: "Độ dày thành peptidoglycan ở vi khuẩn Gram dương lên tới 20-80 nm, gấp 10 lần Gram âm."
+      },
+      {
+        id: "nucleoid", name: "Vùng nhân (Nucleoid)", subtitle: "Bộ gen trần dạng vòng",
+        desc: "Chứa phân tử DNA mạch kép dạng vòng không liên kết với protein histone, nổi tự do trong bào tương.",
+        attrs: [{ label: "Màng nhân", value: "Không có" }, { label: "Dạng DNA", value: "Vòng xoắn kép" }],
+        fact: "Vi khuẩn E. coli có thể sao chép toàn bộ bộ gen 4.6 triệu nucleotide chỉ trong vòng 20 phút."
+      },
+      {
+        id: "flagellum", name: "Roi bơi (Flagellum)", subtitle: "Động cơ nano tự nhiên",
+        desc: "Được cấu tạo từ protein flagellin, hoạt động như chân vịt được truyền động bởi dòng ion proton H⁺.",
+        attrs: [{ label: "Tốc độ", value: "100 vòng/giây" }, { label: "Động lực", value: "Gradient proton" }],
+        fact: "Đây là một trong những bộ máy cơ học tinh xảo nhất trong tự nhiên, đạt hiệu suất quay gần 100%."
+      }
+    ]
+  },
+
+  neuron: {
+    id: "neuron",
+    name: "Tế bào thần kinh (Neuron)",
+    type: "Tế bào dẫn truyền xung",
+    badge: "Thần kinh · Lớp 11",
+    color: "#6b7dc6",
+    accent: "#8fa3e8",
+    modelUrl: "/cell/public/models/neuron-nih.glb",
+    scale: 3.2,
+    rotation: [0.15, -0.3, 0],
+    position: [0, 0, 0],
+    context: "Đơn vị cấu tạo và chức năng của hệ thần kinh, chuyên biệt hóa cho việc dẫn truyền điện thế hoạt động.",
+    steps: [
+      { id: "overview", title: "Tổng quan", organelle: "soma", text: "Neuron có cấu trúc phân nhánh độc đáo gồm thân, sợi nhánh và sợi trục dài." },
+      { id: "soma", title: "Thân Neuron", organelle: "soma", text: "Nơi chứa nhân và tổng hợp các chất dẫn truyền xung thần kinh." },
+      { id: "axon", title: "Sợi trục & Myelin", organelle: "axon", text: "Được bọc bao myelin ngắt quãng, truyền xung theo kiểu nhảy cóc cực nhanh." },
+      { id: "synapse", title: "Khớp Synapse", organelle: "synapse", text: "Cúc tận cùng giải phóng chất dẫn truyền qua khe synapse tới tế bào sau." }
+    ],
+    organelles: [
+      {
+        id: "soma", name: "Thân Neuron (Soma)", subtitle: "Trung tâm tích hợp tín hiệu",
+        desc: "Tiếp nhận các tín hiệu điện thế hưng phấn và ức chế từ hàng nghìn sợi nhánh trước khi quyết định phát xung.",
+        attrs: [{ label: "Chứa", value: "Nhân & Thể Nissl" }, { label: "Kích thước", value: "10 – 50 µm" }],
+        fact: "Não bộ con người chứa khoảng 86 tỉ tế bào neuron kết nối tạo thành mạng lưới truyền thông tin tinh vi."
+      },
+      {
+        id: "axon", name: "Sợi trục (Axon)", subtitle: "Đường cao tốc điện học",
+        desc: "Dẫn truyền xung thần kinh một chiều từ thân tới các cúc synapse tận cùng. Bao myelin đóng vai trò chất cách điện.",
+        attrs: [{ label: "Chiều dài", value: "Tới hơn 1 mét" }, { label: "Tốc độ truyền", value: "Tới 120 m/s" }],
+        fact: "Xung thần kinh truyền theo cơ chế nhảy cóc giữa các eo Ranvier, nhanh gấp hàng chục lần sợi không có myelin."
+      },
+      {
+        id: "synapse", name: "Cúc tận cùng & Synapse", subtitle: "Khớp nối hóa học",
+        desc: "Khi xung điện truyền tới, ion Ca²⁺ ùa vào làm vỡ túi bóng chứa chất dẫn truyền (như acetylcholine, dopamine) vào khe synapse.",
+        attrs: [{ label: "Khe hở", value: "20 – 40 nm" }, { label: "Cơ chế", value: "Xuất bào" }],
+        fact: "Một neuron có thể tạo ra từ 1,000 đến 10,000 điểm tiếp xúc synapse với các tế bào khác."
+      }
+    ]
+  },
+
+  whiteBlood: {
+    id: "whiteBlood",
+    name: "Tế bào bạch cầu",
+    type: "Tế bào miễn dịch",
+    badge: "Miễn dịch · Lớp 11",
+    color: "#6d78a8",
+    accent: "#98a3d4",
+    modelUrl: "/cell/public/models/white-blood-cell-user.glb",
+    scale: 3.2,
+    rotation: [0, -0.2, 0],
+    position: [0, -0.1, 0],
+    context: "Các chiến binh của hệ miễn dịch, có khả năng biến hình, thực bào và tiêu diệt mầm bệnh.",
+    steps: [
+      { id: "overview", title: "Tổng quan", organelle: "lysosome", text: "Bạch cầu tuần tra trong máu và các mô để tìm kiếm và tiêu diệt vi khuẩn, virus." },
+      { id: "nucleus", title: "Nhân phân thùy", organelle: "nucleus", text: "Nhân có dạng nhiều thùy nối nhau giúp tế bào luồn lách qua thành mao mạch." },
+      { id: "lysosome", title: "Lysosome & Thực bào", organelle: "lysosome", text: "Chứa enzyme thủy phân mạnh để tiêu hóa các mảnh vi khuẩn bị nuốt vào." }
+    ],
+    organelles: [
+      {
+        id: "lysosome", name: "Lysosome", subtitle: "Túi enzyme tiêu hóa",
+        desc: "Chứa hơn 40 loại enzyme thủy phân acid. Sau khi bạch cầu nuốt vi khuẩn, lysosome hòa màng tạo phagolysosome để tiêu diệt mầm bệnh.",
+        attrs: [{ label: "Độ pH bên trong", value: "pH ~ 4.5 - 5.0" }, { label: "Nhiệm vụ", value: "Thực bào & tiêu hóa" }],
+        fact: "Khi mầm bệnh bị tiêu diệt, bạch cầu già cũng tự phân giải và cùng xác vi khuẩn tạo thành 'mủ' tại ổ viêm."
+      },
+      {
+        id: "nucleus", name: "Nhân phân thùy", subtitle: "Cấu trúc linh hoạt",
+        desc: "Đặc trưng ở bạch cầu trung tính, nhân chia làm 3-5 thùy giúp tế bào ép mình chui qua khe hở nội mô mao mạch (hiện tượng xuyên mạch).",
+        attrs: [{ label: "Dạng nhân", value: "Đa thùy" }, { label: "Đặc tính", value: "Biến dạng cao" }],
+        fact: "Bạch cầu là tế bào duy nhất trong máu có thể chủ động rời dòng tuần hoàn để bò vào mô bị nhiễm trùng."
+      }
+    ]
+  },
+
+  muscle: {
+    id: "muscle",
+    name: "Cấu trúc sợi cơ (Tế bào cơ)",
+    type: "Tế bào vận động (Cơ vân)",
+    badge: "Cơ vân · Lớp 11",
+    color: "#ca6678",
+    accent: "#bd514d",
+    modelUrl: null,
+    scale: 1.15,
+    rotation: [0.12, -0.35, 0],
+    position: [0, 0, 0],
+    context: "Sợi cơ chứa các bó tơ cơ song song, có vân ngang do sự sắp xếp đều đặn của sợi actin và myosin.",
+    steps: [
+      { id: "overview", title: "Tổng quan", organelle: "myofibril", text: "Sợi cơ vân có dạng hình trụ dài nhiều nhân, cấu tạo từ hàng nghìn tơ cơ song song." },
+      { id: "myofibril", title: "Tơ cơ & Sarcomere", organelle: "myofibril", text: "Đơn vị co cơ sarcomere giới hạn giữa 2 vạch Z, gồm sợi dày myosin và sợi mỏng actin." },
+      { id: "sarcolemma", title: "Màng Sarcolemma", organelle: "sarcolemma", text: "Màng tế bào cơ có hệ thống ống T dẫn truyền điện thế kích thích giải phóng Ca²⁺." },
+      { id: "mitochondria", title: "Ti thể dồi dào", organelle: "mitochondria", text: "Xen kẽ giữa các tơ cơ là mật độ ti thể dày đặc để cung cấp ATP cho chu kì co dãn cơ." }
+    ],
+    organelles: [
+      {
+        id: "myofibril", name: "Tơ cơ (Myofibril)", subtitle: "Đơn vị co rút vi thể",
+        desc: "Chạy dọc suốt chiều dài sợi cơ, chứa các đĩa sáng I và đĩa tối A tạo nên vân ngang đặc trưng của cơ vân.",
+        attrs: [{ label: "Đường kính", value: "~ 1 µm" }, { label: "Cấu tạo", value: "Actin & Myosin" }],
+        fact: "Khi co cơ, các sợi actin trượt sâu vào vùng sợi myosin làm sarcomere ngắn lại."
+      },
+      {
+        id: "sarcolemma", name: "Màng sợi cơ (Sarcolemma)", subtitle: "Màng hưng phấn dẫn truyền",
+        desc: "Bao bọc ngoài tế bào cơ, ăn sâu vào bên trong thành hệ thống ống vi quản T để phân phối điện thế hưng phấn cực nhanh.",
+        attrs: [{ label: "Đặc tính", value: "Dẫn truyền xung điện" }, { label: "Hệ thống", value: "Ống ngang T" }],
+        fact: "Ống T đảm bảo toàn bộ tơ cơ ở sâu bên trong co đồng thời cùng lúc với bề mặt ngoài."
+      },
+      {
+        id: "mitochondria", name: "Ti thể sợi cơ", subtitle: "Nguồn ATP bền bỉ",
+        desc: "Nằm kẹp giữa các tơ cơ, liên tục thực hiện chu trình Krebs và chuỗi hô hấp tế bào để cung cấp ATP cho đầu myosin hoạt động.",
+        attrs: [{ label: "Mật độ", value: "Rất cao" }, { label: "Vai trò", value: "Sản xuất ATP" }],
+        fact: "Tập luyện sức bền giúp tăng đáng kể số lượng và kích thước ti thể trong tế bào cơ."
+      }
+    ]
+  },
+
+  epithelial: {
+    id: "epithelial",
+    name: "Tế bào biểu mô",
+    type: "Tế bào biểu mô phân cực",
+    badge: "Mô biểu mô · Lớp 10 & 11",
+    color: "#d79baa",
+    accent: "#a56d7f",
+    modelUrl: null,
+    scale: 1.15,
+    rotation: [0.08, -0.22, 0],
+    position: [0, 0, 0],
+    context: "Hình thành các lớp phủ bảo vệ da, thành ruột và phế nang; có tính phân cực ngọn - đáy rõ rệt.",
+    steps: [
+      { id: "overview", title: "Tổng quan", organelle: "microvilli", text: "Tế bào biểu mô hình lăng trụ xếp khít nhau tạo thành lớp rào chắn vững chắc và hấp thu chất dinh dưỡng." },
+      { id: "microvilli", title: "Vi nhung mao (Microvilli)", organelle: "microvilli", text: "Tăng diện tích tiếp xúc lên hàng chục lần ở bờ bàn chải phía lòng ruột để hấp thu dưỡng chất." },
+      { id: "junctions", title: "Mối nối bịt (Tight Junctions)", organelle: "junctions", text: "Các dải protein liên kết chặt chẽ mép màng giữa hai tế bào kế bên, ngăn dòng dịch rò rỉ qua khe." },
+      { id: "nucleus", title: "Nhân tế bào", organelle: "nucleus", text: "Nhân tế bào hình bầu dục nằm lệch về phía cực đáy (basal), điều khiển quá trình tổng hợp chất." }
+    ],
+    organelles: [
+      {
+        id: "microvilli", name: "Vi nhung mao (Microvilli)", subtitle: "Bờ bàn chải hấp thu",
+        desc: "Các nếp lồi hình ngón tay của màng tế bào, được nâng đỡ bởi các bó sợi actin bên trong giúp tối đa hóa diện tích trao đổi chất.",
+        attrs: [{ label: "Chiều dài", value: "0.5 – 1.0 µm" }, { label: "Vị trí", value: "Cực ngọn (Apical)" }],
+        fact: "Nhờ hàng triệu vi nhung mao, tổng diện tích hấp thu của ruột non người lên tới gần 30 mét vuông!"
+      },
+      {
+        id: "junctions", name: "Mối nối bịt (Tight Junctions)", subtitle: "Hàng rào khóa kín",
+        desc: "Tổ hợp protein claudin và occludin khóa chặt khoảng gian bào, ngăn vi khuẩn và độc chất xâm nhập vào mạch máu.",
+        attrs: [{ label: "Vị trí", value: "Giáp ranh giữa 2 tế bào" }, { label: "Chức năng", value: "Ngăn rò rỉ" }],
+        fact: "Sự phá hủy mối nối bịt ở ruột là căn nguyên của nhiều bệnh viêm đường ruột và dị ứng thức ăn."
+      },
+      {
+        id: "nucleus", name: "Nhân phân cực", subtitle: "Bộ chỉ huy tế bào",
+        desc: "Nằm ở 1/3 dưới đáy tế bào biểu mô hình trụ, duy trì trạng thái phân cực hình thái và chức năng của tế bào.",
+        attrs: [{ label: "Hình dạng", value: "Bầu dục" }, { label: "Vị trí", value: "Gần màng đáy" }],
+        fact: "Vị trí nhân giúp các bác sĩ giải phẫu bệnh xác định mô biểu mô bình thường hay bị loạn sản, ung thư."
+      }
+    ]
+  }
+};
+
+// Phase 2 lesson overlays reuse the existing plant-cell model and organelle
+// focus states without changing the catalog or adding external assets.
+const PHASE_CONFIGS = {
+  mitosis: {
+    cell: 'plant',
+    badge: 'Nguyên phân · Lớp 10',
+    name: 'Nguyên phân ở tế bào thực vật',
+    context: 'Theo dõi vật chất di truyền qua các kì nguyên phân bằng mô hình tế bào thực vật hiện có.',
+    steps: [
+      { id: 'overview', title: 'Chuẩn bị', organelle: 'nucleus', text: 'Xác định nhân tế bào và vùng mô phân sinh trước khi theo dõi một chu kì phân bào.' },
+      { id: 'prophase', title: 'Kì đầu', organelle: 'nucleus', text: 'Nhiễm sắc thể co xoắn, màng nhân dần tiêu biến và thoi phân bào bắt đầu hình thành.' },
+      { id: 'metaphase', title: 'Kì giữa', organelle: 'nucleus', text: 'Các nhiễm sắc thể kép xếp thành một hàng ở mặt phẳng xích đạo của tế bào.' },
+      { id: 'anaphase', title: 'Kì sau', organelle: 'nucleus', text: 'Hai cromatit chị em tách nhau và di chuyển về hai cực đối diện của tế bào.' },
+      { id: 'telophase', title: 'Kì cuối', organelle: 'nucleus', text: 'Hai nhân con hình thành, nhiễm sắc thể dãn xoắn và tế bào chuẩn bị phân chia chất tế bào.' },
+      { id: 'cytokinesis', title: 'Phân chia tế bào chất', organelle: 'cellWall', text: 'Ở tế bào thực vật, vách ngăn mới hình thành ở giữa để tạo hai tế bào con có bộ nhiễm sắc thể giống nhau.' },
+    ],
+  },
+  osmosis: {
+    cell: 'plant',
+    badge: 'Thẩm thấu · Lớp 10',
+    name: 'Vận chuyển nước và co nguyên sinh',
+    context: 'Dùng không bào và thành tế bào để quan sát tế bào thực vật thay đổi trạng thái nước trong môi trường khác nhau.',
+    steps: [
+      { id: 'setup', title: 'Ban đầu', organelle: 'vacuole', text: 'Tế bào có không bào căng và màng sinh chất áp sát thành tế bào trong môi trường cân bằng.' },
+      { id: 'hypotonic', title: 'Môi trường nhược trương', organelle: 'vacuole', text: 'Nước đi vào tế bào qua màng bán thấm, không bào lớn dần và sức trương tăng.' },
+      { id: 'turgor', title: 'Sức trương', organelle: 'cellWall', text: 'Thành cellulose chống lại áp suất trương, giúp mô thực vật giữ hình dạng và đứng vững.' },
+      { id: 'hypertonic', title: 'Môi trường ưu trương', organelle: 'vacuole', text: 'Nước đi ra khỏi tế bào khi môi trường bên ngoài có nồng độ chất tan cao hơn.' },
+      { id: 'plasmolysis', title: 'Co nguyên sinh', organelle: 'cellWall', text: 'Không bào co lại, màng sinh chất tách khỏi thành tế bào: đó là hiện tượng co nguyên sinh.' },
+      { id: 'deplasmolysis', title: 'Phản co', organelle: 'vacuole', text: 'Đưa tế bào về môi trường thích hợp giúp nước đi vào và không bào phục hồi thể tích.' },
+    ],
+  },
+};
+
+// ── Read URL query parameter ────────────────────────────────────────────────
+const params = new URLSearchParams(window.location.search);
+const phaseKey = params.get('phase');
+const phaseConfig = PHASE_CONFIGS[phaseKey] || null;
+const cellKey = phaseConfig?.cell || params.get('cell') || 'plant';
+const baseCell = CELL_CONFIGS[cellKey] || CELL_CONFIGS.plant;
+const currentCell = phaseConfig
+  ? { ...baseCell, ...phaseConfig, cell: baseCell.id }
+  : baseCell;
+
+// ── DOM References ──────────────────────────────────────────────────────────
+const typeBadge = document.getElementById('cell-type-badge');
+const nameTitle = document.getElementById('cell-name-title');
+const contextSub = document.getElementById('cell-context-sub');
+const chipsContainer = document.getElementById('chips-container');
+const stepsTrack = document.getElementById('steps-track');
+const orgName = document.getElementById('org-name');
+const orgSubtitle = document.getElementById('org-subtitle');
+const orgDesc = document.getElementById('org-desc');
+const orgAttrs = document.getElementById('org-attrs');
+const orgFact = document.getElementById('org-fact');
+const btnPrev = document.getElementById('btn-prev');
+const btnNext = document.getElementById('btn-next');
+const btnRotate = document.getElementById('btn-rotate');
+const btnCutaway = document.getElementById('btn-cutaway');
+const btnReset = document.getElementById('btn-reset');
+const loadingOverlay = document.getElementById('loading-overlay');
+const loadingDetail = document.getElementById('loading-detail');
+
+// Apply subject color theme
+document.documentElement.style.setProperty('--accent', currentCell.accent);
+document.documentElement.style.setProperty('--accent-soft', `${currentCell.accent}24`);
+typeBadge.textContent = currentCell.badge;
+nameTitle.textContent = currentCell.name;
+contextSub.textContent = currentCell.context;
+
+// ── State ───────────────────────────────────────────────────────────────────
+let currentStepIdx = 0;
+let activeOrganelleId = currentCell.organelles[0].id;
+let autoRotate = true;
+let isCutaway = false;
+
+// ── Bridge Communication with LessonShell ──────────────────────────────────
+const BRIDGE_MSG = '3dlearn:legacy-bridge';
+const BRIDGE_VERSION = 1;
+const bridgeParentOrigin = (() => {
+  try { return document.referrer ? new URL(document.referrer).origin : null; } catch { return null; }
+})();
+let bridgeMode = 'rotate';
+let bridgeCanvas = null;
+let bridgeZoomGesture = null;
+let bridgeReady = false;
+
+function notifyBridge(type, payload = {}) {
+  if (!window.parent || window.parent === window) return;
+  try {
+    window.parent.postMessage(
+      { protocol: BRIDGE_MSG, version: BRIDGE_VERSION, type, payload },
+      bridgeParentOrigin || '*',
+    );
+  } catch {}
+}
+
+function isTrustedBridgeMessage(event) {
+  if (event.source !== window.parent) return false;
+  if (event.origin === 'null') return true;
+  return !bridgeParentOrigin || event.origin === bridgeParentOrigin;
+}
+
+function makeBridgePointerEvent(type, source, button) {
+  try {
+    return new PointerEvent(type, {
+      bubbles: true,
+      cancelable: true,
+      composed: true,
+      pointerId: source.pointerId,
+      pointerType: source.pointerType,
+      isPrimary: source.isPrimary,
+      clientX: source.clientX,
+      clientY: source.clientY,
+      screenX: source.screenX,
+      screenY: source.screenY,
+      buttons: button === 2 ? 2 : 1,
+      button,
+    });
+  } catch {
+    return null;
+  }
+}
+
+// Keep OrbitControls intact and only remap the shell's selected left-drag
+// gesture. Native right-drag, wheel zoom and touch gestures remain available.
+function onBridgePointerDown(event) {
+  if (!bridgeCanvas || event.pointerType !== 'mouse' || event.button !== 0) return;
+  if (bridgeMode === 'pan') {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const synthetic = makeBridgePointerEvent('pointerdown', event, 2);
+    if (synthetic) bridgeCanvas.dispatchEvent(synthetic);
+  } else if (bridgeMode === 'zoom') {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    bridgeZoomGesture = { x: event.clientX, y: event.clientY };
+  }
+}
+
+function onBridgePointerMove(event) {
+  if (!bridgeZoomGesture || event.pointerType !== 'mouse') return;
+  event.preventDefault();
+  event.stopImmediatePropagation();
+  const deltaY = event.clientY - bridgeZoomGesture.y;
+  if (Math.abs(deltaY) < 2) return;
+  bridgeZoomGesture.y = event.clientY;
+  bridgeCanvas.dispatchEvent(new WheelEvent('wheel', {
+    bubbles: true,
+    cancelable: true,
+    clientX: event.clientX,
+    clientY: event.clientY,
+    deltaY: deltaY * 3,
+    deltaMode: 0,
+  }));
+}
+
+function onBridgePointerEnd(event) {
+  if (!bridgeZoomGesture || event.pointerType !== 'mouse') return;
+  event.preventDefault();
+  event.stopImmediatePropagation();
+  bridgeZoomGesture = null;
+}
+
+function setBridgeMode(nextMode) {
+  if (!['rotate', 'pan', 'zoom'].includes(nextMode)) return false;
+  bridgeMode = nextMode;
+  if (bridgeCanvas) bridgeCanvas.dataset.threeDLearnMode = bridgeMode;
+  notifyBridge('modeChanged', { mode: bridgeMode, applied: true });
+  return true;
+}
+
+function bridgeState() {
+  return {
+    mode: bridgeMode,
+    step: currentStepIdx,
+    count: currentCell.steps.length,
+    canvas: Boolean(bridgeCanvas),
+    webgl: Boolean(bridgeCanvas?.getContext('webgl2') || bridgeCanvas?.getContext('webgl') || bridgeCanvas?.getContext('experimental-webgl')),
+    ready: bridgeReady,
+  };
+}
+
+function acknowledgeBridge(message, ok) {
+  notifyBridge('ack', {
+    requestId: message.requestId || null,
+    command: message.type,
+    ok,
+  });
+}
+
+window.addEventListener('message', (event) => {
+  if (!isTrustedBridgeMessage(event)) return;
+  const message = event.data;
+  if (!message || message.protocol !== BRIDGE_MSG || message.version !== BRIDGE_VERSION) return;
+
+  const payload = message.payload || {};
+  if (message.type === 'setMode') {
+    acknowledgeBridge(message, typeof payload.mode === 'string' && setBridgeMode(payload.mode));
+  } else if (message.type === 'reset') {
+    resetView();
+    acknowledgeBridge(message, true);
+  } else if (message.type === 'setStep') {
+    const ok = Number.isInteger(payload.index) && payload.index >= 0 && payload.index < currentCell.steps.length;
+    if (ok) goToStep(payload.index);
+    acknowledgeBridge(message, ok);
+  } else if (message.type === 'requestState') {
+    notifyBridge('state', bridgeState());
+  }
+});
+
+// ── Three.js Scene Setup ────────────────────────────────────────────────────
+const container = document.getElementById('canvas-container');
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x070d18);
+
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+camera.position.set(0, 0, 7.5);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.15;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+container.appendChild(renderer.domElement);
+bridgeCanvas = renderer.domElement;
+bridgeCanvas.dataset.threeDLearnMode = bridgeMode;
+bridgeCanvas.addEventListener('pointerdown', onBridgePointerDown, true);
+bridgeCanvas.addEventListener('pointermove', onBridgePointerMove, true);
+bridgeCanvas.addEventListener('pointerup', onBridgePointerEnd, true);
+bridgeCanvas.addEventListener('pointercancel', onBridgePointerEnd, true);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
+controls.minDistance = 2.5;
+controls.maxDistance = 18;
+
+// Lighting
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+scene.add(ambientLight);
+
+const dirLight1 = new THREE.DirectionalLight(0xfff5ea, 1.8);
+dirLight1.position.set(5, 8, 6);
+dirLight1.castShadow = true;
+scene.add(dirLight1);
+
+const dirLight2 = new THREE.DirectionalLight(0x90c5ff, 0.8);
+dirLight2.position.set(-6, -4, -4);
+scene.add(dirLight2);
+
+// Model Root Group
+const modelGroup = new THREE.Group();
+scene.add(modelGroup);
+
+// Phase 2 overlays: these are deliberately procedural and local. They make
+// the two P0 lessons change state in the 3D scene instead of only changing the
+// explanatory text/selected organelle.
+const phaseVisualGroup = new THREE.Group();
+modelGroup.add(phaseVisualGroup);
+let mitosisVisual = null;
+let osmosisVisual = null;
+
+function createPhaseVisuals() {
+  if (!phaseKey) return;
+  phaseVisualGroup.scale.setScalar(currentCell.scale || 1);
+  if (currentCell.rotation) phaseVisualGroup.rotation.set(...currentCell.rotation);
+  if (currentCell.position) phaseVisualGroup.position.set(...currentCell.position);
+
+  if (phaseKey === 'mitosis') {
+    const group = new THREE.Group();
+    const chromosomeMaterial = new THREE.MeshStandardMaterial({ color: 0xffc857, emissive: 0x5a3500, emissiveIntensity: 0.4, roughness: 0.35 });
+    const chromosomeGeometry = new THREE.BoxGeometry(0.08, 0.48, 0.08);
+    const chromosomes = Array.from({ length: 6 }, () => {
+      const mesh = new THREE.Mesh(chromosomeGeometry, chromosomeMaterial);
+      mesh.castShadow = true;
+      group.add(mesh);
+      return mesh;
+    });
+    const poleMaterial = new THREE.MeshStandardMaterial({ color: 0x74d7ff, emissive: 0x123f5a, emissiveIntensity: 0.5 });
+    const poles = [-1, 1].map((side) => {
+      const mesh = new THREE.Mesh(new THREE.SphereGeometry(0.11, 18, 18), poleMaterial);
+      mesh.position.set(side * 0.72, 0, 0);
+      group.add(mesh);
+      return mesh;
+    });
+    const spindleMaterial = new THREE.LineBasicMaterial({ color: 0x74d7ff, transparent: true, opacity: 0.68 });
+    const spindleGeometry = new THREE.BufferGeometry().setFromPoints([
+      new THREE.Vector3(-0.72, 0, 0), new THREE.Vector3(0, 0, 0),
+      new THREE.Vector3(0.72, 0, 0), new THREE.Vector3(0, 0, 0),
+    ]);
+    const spindle = new THREE.LineSegments(spindleGeometry, spindleMaterial);
+    group.add(spindle);
+    phaseVisualGroup.add(group);
+    mitosisVisual = { group, chromosomes, poles, spindle };
+  }
+
+  if (phaseKey === 'osmosis') {
+    const vacuole = new THREE.Mesh(
+      new THREE.SphereGeometry(0.82, 32, 24),
+      new THREE.MeshPhysicalMaterial({ color: 0x69c7ee, transparent: true, opacity: 0.28, roughness: 0.12, transmission: 0.12 }),
+    );
+    const membrane = new THREE.Mesh(
+      new THREE.SphereGeometry(1.08, 32, 24),
+      new THREE.MeshBasicMaterial({ color: 0x9ee8ff, transparent: true, opacity: 0.2, wireframe: true }),
+    );
+    phaseVisualGroup.add(vacuole, membrane);
+    osmosisVisual = { vacuole, membrane };
+  }
+  updatePhaseVisual(0);
+}
+
+function updatePhaseVisual(index) {
+  if (mitosisVisual) {
+    const { chromosomes, poles, spindle } = mitosisVisual;
+    const phase = Math.max(0, Math.min(5, index));
+    const layouts = [
+      [[0, 0, 0], [0.16, 0.08, 0], [-0.16, -0.08, 0], [0.08, -0.16, 0], [-0.08, 0.16, 0], [0, 0.18, 0]],
+      [[-0.28, 0.16, 0], [-0.1, -0.12, 0], [0.1, 0.12, 0], [0.28, -0.16, 0], [0, 0, 0.16], [0, 0, -0.16]],
+      [[-0.18, 0, 0], [-0.06, 0, 0], [0.06, 0, 0], [0.18, 0, 0], [0, 0, 0.12], [0, 0, -0.12]],
+      [[-0.54, 0.14, 0], [-0.54, -0.14, 0], [0.54, 0.14, 0], [0.54, -0.14, 0], [-0.42, 0, 0.12], [0.42, 0, -0.12]],
+      [[-0.64, 0.14, 0], [-0.64, -0.14, 0], [0.64, 0.14, 0], [0.64, -0.14, 0], [-0.52, 0, 0.12], [0.52, 0, -0.12]],
+      [[-0.64, 0.16, 0], [-0.64, -0.16, 0], [0.64, 0.16, 0], [0.64, -0.16, 0], [-0.52, 0, 0.12], [0.52, 0, -0.12]],
+    ][phase];
+    chromosomes.forEach((mesh, i) => {
+      mesh.visible = phase > 0;
+      if (layouts[i]) mesh.position.set(...layouts[i]);
+      mesh.scale.set(phase === 5 ? 0.82 : 1, 1, 1);
+    });
+    poles.forEach((pole) => { pole.visible = phase >= 1; });
+    spindle.visible = phase >= 1 && phase <= 3;
+  }
+  if (osmosisVisual) {
+    const { vacuole, membrane } = osmosisVisual;
+    const phase = Math.max(0, Math.min(5, index));
+    const vacuoleScale = [0.72, 0.92, 1.08, 0.86, 0.62, 0.88][phase];
+    const membraneScale = [1.02, 1.05, 1.08, 1.13, 1.2, 1.08][phase];
+    vacuole.scale.set(vacuoleScale, vacuoleScale * 0.92, vacuoleScale);
+    membrane.scale.set(membraneScale, membraneScale * 0.92, membraneScale);
+    vacuole.material.opacity = phase === 4 ? 0.2 : 0.28;
+    membrane.material.opacity = phase === 4 ? 0.45 : 0.2;
+  }
+}
+
+createPhaseVisuals();
+
+// Fallback procedural geometry if GLB is loading or unavailable
+function createProceduralFallback(cell) {
+  const group = new THREE.Group();
+  const sphereGeo = new THREE.SphereGeometry(1.4, 48, 48);
+  const sphereMat = new THREE.MeshStandardMaterial({
+    color: cell.color,
+    roughness: 0.45,
+    metalness: 0.05,
+    transparent: true,
+    opacity: 0.85
+  });
+  const body = new THREE.Mesh(sphereGeo, sphereMat);
+  body.castShadow = true;
+  group.add(body);
+
+  // Nucleus inside
+  const nucGeo = new THREE.SphereGeometry(0.5, 32, 32);
+  const nucMat = new THREE.MeshStandardMaterial({ color: 0x9333ea, roughness: 0.3 });
+  const nuc = new THREE.Mesh(nucGeo, nucMat);
+  nuc.position.set(0.1, 0.1, 0.1);
+  group.add(nuc);
+  return group;
+}
+
+// Procedural Muscle Model (Striated Muscle Fiber)
+function createMuscleModel() {
+  const group = new THREE.Group();
+  const fiberLength = 4.4;
+  const sarcomereCount = 12;
+  const myofibrilLayout = [
+    { y: 0.36, z: 0.0 },
+    { y: 0.18, z: 0.34 },
+    { y: 0.18, z: -0.34 },
+    { y: -0.18, z: 0.34 },
+    { y: -0.18, z: -0.34 },
+    { y: -0.36, z: 0.0 },
+    { y: 0.0, z: 0.0 }
+  ];
+
+  // Sarcolemma (outer membrane sheath)
+  const sarcoMat = new THREE.MeshStandardMaterial({
+    color: 0xd7b284,
+    transparent: true,
+    opacity: 0.38,
+    roughness: 0.45
+  });
+  const sarcoGeo = new THREE.CylinderGeometry(0.58, 0.58, fiberLength, 32);
+  const sarco = new THREE.Mesh(sarcoGeo, sarcoMat);
+  sarco.rotation.z = Math.PI / 2;
+  sarco.castShadow = true;
+  group.add(sarco);
+
+  // Myofibrils
+  const myoMat = new THREE.MeshStandardMaterial({
+    color: 0xbd3d51,
+    roughness: 0.5
+  });
+  myofibrilLayout.forEach(pos => {
+    const geo = new THREE.CylinderGeometry(0.1, 0.1, fiberLength, 16);
+    const mesh = new THREE.Mesh(geo, myoMat);
+    mesh.rotation.z = Math.PI / 2;
+    mesh.position.set(0, pos.y, pos.z);
+    mesh.castShadow = true;
+    group.add(mesh);
+  });
+
+  // Sarcomere Z-disc stripes
+  const bandMat = new THREE.MeshStandardMaterial({ color: 0x6e1b29, roughness: 0.3 });
+  for (let i = 0; i <= sarcomereCount; i++) {
+    const x = -fiberLength / 2 + (i * fiberLength / sarcomereCount);
+    const ringGeo = new THREE.TorusGeometry(0.58, 0.015, 8, 32);
+    const ring = new THREE.Mesh(ringGeo, bandMat);
+    ring.rotation.y = Math.PI / 2;
+    ring.position.x = x;
+    group.add(ring);
+  }
+
+  // Mitochondria between fibers
+  const mitoMat = new THREE.MeshStandardMaterial({ color: 0xcf7042, roughness: 0.4 });
+  const mitoPositions = [
+    [-1.2, 0.42, 0.2], [-0.4, -0.42, -0.2], [0.6, 0.42, -0.2], [1.3, -0.42, 0.2]
+  ];
+  mitoPositions.forEach(p => {
+    const mitoGeo = new THREE.CapsuleGeometry(0.08, 0.22, 6, 12);
+    const mito = new THREE.Mesh(mitoGeo, mitoMat);
+    mito.rotation.z = Math.PI / 2;
+    mito.position.set(p[0], p[1], p[2]);
+    group.add(mito);
+  });
+
+  return group;
+}
+
+// Procedural Epithelial Model (Polarized Columnar Epithelium)
+function createEpithelialModel() {
+  const group = new THREE.Group();
+  // Columnar body
+  const bodyMat = new THREE.MeshStandardMaterial({
+    color: 0xd79baa,
+    transparent: true,
+    opacity: 0.68,
+    roughness: 0.5
+  });
+  const bodyGeo = new THREE.CylinderGeometry(0.85, 0.95, 2.8, 32);
+  const body = new THREE.Mesh(bodyGeo, bodyMat);
+  body.castShadow = true;
+  group.add(body);
+
+  // Neighbor cells on sides (semi-transparent)
+  const neighMat = new THREE.MeshStandardMaterial({ color: 0xc98ba0, transparent: true, opacity: 0.32 });
+  [-1.75, 1.75].forEach(x => {
+    const n = new THREE.Mesh(new THREE.CylinderGeometry(0.8, 0.9, 2.5, 24), neighMat);
+    n.position.set(x, -0.15, 0);
+    group.add(n);
+  });
+
+  // Dense microvilli on top brush border
+  const villiMat = new THREE.MeshStandardMaterial({ color: 0xc86f80, roughness: 0.4 });
+  const rows = 6, cols = 6;
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const x = -0.6 + c * 0.24 + (r % 2 === 0 ? 0 : 0.12);
+      const z = -0.6 + r * 0.24;
+      if (Math.hypot(x, z) > 0.75) continue;
+      const h = 0.4 + Math.sin(r * 1.5 + c) * 0.08;
+      const villus = new THREE.Mesh(new THREE.CapsuleGeometry(0.038, h, 6, 12), villiMat);
+      villus.position.set(x, 1.4 + h / 2, z);
+      villus.castShadow = true;
+      group.add(villus);
+    }
+  }
+
+  // Nucleus in lower basal section
+  const nucMat = new THREE.MeshStandardMaterial({ color: 0x7a4aa2, roughness: 0.35 });
+  const nuc = new THREE.Mesh(new THREE.SphereGeometry(0.5, 32, 32), nucMat);
+  nuc.scale.set(1.0, 0.75, 1.0);
+  nuc.position.set(0, -0.55, 0);
+  group.add(nuc);
+
+  // Tight junctions ring
+  const juncMat = new THREE.MeshStandardMaterial({ color: 0x9f6cbd, roughness: 0.3 });
+  const junc = new THREE.Mesh(new THREE.TorusGeometry(0.86, 0.045, 10, 36), juncMat);
+  junc.rotation.x = Math.PI / 2;
+  junc.position.set(0, 1.05, 0);
+  group.add(junc);
+
+  return group;
+}
+
+// Load 3D Asset or Build Procedural Model
+if (currentCell.modelUrl) {
+  const loader = new GLTFLoader();
+  loadingDetail.textContent = `Đang tải mô hình ${currentCell.name}…`;
+
+  loader.load(
+    currentCell.modelUrl,
+    (gltf) => {
+      const root = gltf.scene;
+      root.scale.setScalar(currentCell.scale || 1);
+      if (currentCell.rotation) root.rotation.set(...currentCell.rotation);
+      if (currentCell.position) root.position.set(...currentCell.position);
+
+      root.traverse((node) => {
+        if (node.isMesh) {
+          node.castShadow = true;
+          node.receiveShadow = true;
+          if (node.material) {
+            node.material.side = THREE.DoubleSide;
+          }
+        }
+      });
+
+      modelGroup.add(root);
+      hideLoading();
+      announceBridgeReady();
+    },
+    (xhr) => {
+      if (xhr.total > 0) {
+        const pct = Math.round((xhr.loaded / xhr.total) * 100);
+        loadingDetail.textContent = `${pct}% đã tải`;
+      }
+    },
+    (err) => {
+      console.warn('GLB load error, using fallback:', err);
+      modelGroup.add(createProceduralFallback(currentCell));
+      hideLoading();
+      announceBridgeReady();
+    }
+  );
+} else if (currentCell.id === 'muscle') {
+  loadingDetail.textContent = 'Đang dựng mô hình sợi cơ vân 3D…';
+  modelGroup.add(createMuscleModel());
+  modelGroup.scale.setScalar(currentCell.scale || 1);
+  if (currentCell.rotation) modelGroup.rotation.set(...currentCell.rotation);
+  hideLoading();
+  announceBridgeReady();
+} else if (currentCell.id === 'epithelial') {
+  loadingDetail.textContent = 'Đang dựng mô hình tế bào biểu mô 3D…';
+  modelGroup.add(createEpithelialModel());
+  modelGroup.scale.setScalar(currentCell.scale || 1);
+  if (currentCell.rotation) modelGroup.rotation.set(...currentCell.rotation);
+  hideLoading();
+  announceBridgeReady();
+} else {
+  modelGroup.add(createProceduralFallback(currentCell));
+  hideLoading();
+  announceBridgeReady();
+}
+
+function hideLoading() {
+  loadingOverlay.style.opacity = '0';
+  setTimeout(() => loadingOverlay.style.display = 'none', 500);
+}
+
+function announceBridgeReady() {
+  if (bridgeReady) return;
+  bridgeReady = true;
+  notifyBridge('ready', {
+    ...bridgeState(),
+    capabilities: { reset: true, mode: true, step: true, state: true },
+  });
+  notifyBridge('stepChanged', { index: currentStepIdx, count: currentCell.steps.length });
+}
+
+// ── UI Interactivity ────────────────────────────────────────────────────────
+function renderOrganelleCard(orgId) {
+  const org = currentCell.organelles.find(o => o.id === orgId) || currentCell.organelles[0];
+  activeOrganelleId = org.id;
+
+  orgName.textContent = org.name;
+  orgSubtitle.textContent = org.subtitle;
+  orgDesc.textContent = org.desc;
+  orgFact.textContent = `💡 ${org.fact}`;
+
+  orgAttrs.innerHTML = org.attrs.map(a => `
+    <div class="attr-box">
+      <small>${a.label}</small>
+      <strong>${a.value}</strong>
+    </div>
+  `).join('');
+
+  // Update chip active status
+  document.querySelectorAll('.chip-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.org === org.id);
+  });
+}
+
+function renderChips() {
+  chipsContainer.innerHTML = currentCell.organelles.map(org => `
+    <button class="chip-btn ${org.id === activeOrganelleId ? 'active' : ''}" data-org="${org.id}">
+      ${org.name}
+    </button>
+  `).join('');
+
+  chipsContainer.querySelectorAll('.chip-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      renderOrganelleCard(btn.dataset.org);
+    });
+  });
+}
+
+function renderSteps() {
+  stepsTrack.innerHTML = currentCell.steps.map((step, idx) => `
+    <button class="step-node ${idx === currentStepIdx ? 'active' : ''}" data-idx="${idx}">
+      <i>${idx + 1}</i>
+      <span>${step.title}</span>
+    </button>
+  `).join('');
+
+  stepsTrack.querySelectorAll('.step-node').forEach(btn => {
+    btn.addEventListener('click', () => {
+      goToStep(parseInt(btn.dataset.idx, 10));
+    });
+  });
+
+  updateNavButtons();
+}
+
+function goToStep(idx) {
+  if (idx < 0 || idx >= currentCell.steps.length) return;
+  currentStepIdx = idx;
+  const step = currentCell.steps[idx];
+  updatePhaseVisual(idx);
+
+  // Update steps UI
+  document.querySelectorAll('.step-node').forEach((node, i) => {
+    node.classList.toggle('active', i === idx);
+  });
+
+  // Switch to the step's organelle
+  if (step.organelle) {
+    renderOrganelleCard(step.organelle);
+  }
+  if (step.text) {
+    orgDesc.textContent = step.text;
+  }
+
+  updateNavButtons();
+  notifyBridge('stepChanged', { index: idx, count: currentCell.steps.length });
+}
+
+function updateNavButtons() {
+  btnPrev.disabled = currentStepIdx === 0;
+  btnNext.disabled = currentStepIdx === currentCell.steps.length - 1;
+}
+
+btnPrev.addEventListener('click', () => goToStep(currentStepIdx - 1));
+btnNext.addEventListener('click', () => goToStep(currentStepIdx + 1));
+
+// Tools Buttons
+btnRotate.addEventListener('click', () => {
+  autoRotate = !autoRotate;
+  btnRotate.classList.toggle('active', autoRotate);
+});
+btnRotate.classList.toggle('active', autoRotate);
+
+btnCutaway.addEventListener('click', () => {
+  setCutaway(!isCutaway);
+});
+
+function setCutaway(nextValue) {
+  isCutaway = Boolean(nextValue);
+  btnCutaway.classList.toggle('active', isCutaway);
+  modelGroup.traverse(node => {
+    if (!node.isMesh || !node.material) return;
+    const materials = Array.isArray(node.material) ? node.material : [node.material];
+    materials.forEach(material => {
+      if (material.userData.cellBaseOpacity == null) {
+        material.userData.cellBaseOpacity = material.opacity;
+        material.userData.cellBaseTransparent = material.transparent;
+      }
+      material.transparent = isCutaway || material.userData.cellBaseTransparent;
+      material.opacity = isCutaway
+        ? Math.min(material.userData.cellBaseOpacity, 0.38)
+        : material.userData.cellBaseOpacity;
+      material.needsUpdate = true;
+    });
+  });
+}
+
+function resetView() {
+  controls.reset();
+  camera.position.set(0, 0, 7.5);
+  modelGroup.rotation.set(0, 0, 0);
+  bridgeZoomGesture = null;
+  setBridgeMode('rotate');
+  setCutaway(false);
+  autoRotate = true;
+  btnRotate.classList.add('active');
+  goToStep(0);
+}
+btnReset.addEventListener('click', resetView);
+
+// Keyboard shortcuts
+window.addEventListener('keydown', (e) => {
+  if (e.target.matches('input, textarea')) return;
+  if (e.key === ' ' || e.code === 'Space') {
+    e.preventDefault();
+    btnRotate.click();
+  } else if (e.key === 'c' || e.key === 'C') {
+    e.preventDefault();
+    btnCutaway.click();
+  } else if (e.key === 'r' || e.key === 'R') {
+    e.preventDefault();
+    btnReset.click();
+  } else if (e.key === 'ArrowRight') {
+    goToStep(currentStepIdx + 1);
+  } else if (e.key === 'ArrowLeft') {
+    goToStep(currentStepIdx - 1);
+  }
+});
+
+// Window Resize
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// Initialize UI
+renderChips();
+renderSteps();
+goToStep(0);
+
+// Animation Loop
+const clock = new THREE.Clock();
+function animate() {
+  requestAnimationFrame(animate);
+  const delta = clock.getDelta();
+  if (autoRotate && modelGroup) {
+    modelGroup.rotation.y += delta * 0.12;
+  }
+  controls.update();
+  renderer.render(scene, camera);
+}
+animate();
+</script>
+</body>
+</html>

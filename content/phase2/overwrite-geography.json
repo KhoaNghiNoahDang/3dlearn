@@ -1,0 +1,713 @@
+{
+  "schemaVersion": "0.1.0",
+  "purpose": "Additive overwrite patch for high-confidence Địa lí 10 names; never auto-applied to catalog.json.",
+  "catalogMutation": false,
+  "sourceBook": {
+    "id": "dia-li-10-ket-noi-tri-thuc",
+    "title": "Địa lí 10 – Kết nối tri thức với cuộc sống",
+    "subjectKey": "geo",
+    "grade": 10,
+    "publisher": "Nhà xuất bản Giáo dục Việt Nam",
+    "isbn": "978-604-0-31083-5",
+    "file": "SGK/SGK Địa lí 10-mau.pdf"
+  },
+  "overwritePolicy": {
+    "includeConfidence": [
+      "high"
+    ],
+    "pageMeaning": "printed page from SGK table of contents",
+    "figureRefRule": "Only fill figureRef when OCR selected pages read the figure/table label directly; otherwise null.",
+    "applyMode": "manual-review-only"
+  },
+  "overwrites": [
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 1,
+        "title": "Sử dụng bản đồ"
+      },
+      "lesson": {
+        "number": 1,
+        "title": "Môn Địa lí với định hướng nghề nghiệp"
+      },
+      "page": 5,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "toc-pdf-4 + visual cross-check"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 1,
+        "title": "Sử dụng bản đồ"
+      },
+      "lesson": {
+        "number": 2,
+        "title": "Một số phương pháp biểu hiện các đối tượng địa lí trên bản đồ"
+      },
+      "page": 7,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4; title boxes 0.772/0.662"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 1,
+        "title": "Sử dụng bản đồ"
+      },
+      "lesson": {
+        "number": 3,
+        "title": "Sử dụng bản đồ trong học tập và đời sống, một số ứng dụng của GPS và bản đồ số trong đời sống"
+      },
+      "page": 12,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4 + content-pdf-13 title"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 2,
+        "title": "Trái Đất"
+      },
+      "lesson": {
+        "number": 4,
+        "title": "Sự hình thành Trái Đất, vỏ Trái Đất và vật liệu cấu tạo vỏ Trái Đất"
+      },
+      "page": 15,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4; title/page boxes 0.999/1.000"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 2,
+        "title": "Trái Đất"
+      },
+      "lesson": {
+        "number": 5,
+        "title": "Hệ quả địa lí các chuyển động của Trái Đất"
+      },
+      "page": 17,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4 + visual cross-check"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 3,
+        "title": "Thạch quyển"
+      },
+      "lesson": {
+        "number": 6,
+        "title": "Thạch quyển, thuyết kiến tạo mảng"
+      },
+      "page": 21,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4; title split across boxes + visual cross-check"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 3,
+        "title": "Thạch quyển"
+      },
+      "lesson": {
+        "number": 7,
+        "title": "Nội lực và ngoại lực"
+      },
+      "page": 24,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4 title box 0.371 + visual cross-check"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 3,
+        "title": "Thạch quyển"
+      },
+      "lesson": {
+        "number": 8,
+        "title": "Thực hành: Sự phân bố các vành đai động đất, núi lửa"
+      },
+      "page": 27,
+      "figureRef": [
+        "Hình 8"
+      ],
+      "figureType": "map",
+      "confidence": "high",
+      "evidence": "EasyOCR content-pdf-28 title 0.785/0.623/0.738"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 4,
+        "title": "Khí quyển"
+      },
+      "lesson": {
+        "number": 9,
+        "title": "Khí quyển, các yếu tố khí hậu"
+      },
+      "page": 28,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4 + visual cross-check"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 4,
+        "title": "Khí quyển"
+      },
+      "lesson": {
+        "number": 10,
+        "title": "Thực hành: Đọc bản đồ các đới và các kiểu khí hậu trên Trái Đất, phân tích biểu đồ một số kiểu khí hậu"
+      },
+      "page": 35,
+      "figureRef": [
+        "Hình 10.1"
+      ],
+      "figureType": "map",
+      "confidence": "high",
+      "evidence": "EasyOCR content-pdf-36 title 0.895/0.637/0.762/0.824"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 5,
+        "title": "Thuỷ quyển"
+      },
+      "lesson": {
+        "number": 11,
+        "title": "Thuỷ quyển, nước trên lục địa"
+      },
+      "page": 37,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4 + visual cross-check"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 5,
+        "title": "Thuỷ quyển"
+      },
+      "lesson": {
+        "number": 12,
+        "title": "Nước biển và đại dương"
+      },
+      "page": 41,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4 title 0.982"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 5,
+        "title": "Thuỷ quyển"
+      },
+      "lesson": {
+        "number": 13,
+        "title": "Thực hành: Phân tích chế độ nước của sông Hồng"
+      },
+      "page": 44,
+      "figureRef": [
+        "Bảng 13"
+      ],
+      "figureType": "table",
+      "confidence": "high",
+      "evidence": "EasyOCR content-pdf-45 title 0.949/0.901/0.977; Bảng 13 and station Hà Nội"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 6,
+        "title": "Sinh quyển"
+      },
+      "lesson": {
+        "number": 14,
+        "title": "Đất trên Trái Đất"
+      },
+      "page": 45,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4 title 0.937"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 6,
+        "title": "Sinh quyển"
+      },
+      "lesson": {
+        "number": 15,
+        "title": "Sinh quyển"
+      },
+      "page": 47,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4 title 0.999"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 6,
+        "title": "Sinh quyển"
+      },
+      "lesson": {
+        "number": 16,
+        "title": "Thực hành: Tìm hiểu sự phân bố đất và sinh vật trên Trái Đất"
+      },
+      "page": 49,
+      "figureRef": [
+        "Hình 16.1",
+        "Hình 16.2"
+      ],
+      "figureType": "map",
+      "confidence": "high",
+      "evidence": "EasyOCR content-pdf-50 title 0.576/0.551/0.834"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 7,
+        "title": "Một số quy luật của vỏ địa lí"
+      },
+      "lesson": {
+        "number": 17,
+        "title": "Vỏ địa lí, quy luật thống nhất và hoàn chỉnh của vỏ địa lí"
+      },
+      "page": 51,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4 title/page boxes 0.710/0.575/0.966"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 7,
+        "title": "Một số quy luật của vỏ địa lí"
+      },
+      "lesson": {
+        "number": 18,
+        "title": "Quy luật địa đới và quy luật phi địa đới"
+      },
+      "page": 53,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4 title 0.861/0.820"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 8,
+        "title": "Địa lí dân cư"
+      },
+      "lesson": {
+        "number": 19,
+        "title": "Quy mô dân số, gia tăng dân số và cơ cấu dân số thế giới"
+      },
+      "page": 55,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4 title/page boxes + visual cross-check"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 8,
+        "title": "Địa lí dân cư"
+      },
+      "lesson": {
+        "number": 20,
+        "title": "Phân bố dân cư và đô thị hoá trên thế giới"
+      },
+      "page": 60,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4 title 0.841/0.671"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 9,
+        "title": "Các nguồn lực, một số tiêu chí đánh giá sự phát triển kinh tế"
+      },
+      "lesson": {
+        "number": 21,
+        "title": "Các nguồn lực phát triển kinh tế"
+      },
+      "page": 63,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4 title 0.999/0.705"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 9,
+        "title": "Các nguồn lực, một số tiêu chí đánh giá sự phát triển kinh tế"
+      },
+      "lesson": {
+        "number": 22,
+        "title": "Cơ cấu kinh tế, tổng sản phẩm trong nước và tổng thu nhập quốc gia"
+      },
+      "page": 65,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4 title/page boxes + visual cross-check"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 10,
+        "title": "Địa lí ngành nông nghiệp, lâm nghiệp, thuỷ sản"
+      },
+      "lesson": {
+        "number": 23,
+        "title": "Vai trò, đặc điểm, các nhân tố ảnh hưởng tới sự phát triển và phân bố nông nghiệp, lâm nghiệp, thuỷ sản"
+      },
+      "page": 67,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4 title/page boxes + visual cross-check"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 10,
+        "title": "Địa lí ngành nông nghiệp, lâm nghiệp, thuỷ sản"
+      },
+      "lesson": {
+        "number": 24,
+        "title": "Địa lí ngành nông nghiệp"
+      },
+      "page": 69,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4 title 0.959/0.921"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 10,
+        "title": "Địa lí ngành nông nghiệp, lâm nghiệp, thuỷ sản"
+      },
+      "lesson": {
+        "number": 25,
+        "title": "Địa lí ngành lâm nghiệp và ngành thuỷ sản"
+      },
+      "page": 73,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4 title 0.773/0.955/0.921"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 10,
+        "title": "Địa lí ngành nông nghiệp, lâm nghiệp, thuỷ sản"
+      },
+      "lesson": {
+        "number": 26,
+        "title": "Tổ chức lãnh thổ nông nghiệp, một số vấn đề phát triển nông nghiệp hiện đại trên thế giới và định hướng phát triển nông nghiệp trong tương lai"
+      },
+      "page": 76,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4 title/page boxes + visual cross-check"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 10,
+        "title": "Địa lí ngành nông nghiệp, lâm nghiệp, thuỷ sản"
+      },
+      "lesson": {
+        "number": 27,
+        "title": "Thực hành: Vẽ và nhận xét biểu đồ về sản lượng lương thực của thế giới"
+      },
+      "page": 78,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4 title/page boxes 0.689/0.738/0.914"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 11,
+        "title": "Địa lí ngành công nghiệp"
+      },
+      "lesson": {
+        "number": 28,
+        "title": "Vai trò, đặc điểm, cơ cấu ngành công nghiệp, các nhân tố ảnh hưởng tới sự phát triển và phân bố công nghiệp"
+      },
+      "page": 79,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4 title/page boxes + visual cross-check"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 11,
+        "title": "Địa lí ngành công nghiệp"
+      },
+      "lesson": {
+        "number": 29,
+        "title": "Địa lí một số ngành công nghiệp"
+      },
+      "page": 81,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4 title 0.895/0.987"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 11,
+        "title": "Địa lí ngành công nghiệp"
+      },
+      "lesson": {
+        "number": 30,
+        "title": "Tổ chức lãnh thổ công nghiệp"
+      },
+      "page": 86,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4 title/page boxes + visual cross-check"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 11,
+        "title": "Địa lí ngành công nghiệp"
+      },
+      "lesson": {
+        "number": 31,
+        "title": "Tác động của công nghiệp đối với môi trường, phát triển năng lượng tái tạo, định hướng phát triển công nghiệp trong tương lai"
+      },
+      "page": 88,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-4 title/page boxes + visual cross-check"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 11,
+        "title": "Địa lí ngành công nghiệp"
+      },
+      "lesson": {
+        "number": 32,
+        "title": "Thực hành: Viết báo cáo tìm hiểu một vấn đề về công nghiệp"
+      },
+      "page": 90,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-5 title 0.956/0.804/0.998"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 12,
+        "title": "Địa lí ngành dịch vụ"
+      },
+      "lesson": {
+        "number": 33,
+        "title": "Cơ cấu, vai trò, đặc điểm, các nhân tố ảnh hưởng tới sự phát triển và phân bố dịch vụ"
+      },
+      "page": 91,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-5 title/page boxes + visual cross-check"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 12,
+        "title": "Địa lí ngành dịch vụ"
+      },
+      "lesson": {
+        "number": 34,
+        "title": "Địa lí ngành giao thông vận tải"
+      },
+      "page": 93,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-5 title 0.559/0.924"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 12,
+        "title": "Địa lí ngành dịch vụ"
+      },
+      "lesson": {
+        "number": 35,
+        "title": "Địa lí ngành bưu chính viễn thông"
+      },
+      "page": 98,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-5 title 0.631"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 12,
+        "title": "Địa lí ngành dịch vụ"
+      },
+      "lesson": {
+        "number": 36,
+        "title": "Địa lí ngành du lịch"
+      },
+      "page": 101,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-5 title 0.735"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 12,
+        "title": "Địa lí ngành dịch vụ"
+      },
+      "lesson": {
+        "number": 37,
+        "title": "Địa lí ngành thương mại và ngành tài chính ngân hàng"
+      },
+      "page": 103,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-5 title split across boxes + visual cross-check"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 12,
+        "title": "Địa lí ngành dịch vụ"
+      },
+      "lesson": {
+        "number": 38,
+        "title": "Thực hành: Viết báo cáo tìm hiểu về một ngành dịch vụ"
+      },
+      "page": 107,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-5 title 0.666/0.739/0.677"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 13,
+        "title": "Phát triển bền vững và tăng trưởng xanh"
+      },
+      "lesson": {
+        "number": 39,
+        "title": "Môi trường và tài nguyên thiên nhiên"
+      },
+      "page": 108,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-5 title 0.760/0.797"
+    },
+    {
+      "sourceBook": "dia-li-10-ket-noi-tri-thuc",
+      "chapter": {
+        "number": 13,
+        "title": "Phát triển bền vững và tăng trưởng xanh"
+      },
+      "lesson": {
+        "number": 40,
+        "title": "Phát triển bền vững và tăng trưởng xanh"
+      },
+      "page": 111,
+      "figureRef": null,
+      "figureType": null,
+      "confidence": "high",
+      "evidence": "EasyOCR toc-pdf-5 title 0.844/0.585 + visual cross-check"
+    }
+  ],
+  "phase2Audit": [
+    {
+      "file": "courses/phase2-geo-gps-step.html",
+      "id": "phase2-geo-gps-step",
+      "canvas": true,
+      "three": true,
+      "orbitControls": true,
+      "stepCount": 6,
+      "controls": true,
+      "bridgeStepSelector": "[data-step-index]",
+      "status": "static-pass"
+    },
+    {
+      "file": "courses/phase2-geo-earthquake-volcano-step.html",
+      "id": "phase2-geo-earthquake-volcano-step",
+      "canvas": true,
+      "three": true,
+      "orbitControls": true,
+      "stepCount": 6,
+      "controls": true,
+      "bridgeStepSelector": "[data-step-index]",
+      "status": "static-pass"
+    },
+    {
+      "file": "courses/phase2-geo-red-river-regime-step.html",
+      "id": "phase2-geo-red-river-regime-step",
+      "canvas": true,
+      "three": true,
+      "orbitControls": true,
+      "stepCount": 6,
+      "controls": true,
+      "bridgeStepSelector": "[data-step-index]",
+      "status": "static-pass"
+    }
+  ],
+  "verification": {
+    "runtime": "not-run-in-browser",
+    "note": "Static HTML scan confirms real canvas, Three.js, OrbitControls, six step buttons and controls. Parent bridge is injected by Vite/release pipeline.",
+    "catalogFileChanged": false
+  }
+}

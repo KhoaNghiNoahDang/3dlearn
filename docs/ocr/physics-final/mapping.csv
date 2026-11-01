@@ -1,0 +1,11 @@
+sourceBookId,slug,catalogTitle,chapter,lesson,printedPage,confidence
+vat-li-12,photoelectric-step,Hiệu ứng quang điện,,,,needs-OCR
+vat-li-11,capacitor-step,Quan sát sự tích điện và phóng điện của tụ điện,,,,needs-OCR
+vat-li-10,accel-force-step,Thí nghiệm: Tìm hiểu mối liên hệ giữa gia tốc với lực và khối lượng,,,,needs-OCR
+vat-li-10,energy-step,Thí nghiệm: Kiểm chứng định luật bảo toàn cơ năng,,,,needs-OCR
+vat-li-10,projectile-step,Thí nghiệm: Tìm hiểu đặc điểm của chuyển động ném ngang,,,,needs-OCR
+vat-li-10,centripetal-step,"Tìm hiểu mối liên hệ giữa độ lớn lực hướng tâm với bán kính, tốc độ góc và khối lượng",,,,needs-OCR
+vat-li-11,self-induction-step,Tự cảm và dòng Foucault,,,,needs-OCR
+vat-li-11,emf-step,Đo suất điện động và điện trở trong của nguồn điện,,,,needs-OCR
+vat-li-11,current-field-step,Từ trường của dòng điện,,,,needs-OCR
+,brownian-step,Chuyển động Brown và sự khuếch tán,,,,needs-OCR

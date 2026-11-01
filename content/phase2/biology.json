@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "phase": "phase2",
+  "subject": "bio",
+  "title": "Sinh học + Cell",
+  "sourcePolicy": {
+    "catalogMutation": false,
+    "externalModels": false,
+    "assetRoot": "cell/public/models",
+    "note": "Phase 2 metadata is additive and is not part of catalog.json. SGK edition and page mapping remains a teacher-reviewed concern."
+  },
+  "lessons": [
+    {
+      "id": "phase2-bio-mitosis",
+      "slug": "phase2-bio-mitosis",
+      "title": "Nguyên phân ở tế bào thực vật",
+      "grade": 10,
+      "curriculum": {
+        "programs": ["KNTT", "Cánh Diều"],
+        "topic": "Chu trình tế bào, nguyên phân, thực hành quan sát mô phân sinh đầu rễ",
+        "status": "mapped-topic-page-pending"
+      },
+      "launch": {
+        "path": "/courses/phase2-bio-mitosis.html",
+        "mode": "phase2-adapter"
+      },
+      "viewer": {
+        "path": "/courses/cell-viewer.html?cell=plant&phase=mitosis",
+        "phase": "mitosis",
+        "baseCell": "plant",
+        "asset": "cell/public/models/plant-cell-first001.glb",
+        "fallback": "procedural plant cell",
+        "stepCount": 6
+      },
+      "reuse": ["plant-cell-glb", "plant-cell-organelle-focus", "cell-viewer-bridge"]
+    },
+    {
+      "id": "phase2-bio-osmosis",
+      "slug": "phase2-bio-osmosis",
+      "title": "Vận chuyển nước và co nguyên sinh",
+      "grade": 10,
+      "curriculum": {
+        "programs": ["KNTT", "Cánh Diều"],
+        "topic": "Vận chuyển thụ động, thẩm thấu, hút nước và mất nước của tế bào thực vật",
+        "status": "mapped-topic-page-pending"
+      },
+      "launch": {
+        "path": "/courses/phase2-bio-osmosis.html",
+        "mode": "phase2-adapter"
+      },
+      "viewer": {
+        "path": "/courses/cell-viewer.html?cell=plant&phase=osmosis",
+        "phase": "osmosis",
+        "baseCell": "plant",
+        "asset": "cell/public/models/plant-cell-first001.glb",
+        "fallback": "procedural plant cell",
+        "stepCount": 6
+      },
+      "reuse": ["plant-cell-glb", "vacuole-and-cell-wall-focus", "cell-viewer-bridge"]
+    }
+  ]
+}
